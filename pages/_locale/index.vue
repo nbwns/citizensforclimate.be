@@ -2,15 +2,14 @@
   <div class="container is-fluid">
     <div class="columns">
       <div class="column">
-       Default page   
-       <Actions/>
-
+       locale page   
       </div>
     </div>
   </div>
 </template>
 
 <script>
+
 export default {
   middleware: 'redirect'
 }
