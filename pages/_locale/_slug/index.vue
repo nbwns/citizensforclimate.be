@@ -1,7 +1,7 @@
 <template>
   <div class="container is-fluid">
     <h1 class="title is-1">{{page.fields.title}}</h1>
-    <div class="content" v-html="page.fields.body">
+    <div class="content" v-html="$md.render(page.fields.body)">
     </div>
     <template v-if="page.fields.components">
       <component  :is="page.fields.components[0]"></component>
@@ -18,15 +18,16 @@ export default {
   components: {
     Actions
   },
-  asyncData({params,error}){
+  asyncData({params,error, store}){
     console.log("params",params.locale, params.slug)
     return client.getEntries({
       content_type: 'simplePage',
       'fields.slug': params.slug,
       'locale': params.locale + "-BE"
     }).then(entries => {
-      console.log(entries.items[0])
+      console.log("sortOrder", entries.items[0].fields.sortOrder)
       if(entries.items[0]){
+        store.dispatch('setActivePage', entries.items[0].fields.slug)
         return {
           page : entries.items[0]
         }
