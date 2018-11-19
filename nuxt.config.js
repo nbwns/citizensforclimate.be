@@ -1,4 +1,5 @@
 require('dotenv').config()
+const client = require('./plugins/contentful')
 
 module.exports = {
   /*
@@ -54,6 +55,20 @@ module.exports = {
     injected: true
   },
   generate: {
+    routes () {
+        return client.getEntries({
+          content_type: 'simplePage',
+          'locale':"fr-BE"
+      })
+      .then(entries => {
+        return entries.items.map(entry => {
+          return {
+            route: 'fr/' + entry.fields.slug,
+            payload: entry
+          }
+        })
+    })
+    },
     fallback: true
   }
 }

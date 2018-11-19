@@ -18,8 +18,14 @@ export default {
   components: {
     Actions
   },
-  asyncData({params,error, store}){
+  asyncData({params,error, store, payload}){
     console.log("params",params.locale, params.slug)
+    if(payload){ 
+      console.log("payload", payload)
+      return {
+        page: payload
+      }
+    }
     return client.getEntries({
       content_type: 'simplePage',
       'fields.slug': params.slug,
