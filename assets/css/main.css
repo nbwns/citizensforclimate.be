@@ -1,0 +1,69 @@
+html, body{
+  font-family: 'Work Sans', sans-serif;
+}
+
+.navbar {
+  background-color: #FFF271;
+}
+
+.navbar a {
+  text-transform: uppercase
+}
+
+.footer {
+  background-color: #FFF271;
+}
+
+.footer a {
+  text-transform: uppercase
+}
+
+.hero .title{
+  font-family: 'alpha_echoregular';
+}
+
+.hero .subtitle{
+  font-family: 'Permanent Marker', cursive;
+}
+
+.content img{
+  text-align: center !important;
+}
+
+.action{
+  background-color: #eff1f4;
+  margin: 5px 5px 5px 5px;
+  font-size: 0.75rem;
+  min-height: 250px;
+}
+
+.action.highlight{
+  font-size: 1rem;
+  max-height: 350px;
+
+}
+
+.action .action-tag{
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: grey;
+}
+
+.action.highlight a {
+  text-transform: uppercase;
+}
+
+.page-enter-active, .page-leave-active {
+  transition: opacity .5s;
+}
+.page-enter, .page-leave-active {
+  opacity: 0;
+}
+
+@font-face {
+  font-family: 'alpha_echoregular';
+  src: url('alpha_echo-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}

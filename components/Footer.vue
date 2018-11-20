@@ -1,9 +1,8 @@
 <template>
     <footer class="footer">
-        <div class="content has-text-centered">
-            <p>
-                <strong>Citizens For Climate | Belgium</strong> | Mentions Légales | bonjour@citizensforclimate.be
-            </p>
+        <div class="content is-pulled-right">
+            <a href="#">Mentions légales</a>
+            <a href="#">Contact</a>
         </div>
     </footer> 
 </template>

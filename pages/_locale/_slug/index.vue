@@ -1,8 +1,10 @@
 <template>
   <div class="container is-fluid">
-    <h1 class="title is-1">{{page.fields.title}}</h1>
-    <div class="content" v-html="$md.render(page.fields.body)">
-    </div>
+    <section class="articles">
+      <div class="column is-8 is-offset-2">
+        <div class="content" v-html="$md.render(page.fields.body)"></div>
+      </div>
+    </section>
     <template v-if="page.fields.components">
       <component  :is="page.fields.components[0]"></component>
     </template>

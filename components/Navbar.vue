@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar is-primary">
+    <nav class="navbar">
         <div class="container">
         <div class="navbar-brand">
             <nuxt-link class="navbar-item" :to="'/' + $route.params.locale">
@@ -18,10 +18,7 @@
                         v-for="navItem in navItems" 
                         :key="navItem.fields.slug[locale]">
                         {{navItem.fields.title[locale]}}
-                        
                     </nuxt-link>
-                    <a href="/fr" class="navbar-item">FR</a>
-                    <a href="/fr" class="navbar-item">NL</a>
                 </div>
             </div>
         </div>
