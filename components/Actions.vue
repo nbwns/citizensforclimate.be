@@ -7,8 +7,8 @@
                 <p>
                     {{action.fields.introductionText}}
                 </p>
-                <nuxt-link class="button" :to="{path:'/'+$route.params.locale+'/action/'+action.fields.slug}">Dites m'en plus</nuxt-link>                
-                <a v-if="action.fields.link" class="button is-primary" :href="action.fields.link" target="_blank">{{action.fields.callToAction}}</a>
+                <nuxt-link class="button is-medium" :to="{path:'/'+$route.params.locale+'/action/'+action.fields.slug}">Dites m'en plus</nuxt-link>                
+                <a v-if="action.fields.link" class="button is-primary is-medium" :href="action.fields.link" target="_blank">{{action.fields.callToAction}}</a>
             </div>
         </div>
         <div class="columns">
@@ -25,6 +25,9 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="has-text-centered">
+            <a href="#" target="_blank" class="button is-warning is-large">Appel à actions: contribuez</a>
         </div>
     </section>
 </template>

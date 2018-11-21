@@ -53,6 +53,7 @@ module.exports = {
   plugins: ['~/plugins/contentful'],
   modules: ['@nuxtjs/dotenv', '@nuxtjs/markdownit'],
   markdownit: {
+    html: true,
     injected: true
   },
   generate: {

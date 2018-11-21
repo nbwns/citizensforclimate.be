@@ -1,3 +1,3 @@
 export default function ({ store, redirect }) {
-    return redirect('/fr/accueil')
+    return redirect(process.env.FR_DEFAULT)
   }
