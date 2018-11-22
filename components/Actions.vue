@@ -6,7 +6,8 @@
                     <h2 class="title is-2">ACTION LABEL</h2>
                     <p class="subtitle">ACTION SUBLABEL</p>
                 </div>
-                <div class="columns is-multiline is-centered">
+                <Loader v-if="loading"/>
+                <div v-if="!loading" class="columns is-multiline is-centered">
                     <div class="column is-one-third" v-for="action in highlightActions" :key="action.id">
                         <div class="has-background-white action highlight">
                             <small class="action-meta action-tag">{{action.fields.tag}}</small>
@@ -16,7 +17,7 @@
                                 {{action.fields.introductionText}}
                                 <nuxt-link class="read-more" :to="{path:'/'+$route.params.locale+'/action/'+action.fields.slug}">> Lire la suite</nuxt-link>
                             </p>
-                            <a v-if="action.fields.link" class="button is-primary is-medium" :href="action.fields.link" target="_blank">{{action.fields.callToAction}}</a>
+                            <a v-if="action.fields.link" class="button is-medium" :href="action.fields.link" target="_blank">{{action.fields.callToAction}}</a>
                         </div>   
                     </div>
                 </div>
@@ -28,7 +29,8 @@
                     <h2 class="title is-2">ACTION LABEL</h2>
                     <p class="subtitle">ACTION SUBLABEL</p>
                 </div>
-                <div class="columns is-multiline is-centered">
+                <Loader v-if="loading"/>
+                <div v-if="!loading" class="columns is-multiline is-centered">
                     <div  class="column is-one-third" v-if="index < maxActions" v-for="(action, index) in normalActions" :key="action.id">
                         <div class="has-background-white action">
                             <small class="action-meta action-tag">{{action.fields.tag}}</small>
@@ -42,7 +44,8 @@
                             <a v-if="action.fields.link" class="button" :href="action.fields.link" target="_blank">{{action.fields.callToAction}}</a>
                         </div>
                     </div>
-                    <div class="see-more-actions" v-if="!showAllActions" @click="displayAllActions()">
+                    <div class="see-more-actions has-text-centered" v-if="!showAllActions" @click="displayAllActions()">
+                        V <br/>
                         Plus d'actions
                     </div>
                 </div>
@@ -54,6 +57,7 @@
 <script>
 import client from '~/plugins/contentful'
 import moment from 'moment-with-locales-es6'
+import Loader from '~/components/Loader'
 
 export default{
     data () {
@@ -63,6 +67,9 @@ export default{
             maxActions: 3,
             showAllActions: false
         }
+    },
+    components: {
+        Loader
     },
     computed: {
         highlightActions () {
@@ -117,6 +124,13 @@ export default{
 <style scoped>
     .actions {
         margin: 40px 0 40px 0;
+    }
+
+    .see-more-actions{
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 1.2rem;
+        cursor: pointer;
     }
 
     .action-head{
@@ -174,7 +188,7 @@ export default{
         text-transform: uppercase;
     }
 
-    .action .button {
+    /* .button {
         text-transform: uppercase;
         align-items: flex-end;
         border-radius: 0;
@@ -185,10 +199,10 @@ export default{
         transition: all 0.3s;
     }
 
-    .action .button:hover {
+    .button:hover {
         background-color: #67de97;
         transition: all 0.3s;
-    }
+    } */
 
     a.read-more {
         color: black;

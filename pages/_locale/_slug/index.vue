@@ -3,9 +3,9 @@
     <div class="column is-8 is-offset-2">
       <div class="content" v-html="$md.render(page.fields.body)"></div>
     </div>
-    <template v-if="pageRef == 'homePage'">
+    <!-- <template v-if="pageRef == 'homePage'"> -->
       <HomePage :page="page" />
-    </template>
+    <!-- </template> -->
   </div>
 </template>
 

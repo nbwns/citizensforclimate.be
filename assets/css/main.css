@@ -18,6 +18,24 @@ html, body{
   color: #67de97
 }
 
+.button {
+  text-transform: uppercase;
+  align-items: flex-end;
+  border-radius: 0;
+  background-color: white;
+  border: 2px #67de97 solid;
+  color: black;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+
+.button:hover {
+  border: 2px #67de97 solid;
+  background-color: #67de97;
+  transition: all 0.3s;
+  color: black;
+}
+
 .page-enter-active, .page-leave-active {
   transition: opacity .5s;
 }
