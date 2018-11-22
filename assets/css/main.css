@@ -6,52 +6,16 @@ html, body{
   background-color: #FFF271;
 }
 
-.navbar a {
-  text-transform: uppercase
-}
-
-.footer {
-  background-color: #FFF271;
-}
-
-.footer a {
-  text-transform: uppercase
-}
-
 .hero .title{
   font-family: 'alpha_echoregular';
 }
 
-.hero .subtitle{
-  font-family: 'Permanent Marker', cursive;
+.hero.is-dark {
+  background-color: black;
 }
 
-.content img{
-  text-align: center !important;
-}
-
-.action{
-  background-color: #eff1f4;
-  margin: 5px 5px 5px 5px;
-  font-size: 0.75rem;
-  min-height: 250px;
-}
-
-.action.highlight{
-  font-size: 1rem;
-  max-height: 350px;
-
-}
-
-.action .action-tag{
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  font-weight: bold;
-  color: grey;
-}
-
-.action.highlight a {
-  text-transform: uppercase;
+.hero.is-dark .subtitle{
+  color: #67de97
 }
 
 .page-enter-active, .page-leave-active {

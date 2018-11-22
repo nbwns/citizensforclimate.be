@@ -20,15 +20,14 @@ const createStore = () => {
             commit('setActivePage', page)
         },
         nuxtServerInit ({ commit }) {
-            //let items = [{id: 1, name:"test"}, {id: 2, name: "truc"}]
-            client.getEntries({
+          client.getEntries({
                 content_type: 'simplePage',
                 'locale':"*",
                 order: 'fields.sortOrder',
                 'fields.sortOrder[gte]' : "1"
             })
             .then(entries => {
-                console.log("from store",entries.items[0])
+                console.log("from store",entries.items.length)
                 commit('saveNavigationItems',entries.items)
             })
             .catch(console.error)

@@ -1,3 +1,4 @@
-export default function ({ store, redirect }) {
-    return redirect(process.env.FR_DEFAULT)
+export default function ({ store, redirect, route }) {
+    console.log(route.fullPath)
+    return redirect('/fr/home')
   }
