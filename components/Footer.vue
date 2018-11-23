@@ -2,18 +2,19 @@
     <footer class="footer has-background-black has-text-white">
         <div class="container is-fluid">
             <div class="columns">
-                <div class="column is-three-quarters">
-                    <p class="title is-3 has-text-white"><a href="/fr/home">CITIZENS FOR CLIMATE</a></p>
+                <div class="column is-half ">
                     <ul>
-                        <li><a href="/fr/a-propos">À propos</a></li>
-                        <li><a href="/fr/contact">Contact</a></li>
-                        <li><a href="/fr/partenaires">Partenaires</a></li>
-                        <li><a href="/fr/mentions-legales">Mentions légales</a></li>
+                        <li class="is-size-4 is-uppercase"><a href="/fr/a-propos">À propos</a></li>
+                        <li class="is-size-4 is-uppercase"><a href="/fr/mentions-legales">Mentions légales</a></li>
                     </ul>
+                    <p>
+                        Graphics: Emi Sakurai<br/>
+                        Website: Nicolas Bauwens
+                    </p>
                 </div>
                 <div class="column">
-                    <div class="content">
-                        Citizens for climate est une 
+                    <div class="content is-size-4">
+                        <p>Citizens for climate est une 
                         plateforme issue d’un mouvement 
                         citoyen spontané, né dans la 
                         foulée des récentes mobilisations 
@@ -21,7 +22,10 @@
                         objectif est de référencer les 
                         actions et événements qui vous 
                         permettent de vous mobiliser en 
-                        masse pour le climat !
+                        masse pour le climat !</p>
+                        <p>
+                            <a class="has-text-weight-bold" href="mailto:citizensforclimate.be@gmail.com">citizensforclimate.be@gmail.com</a>
+                        </p>
                     </div>
                 </div>
             </div>

@@ -1,13 +1,9 @@
 html, body{
-  font-family: 'Work Sans', sans-serif;
-}
-
-.navbar {
-  background-color: #FFF271;
+  font-family: 'Niramit', sans-serif;
 }
 
 .hero .title{
-  font-family: 'alpha_echoregular';
+  font-family: 'Fjalla One', sans-serif;
 }
 
 .hero.is-dark {

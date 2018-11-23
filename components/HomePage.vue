@@ -3,10 +3,10 @@
         <!-- <section class="heading">
             {{page.fields.pageRef.fields.heading}}
         </section> -->
-        <div class="container is-fluid introduction">
+        <div class="container is-fluid introduction has-text-black">
             <div class="columns">
                 <div class="column is-one-third">IMAGE FOULE</div>
-                <div class="column" v-html="$md.render(page.fields.pageRef.fields.introduction)"></div>
+                <div class="column is-size-5" v-html="$md.render(page.fields.pageRef.fields.introduction)"></div>
             </div>
         </div>
         <Actions/>
@@ -54,19 +54,20 @@ export default {
     components: {
         Actions
     }
-    
 }
 </script>
 
 <style>
 .introduction{
-    background-color: #e7df74;
+    background-color: #e5e556;
     margin: 80px 0 40px 0;
+    padding: 40px 40px 40px 40px;
 }
 
 .introduction h1 {
+    font-family: 'Fjalla One', sans-serif;
+    letter-spacing: 1px;
     font-size: 1.75rem;
-    font-weight: bold;
 }
 
 .citizen-message{

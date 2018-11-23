@@ -1,19 +1,19 @@
 <template>
-    <div class="actions">
-        <div class="has-background-primary">
+    <div class="actions has-text-black">
+        <div class="highlight-actions-background">
             <div class="container is-fluid">
                 <div class="action-head has-text-centered">
-                    <h2 class="title is-2">ACTION LABEL</h2>
-                    <p class="subtitle">ACTION SUBLABEL</p>
+                    <h2 class="title is-1 has-text-black">ACTION LABEL</h2>
+                    <p class="subtitle has-text-black">Nice subtitle</p>
                 </div>
                 <Loader v-if="loading"/>
                 <div v-if="!loading" class="columns is-multiline is-centered">
-                    <div class="column is-one-third" v-for="action in highlightActions" :key="action.id">
+                    <div class="column is-one-third" v-if="action.fields.name" v-for="action in highlightActions" :key="action.id">
                         <div class="has-background-white action highlight">
-                            <small class="action-meta action-tag">{{action.fields.tag}}</small>
-                            <small class="action-meta action-date">{{formatDate(action.fields.start)}}</small>
-                            <h2 class="title is-4">{{action.fields.name}}</h2>
-                            <p>
+                            <small class="action-meta has-text-grey is-size-6">{{action.fields.tag}}</small>
+                            <small class="action-meta action-date is-size-6">{{formatDate(action.fields.start)}}</small>
+                            <h3 class="title is-3 has-text-weight-normal has-text-black">{{action.fields.name}}</h3>
+                            <p class="is-size-5">
                                 {{action.fields.introductionText}}
                                 <nuxt-link class="read-more" :to="{path:'/'+$route.params.locale+'/action/'+action.fields.slug}">> Lire la suite</nuxt-link>
                             </p>
@@ -23,24 +23,23 @@
                 </div>
             </div>
         </div>
-        <div class="has-background-warning">
+        <div class="actions-background">
             <div class="container is-fluid">
                 <div class="action-head has-text-centered">
-                    <h2 class="title is-2">ACTION LABEL</h2>
-                    <p class="subtitle">ACTION SUBLABEL</p>
+                    <h2 class="title is-1 has-text-black">ACTION LABEL</h2>
+                    <p class="subtitle has-text-black">Nice subtitle</p>
                 </div>
                 <Loader v-if="loading"/>
                 <div v-if="!loading" class="columns is-multiline is-centered">
-                    <div  class="column is-one-third" v-if="index < maxActions" v-for="(action, index) in normalActions" :key="action.id">
+                    <div  class="column is-one-third" v-if="index < maxActions && action.fields.name" v-for="(action, index) in normalActions" :key="action.id">
                         <div class="has-background-white action">
-                            <small class="action-meta action-tag">{{action.fields.tag}}</small>
-                            <small class="action-meta action-date">{{formatDate(action.fields.start)}}</small>
-                            <h2 class="title is-5">{{action.fields.name}}</h2>
-                            <p>
+                            <small class="action-meta has-text-grey is-size-6">{{action.fields.tag}}</small>
+                            <small class="action-meta action-date is-size-6">{{formatDate(action.fields.start)}}</small>
+                            <h3 class="title is-4 has-text-weight-normal has-text-black">{{action.fields.name}}</h3>
+                            <p class="is-size-6">
                                 {{action.fields.introductionText}}
                                 <nuxt-link class="read-more" :to="{path:'/'+$route.params.locale+'/action/'+action.fields.slug}">> Lire la suite</nuxt-link>
                             </p>
-                            
                             <a v-if="action.fields.link" class="button" :href="action.fields.link" target="_blank">{{action.fields.callToAction}}</a>
                         </div>
                     </div>
@@ -94,7 +93,7 @@ export default{
                 return moment(date).format(format)
             }
             else{
-                return "Quand tu veux"
+                return ''
             }
         },
         displayAllActions(){
@@ -122,8 +121,21 @@ export default{
 </script>
 
 <style scoped>
+    h2 {
+        font-family: 'Fjalla One', sans-serif;
+        letter-spacing: 1px;
+    }
+        
     .actions {
         margin: 40px 0 40px 0;
+    }
+
+    .highlight-actions-background{
+        background-color: #67de97;
+    }
+
+    .actions-background{
+        background-color: #cdcdcd;
     }
 
     .see-more-actions{
@@ -141,12 +153,12 @@ export default{
         display:flex;
         flex-direction: column;
         align-items: flex-start;
-        justify-content: space-between;
+        justify-content: flex-start;
         margin: 5px 25px 25px 5px;
         padding: 10px;
-        border: 2px black solid;
+        border: 4px black solid;
         font-size: 0.75rem;
-        min-height: 250px;
+        min-height: 350px;
     }
 
     .action.highlight:hover {
@@ -162,16 +174,17 @@ export default{
         box-shadow: -7px 7px 0px 0px rgba(0,0,0,1);
         font-size: 1rem;
         transition: all 0.2s;
-        min-height: 350px;
+        min-height: 400px;
 
+    }
+
+    .action .title {
+        font-family: 'Fjalla One', sans-serif;
     }
 
     .action .button{
         align-self: center;
-    }
-
-    .action-tag{
-        color: grey;
+        margin-top: auto;
     }
 
     .action-meta{
@@ -181,7 +194,7 @@ export default{
     }
 
     .action-date{
-        color: burlywood;
+        color: #e86241;
     }
 
     .action .title{
