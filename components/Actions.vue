@@ -174,7 +174,7 @@ export default{
         box-shadow: -7px 7px 0px 0px rgba(0,0,0,1);
         font-size: 1rem;
         transition: all 0.2s;
-        min-height: 400px;
+        min-height: 450px;
 
     }
 

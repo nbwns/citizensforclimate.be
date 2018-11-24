@@ -58,7 +58,7 @@ module.exports = {
   },
   generate: {
     routes () {
-        return client.getEntries({
+      let frPages = client.getEntries({
           content_type: 'simplePage',
           'locale':"fr-BE"
       })
@@ -69,7 +69,50 @@ module.exports = {
             payload: entry
           }
         })
-    })
+      })
+
+      // let frActions = client.getEntries({
+      //   content_type: 'action',
+      //   'locale':"fr-BE"
+      // })
+      // .then(entries => {
+      //   return entries.items.map(entry => {
+      //     return {
+      //       route: 'fr/action/' + entry.fields.slug,
+      //       payload: entry
+      //     }
+      //   })
+      // })
+
+      let nlPages = client.getEntries({
+        content_type: 'simplePage',
+        'locale':"nl-BE"
+      })
+      .then(entries => {
+        return entries.items.map(entry => {
+          return {
+            route: 'nl/' + entry.fields.slug,
+            payload: entry
+          }
+        })
+      })
+
+      // let nlActions = client.getEntries({
+      //   content_type: 'action',
+      //   'locale':"nl-BE"
+      // })
+      // .then(entries => {
+      //   return entries.items.map(entry => {
+      //     return {
+      //       route: 'nl/action/' + entry.fields.slug,
+      //       payload: entry
+      //     }
+      //   })
+      // })
+
+      return Promise.all([frPages,nlPages]).then(values => {
+        return [...values[0], ...values[1]] 
+      })
     },
     fallback: true
   }
