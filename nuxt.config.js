@@ -110,7 +110,7 @@ module.exports = {
         })
       })
 
-      return Promise.all([frPages,nlPages]).then(values => {
+      return Promise.all([frPages,nlPages, nlActions, frActions]).then(values => {
         return [...values[0], ...values[1], ...values[2], ...values[3]] 
       })
     },
