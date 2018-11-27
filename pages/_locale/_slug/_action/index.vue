@@ -1,68 +1,72 @@
 <template>
-  <div class="has-background-grey-lighter">
-    <div class="container is-fluid">
-      <section class="columns">
-        <div class="column is-two-thirds">
-          <div class="action-detail has-background-white">
-            <h1 class="title has-text-weight-normal is-4 is-uppercase">{{action.fields.name}}</h1>
-            <div class="content is-size-5" v-html="$md.render(action.fields.body)"></div>
-            <div class="container is-fluid pratical-info">
-              <div class="columns is-centered is-paddingless">
-                  <div class="column is-half">
-                      <a class="button is-size-4" v-if="action.fields.link" :href="action.fields.link">{{action.fields.callToAction}}</a>              
+  <div>
+    <div class="has-background-grey-lighter">
+      <div class="container is-fluid">
+        <div class="columns" >
+          <div class="column is-two-thirds">
+            <div class="action-detail has-background-white">
+              <h1 class="title has-text-weight-normal is-4 is-uppercase">{{action.fields.name}}</h1>
+              <div class="content is-size-5" v-html="$md.render(action.fields.body)"></div>
+              <div class="container is-fluid pratical-info">
+                <div class="columns is-centered is-paddingless">
+                    <div class="column is-half">
+                        <a class="button is-size-4" v-if="action.fields.link" :href="action.fields.link">{{action.fields.callToAction}}</a>              
 
-                  </div>
-              </div>
-              <div class="columns">
-                  <div class="column is-half" v-if="action.fields.start || action.fields.end">
-                      <div class="info-block" v-if="action.fields.start">
-                        <p class="is-uppercase label">
-                            Début
-                        </p>
-                        <p class="is-uppercase">
-                            {{formatDate(action.fields.start)}}
-                        </p>
-                      </div>
-                      <div class="info-block" v-if="action.fields.end">
-                        <p class="is-uppercase label">
-                            Fin
-                        </p>
-                        <p class="is-uppercase">
-                            {{formatDate(action.fields.end)}}
-                        </p>
-                      </div>
-                  </div>
-                  <div class="column" v-if="action.fields.localisationDescription || action.fields.link">
-                      <div class="info-block" v-if="action.fields.localisationDescription">
-                        <p class="is-uppercase label">
-                            Adresse
-                        </p>
-                        <p>
-                            <a v-if="action.fields.localisationGeo" 
-                              :href="'https://www.openstreetmap.org/#map=17/'+action.fields.localisationGeo.lat+'/'+action.fields.localisationGeo.lon" 
-                              target="_blank">{{action.fields.localisationDescription}}</a>
-                        </p>
-                      </div>
-                      <div class="info-block"  v-if="action.fields.link">
-                        <p class="is-uppercase label">
-                            Infos
-                        </p>
-                        <p>
-                            <a :href="action.fields.link" target="_blank">{{action.fields.link}}</a>
-                        </p>
-                      </div>
-                  </div>
-              </div>
-            </div>  
+                    </div>
+                </div>
+                <div class="columns">
+                    <div class="column is-half" v-if="action.fields.start || action.fields.end">
+                        <div class="info-block" v-if="action.fields.start">
+                          <p class="is-uppercase label">
+                              Début
+                          </p>
+                          <p class="is-uppercase">
+                              {{formatDate(action.fields.start)}}
+                          </p>
+                        </div>
+                        <div class="info-block" v-if="action.fields.end">
+                          <p class="is-uppercase label">
+                              Fin
+                          </p>
+                          <p class="is-uppercase">
+                              {{formatDate(action.fields.end)}}
+                          </p>
+                        </div>
+                    </div>
+                    <div class="column" v-if="action.fields.localisationDescription || action.fields.link">
+                        <div class="info-block" v-if="action.fields.localisationDescription">
+                          <p class="is-uppercase label">
+                              Adresse
+                          </p>
+                          <p>
+                              <a v-if="action.fields.localisationGeo" 
+                                :href="'https://www.openstreetmap.org/#map=17/'+action.fields.localisationGeo.lat+'/'+action.fields.localisationGeo.lon" 
+                                target="_blank">{{action.fields.localisationDescription}}</a>
+                          </p>
+                        </div>
+                        <div class="info-block"  v-if="action.fields.link">
+                          <p class="is-uppercase label">
+                              Infos
+                          </p>
+                          <p>
+                              <a :href="action.fields.link" target="_blank">{{action.fields.link}}</a>
+                          </p>
+                        </div>
+                    </div>
+                </div>
+              </div>  
+            </div>
+            <nuxt-link class="see-all-actions has-text-black" :to="'/'+ $route.params.locale">
+              <img src="~/assets/images/white-arrow.png" /> <span>Toutes les actions</span>
+            </nuxt-link>
           </div>
-          <nuxt-link :to="'/'+ $route.params.locale">Plus d'actions</nuxt-link>
+          <div class="column">
+            <RelatedActions :categoryId="categoryId" :excludeId="action.sys.id"/>
+          </div>
         </div>
-        <div class="column">
-          Hey
-        </div>
-      </section>
-      <CallToActions/>
-  </div>
+      </div>
+    </div>
+    <CallToActions/>
   </div>
 </template>
 
@@ -70,11 +74,18 @@
 import client from '~/plugins/contentful'
 import moment from 'moment-with-locales-es6'
 import CallToActions from '~/components/CallToActions'
+import RelatedActions from '~/components/RelatedActions'
 
 
 export default {
   components: {
-    CallToActions
+    CallToActions,
+    RelatedActions
+  },
+  data () {
+    return {
+      categoryId: null
+    }
   },
   methods: {
     formatDate(date) {
@@ -101,8 +112,13 @@ export default {
       console.log(entries.items[0])
       console.log(entries.items[0].fields.categories[0])
       if(entries.items[0]){
+        let catId = null;
+        if(entries.items[0].fields.categories.length > 0){
+          catId = entries.items[0].fields.categories[0].sys.id
+        }
         return {
-          action : entries.items[0]
+          action : entries.items[0],
+          categoryId: catId
         }
       }
       else{
@@ -162,6 +178,24 @@ export default {
     background: linear-gradient(to bottom, #67de97 0%, #000000 40%);
     -webkit-background-clip: text;
 	  -webkit-text-fill-color: transparent;
+  }
+
+  .see-all-actions{
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display:flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 15px 0 0 0;
+  }
+
+  .see-all-actions img{
+      align-self: left;
+  }
+  .see-all-actions span{
+      padding: 0 0 0 10px;
   }
 </style>
 

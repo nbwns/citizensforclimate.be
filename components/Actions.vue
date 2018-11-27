@@ -9,15 +9,7 @@
                 <Loader v-if="loading"/>
                 <div v-if="!loading" class="columns is-multiline is-centered">
                     <div class="column is-one-third" v-if="action.fields.name" v-for="action in highlightActions" :key="action.id">
-                        <div class="has-background-white action highlight">
-                            <small class="action-meta has-text-grey is-size-6">{{action.fields.tag}}</small>
-                            <small class="action-meta action-date is-size-6">{{formatDate(action.fields.start)}}</small>
-                            <h3 class="title is-3 has-text-weight-normal has-text-black">{{action.fields.name}}</h3>
-                            <p class="is-size-5">
-                                {{action.fields.introductionText}}
-                            </p>
-                            <nuxt-link class="button is-medium" :to="{path:'/'+$route.params.locale+'/action/'+action.fields.slug}">{{action.fields.callToAction}}</nuxt-link>
-                        </div>   
+                        <Action :action="action" className="highlight"/>
                     </div>
                 </div>
             </div>
@@ -31,19 +23,11 @@
                 <Loader v-if="loading"/>
                 <div v-if="!loading" class="columns is-multiline is-centered">
                     <div  class="column is-one-third" v-if="index < maxActions && action.fields.name" v-for="(action, index) in normalActions" :key="action.id">
-                        <div class="has-background-white action">
-                            <small class="action-meta has-text-grey is-size-6">{{action.fields.tag}}</small>
-                            <small class="action-meta action-date is-size-6">{{formatDate(action.fields.start)}}</small>
-                            <h3 class="title is-4 has-text-weight-normal has-text-black">{{action.fields.name}}</h3>
-                            <p class="is-size-6">
-                                {{action.fields.introductionText}}
-                            </p>
-                            <nuxt-link class="button" :to="{path:'/'+$route.params.locale+'/action/'+action.fields.slug}">{{action.fields.callToAction}}</nuxt-link>
-                        </div>
+                        <Action :action="action"/>                        
                     </div>
-                    <div class="see-more-actions has-text-centered" v-if="!showAllActions" @click="displayAllActions()">
-                        V <br/>
+                    <div class="see-more-actions" v-if="!showAllActions" @click="displayAllActions()">
                         Plus d'actions
+                        <img src="~/assets/images/white-arrow.png" />
                     </div>
                 </div>
             </div>
@@ -53,8 +37,8 @@
 
 <script>
 import client from '~/plugins/contentful'
-import moment from 'moment-with-locales-es6'
 import Loader from '~/components/Loader'
+import Action from '~/components/Action'
 
 export default{
     data () {
@@ -66,7 +50,8 @@ export default{
         }
     },
     components: {
-        Loader
+        Loader,
+        Action
     },
     computed: {
         highlightActions () {
@@ -81,31 +66,17 @@ export default{
         }
     },
     methods: {
-        formatDate(date) {
-            if(date){
-                let momentDate = moment(date);
-                let format = "dddd D MMMM YYYY";
-                if(momentDate.hour() > 0){
-                    format += " - HH:mm"
-                }
-                return moment(date).format(format)
-            }
-            else{
-                return ''
-            }
-        },
         displayAllActions(){
             this.maxActions += 12;
             this.showAllActions = this.maxActions >= this.normalActions.length;
         }
     },
     mounted(){
-        moment.locale(this.$route.params.locale)
         if(this.$route.params.locale){
             return client.getEntries({
                 content_type: 'action',
                 'locale':this.$route.params.locale+ "-BE",
-                'order': '-sys.updatedAt'
+                'order': 'fields.sortOrder,fields.name'
             })
             .then(entries => {
                 this.actions = entries.items
@@ -141,83 +112,19 @@ export default{
         font-weight: bold;
         font-size: 1.2rem;
         cursor: pointer;
+         display:flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+
+    .see-more-actions img{
+        transform: rotate(-90deg);
+        align-self: center;
     }
 
     .action-head{
         padding: 35px 0 35px 0;
     }
     
-    .action{
-        display:flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: flex-start;
-        margin: 5px 25px 25px 5px;
-        padding: 10px;
-        font-size: 0.75rem;
-        min-height: 270px;
-    }
-
-    .action.highlight:hover {
-        -webkit-box-shadow: 0px 0px 0px 0px rgba(0,0,0,1);
-        -moz-box-shadow: 0px 0px 0px 0px rgba(0,0,0,1);
-        box-shadow: 0px 0px 0px 0px rgba(0,0,0,1);
-        transition: all 0.1s;
-    }
-
-    .action.highlight{
-        -webkit-box-shadow: -7px 7px 0px 0px rgba(0,0,0,1);
-        -moz-box-shadow: -7px 7px 0px 0px rgba(0,0,0,1);
-        box-shadow: -7px 7px 0px 0px rgba(0,0,0,1);
-        border: 4px black solid;
-        font-size: 1rem;
-        transition: all 0.2s;
-        min-height: 450px;
-
-    }
-
-    .action .title {
-        font-family: 'Fjalla One', sans-serif;
-    }
-
-    .action .button{
-        align-self: center;
-        margin-top: auto;
-    }
-
-    .action-meta{
-        font-size: 0.85rem;
-        text-transform: uppercase;
-        font-weight: bold;
-    }
-
-    .action-date{
-        color: #e86241;
-    }
-
-    .action .title{
-        text-transform: uppercase;
-    }
-
-    /* .button {
-        text-transform: uppercase;
-        align-items: flex-end;
-        border-radius: 0;
-        background-color: white;
-        border: 2px #67de97 solid;
-        color: black;
-        font-weight: bold;
-        transition: all 0.3s;
-    }
-
-    .button:hover {
-        background-color: #67de97;
-        transition: all 0.3s;
-    } */
-
-    a.read-more {
-        color: black;
-        font-weight: bold;
-        text-decoration: underline;
-    }
 </style>
