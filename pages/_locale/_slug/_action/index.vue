@@ -61,7 +61,7 @@
           Hey
         </div>
       </section>
-      
+      <CallToActions/>
   </div>
   </div>
 </template>
@@ -69,8 +69,13 @@
 <script>
 import client from '~/plugins/contentful'
 import moment from 'moment-with-locales-es6'
+import CallToActions from '~/components/CallToActions'
+
 
 export default {
+  components: {
+    CallToActions
+  },
   methods: {
     formatDate(date) {
         if(date){

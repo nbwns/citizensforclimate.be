@@ -1,18 +1,12 @@
 <template>
   <div class="container is-fluid">
-    <div class="columns">
-      <div class="column">
-       Default page   
-       <Actions/>
-
-      </div>
-    </div>
+    COMING SOON
   </div>
 </template>
 
 <script>
 export default {
-  middleware: 'redirect'
+  layout: 'empty',
 }
 </script>
 

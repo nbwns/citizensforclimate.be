@@ -3,25 +3,20 @@
     <div class="hero is-black is-bold">
     <div class="hero-body">
         <div class="container has-text-centered">
-          <nuxt-link :to="'/' + $route.params.locale">
-            <h1 class="title is-1 is-uppercase">Citizens for climate</h1>
-          </nuxt-link>
+          <h1 class="title is-1">CITIZENS FOR CLIMATE</h1>
           <div class="subtitle">Belgiëk</div>
         </div>
     </div>
     </div>
     <nuxt/>
-    <Footer />
   </div>
 </template>
 
 <script>
 import Navbar from '~/components/Navbar'
-import Footer from '~/components/Footer'
 export default {
   components: {
-      Navbar,
-      Footer
+      Navbar
   }
 }
 </script>

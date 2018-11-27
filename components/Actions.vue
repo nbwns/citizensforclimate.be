@@ -15,9 +15,8 @@
                             <h3 class="title is-3 has-text-weight-normal has-text-black">{{action.fields.name}}</h3>
                             <p class="is-size-5">
                                 {{action.fields.introductionText}}
-                                <nuxt-link class="read-more" :to="{path:'/'+$route.params.locale+'/action/'+action.fields.slug}">> Lire la suite</nuxt-link>
                             </p>
-                            <a v-if="action.fields.link" class="button is-medium" :href="action.fields.link" target="_blank">{{action.fields.callToAction}}</a>
+                            <nuxt-link class="button is-medium" :to="{path:'/'+$route.params.locale+'/action/'+action.fields.slug}">{{action.fields.callToAction}}</nuxt-link>
                         </div>   
                     </div>
                 </div>
@@ -38,9 +37,8 @@
                             <h3 class="title is-4 has-text-weight-normal has-text-black">{{action.fields.name}}</h3>
                             <p class="is-size-6">
                                 {{action.fields.introductionText}}
-                                <nuxt-link class="read-more" :to="{path:'/'+$route.params.locale+'/action/'+action.fields.slug}">> Lire la suite</nuxt-link>
                             </p>
-                            <a v-if="action.fields.link" class="button" :href="action.fields.link" target="_blank">{{action.fields.callToAction}}</a>
+                            <nuxt-link class="button" :to="{path:'/'+$route.params.locale+'/action/'+action.fields.slug}">{{action.fields.callToAction}}</nuxt-link>
                         </div>
                     </div>
                     <div class="see-more-actions has-text-centered" v-if="!showAllActions" @click="displayAllActions()">
@@ -63,7 +61,7 @@ export default{
         return {
             actions: [],
             loading: true,
-            maxActions: 3,
+            maxActions: 12,
             showAllActions: false
         }
     },
@@ -97,7 +95,7 @@ export default{
             }
         },
         displayAllActions(){
-            this.maxActions += 6;
+            this.maxActions += 12;
             this.showAllActions = this.maxActions >= this.normalActions.length;
         }
     },
@@ -156,9 +154,8 @@ export default{
         justify-content: flex-start;
         margin: 5px 25px 25px 5px;
         padding: 10px;
-        border: 4px black solid;
         font-size: 0.75rem;
-        min-height: 350px;
+        min-height: 270px;
     }
 
     .action.highlight:hover {
@@ -172,6 +169,7 @@ export default{
         -webkit-box-shadow: -7px 7px 0px 0px rgba(0,0,0,1);
         -moz-box-shadow: -7px 7px 0px 0px rgba(0,0,0,1);
         box-shadow: -7px 7px 0px 0px rgba(0,0,0,1);
+        border: 4px black solid;
         font-size: 1rem;
         transition: all 0.2s;
         min-height: 450px;
