@@ -47,34 +47,6 @@ export default {
 </script>
 
 <style>
-.citizen-message{
-    padding: 40px 0 40px 0;
-}
 
-.has-top-padding{
-    padding: 20px 0 0 0;
-}
-
-#mc_embed_signup_scroll .input {
-    border-radius: 0;
-    border: 2px #67de97 solid;
-    font-family: 'Niramit', sans-serif;
-    font-size: 1.2rem;
-}
-
-#mc_embed_signup_scroll .button{
-    font-size: 1.2rem;
-
-}
-
-.contribute{
-    background-color: #67de97;
-}
-
-.contribute .button{
-    font-size: 1.2rem;
-    border: 2px black solid;
-    text-transform: none;    
-}
 
 </style>

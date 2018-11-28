@@ -5,15 +5,11 @@
         <div class="columns" >
           <div class="column is-two-thirds">
             <div class="action-detail has-background-white">
-              <h1 class="title has-text-weight-normal is-4 is-uppercase">{{action.fields.name}}</h1>
+              <h1 class="title has-text-weight-normal is-3 is-uppercase">{{action.fields.name}}</h1>
+              <small class="action-meta has-text-grey is-size-6">{{action.fields.promoter}}</small>
               <div class="content is-size-5" v-html="$md.render(action.fields.body)"></div>
+              <a class="button is-size-4" v-if="action.fields.link" :href="action.fields.link">{{action.fields.callToAction}}</a>              
               <div class="container is-fluid pratical-info">
-                <div class="columns is-centered is-paddingless">
-                    <div class="column is-half">
-                        <a class="button is-size-4" v-if="action.fields.link" :href="action.fields.link">{{action.fields.callToAction}}</a>              
-
-                    </div>
-                </div>
                 <div class="columns">
                     <div class="column is-half" v-if="action.fields.start || action.fields.end">
                         <div class="info-block" v-if="action.fields.start">
@@ -66,20 +62,17 @@
         </div>
       </div>
     </div>
-    <CallToActions/>
   </div>
 </template>
 
 <script>
 import client from '~/plugins/contentful'
 import moment from 'moment-with-locales-es6'
-import CallToActions from '~/components/CallToActions'
 import RelatedActions from '~/components/RelatedActions'
 
 
 export default {
   components: {
-    CallToActions,
     RelatedActions
   },
   data () {
@@ -151,13 +144,13 @@ export default {
     padding: 10px;
   }
 
-  .pratical-info a:not(.button){
+   .action-detail a:not(.button){
     color: black;
     text-decoration: underline;
     transition: all 0.5s;
   }
 
-  .pratical-info a:not(.button):hover{
+   .action-detail a:not(.button):hover{
     color: #67de97;
     text-decoration: underline;
     transition: all 0.5s;

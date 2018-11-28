@@ -10,19 +10,16 @@
             </div>
         </div>
         <Actions/>
-        <CallToActions/>
     </div>
 </template>
 
 <script>
 import Actions from '~/components/Actions'
-import CallToActions from '~/components/CallToActions'
 
 export default {
     props: ['page'],
     components: {
-        Actions,
-        CallToActions
+        Actions
     }
 }
 </script>

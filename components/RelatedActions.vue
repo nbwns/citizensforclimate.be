@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="title-box is-uppercase has-text-centered">
-            <h2 class="subtitle has-text-black is-size-5">Related actions</h2>
+            <h2 class="subtitle has-text-black is-size-5">{{categoryId ? "Related actions" : "Top actions" }}</h2>
         </div>
         <div v-for="action in actions" :key="action.sys.id">
             <Action :action="action" className="related"/>
@@ -28,14 +28,25 @@ export default {
     },
     mounted(){
         if(this.$route.params.locale){
-            return client.getEntries({
+            let query = {
                 content_type: 'action',
-                'fields.categories.sys.id': this.categoryId,
-                'sys.id[ne]': this.excludeId,
                 'locale': this.$route.params.locale + "-BE",
                 'order': 'fields.sortOrder,fields.name',
                 'limit' : 3
-            })
+            }
+
+            if(this.categoryId){
+                query['fields.categories.sys.id'] = this.categoryId
+            }
+            else{
+                query['fields.highlight'] = true
+            }
+
+            if(this.excludeId){
+                query['sys.id[ne]'] = this.excludeId
+            }
+
+            return client.getEntries(query)
             .then(entries => {
                 console.log(entries)
                 this.actions = entries.items

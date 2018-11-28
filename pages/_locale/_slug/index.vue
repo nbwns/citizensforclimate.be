@@ -1,20 +1,32 @@
 <template>
-  <div>
-    <div class="column is-8 is-offset-2">
-      <div class="content" v-html="$md.render(page.fields.body)"></div>
+    <div>
+      <div class="has-background-grey-lighter">
+        <div class="container is-fluid">
+          <div class="columns" >
+            <div class="column is-two-thirds">
+              <div class="action-detail has-background-white">
+                <h1 class="title has-text-weight-normal is-3 is-uppercase">{{page.fields.title}}</h1>
+                <div class="content is-size-5" v-html="$md.render(page.fields.body)"></div>
+              </div>
+            </div>
+            <div class="column">
+              <RelatedActions/>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <HomePage :page="page" />
-  </div>
 </template>
 
 <script>
 import client from '~/plugins/contentful'
-import HomePage from '~/components/HomePage'
+import RelatedActions from '~/components/RelatedActions'
+
 
 export default {
   layout: 'default',
   components: {
-    HomePage
+    RelatedActions
   },
   asyncData({params,error, store, payload}){
     console.log("params",params.locale, params.slug)
@@ -55,6 +67,13 @@ export default {
 </script>
 
 <style>
-
+  h1 {
+      font-family: 'Fjalla One', sans-serif;
+      letter-spacing: 1px;
+  }
+  
+  .action-detail{
+    padding: 10px;
+  }
 </style>
 

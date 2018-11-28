@@ -11,6 +11,7 @@
     </div>
     </div>
     <nuxt/>
+    <CallToActions/>
     <Footer />
   </div>
 </template>
@@ -18,10 +19,13 @@
 <script>
 import Navbar from '~/components/Navbar'
 import Footer from '~/components/Footer'
+import CallToActions from '~/components/CallToActions'
+
 export default {
   components: {
       Navbar,
-      Footer
+      Footer,
+      CallToActions
   }
 }
 </script>
@@ -36,6 +40,36 @@ export default {
   color: #67de97 !important;
   letter-spacing: 2px;
 
+}
+
+.citizen-message{
+    padding: 40px 0 40px 0;
+}
+
+.has-top-padding{
+    padding: 20px 0 0 0;
+}
+
+#mc_embed_signup_scroll .input {
+    border-radius: 0;
+    border: 2px #67de97 solid;
+    font-family: 'Niramit', sans-serif;
+    font-size: 1.2rem;
+}
+
+#mc_embed_signup_scroll .button{
+    font-size: 1.2rem;
+
+}
+
+.contribute{
+    background-color: #67de97;
+}
+
+.contribute .button{
+    font-size: 1.2rem;
+    border: 2px black solid;
+    text-transform: none;    
 }
 </style>
 
