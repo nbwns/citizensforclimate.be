@@ -8,6 +8,9 @@
                 <div class="column is-two-thirds is-hidden-mobile">
                     <iframe width="560" height="315" src="https://www.youtube.com/embed/Xl-fRQ2Tgr8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
+                <div class="column is-two-thirds is-hidden-desktop">
+                    <iframe width="320" height="180" src="https://www.youtube.com/embed/Xl-fRQ2Tgr8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
                 <div>
                     <img src="~/assets/images/jaiclimat_350px.png"/>
                 </div>

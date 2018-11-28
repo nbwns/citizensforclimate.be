@@ -14,7 +14,7 @@
                     <div class="column is-half" v-if="action.fields.start || action.fields.end">
                         <div class="info-block" v-if="action.fields.start">
                           <p class="is-uppercase label">
-                              {{t("data-start")}}
+                              {{t("date-start")}}
                           </p>
                           <p class="is-uppercase">
                               {{formatDate(action.fields.start)}}
@@ -22,7 +22,7 @@
                         </div>
                         <div class="info-block" v-if="action.fields.end">
                           <p class="is-uppercase label">
-                              {{t("data-end")}}
+                              {{t("date-end")}}
                           </p>
                           <p class="is-uppercase">
                               {{formatDate(action.fields.end)}}
@@ -38,6 +38,7 @@
                               <a v-if="action.fields.localisationGeo" 
                                 :href="'https://www.openstreetmap.org/#map=17/'+action.fields.localisationGeo.lat+'/'+action.fields.localisationGeo.lon" 
                                 target="_blank">{{action.fields.localisationDescription}}</a>
+                              <span v-else>{{action.fields.localisationDescription}}</span>
                           </p>
                         </div>
                         <div class="info-block"  v-if="action.fields.link">
