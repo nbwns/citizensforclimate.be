@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="title-box is-uppercase has-text-centered">
-            <h2 class="subtitle has-text-black is-size-5">{{categoryId ? "Related actions" : "Top actions" }}</h2>
+            <h2 class="subtitle has-text-black is-size-5">{{categoryId ? t("related-actions") : t("highlighted-actions") }}</h2>
         </div>
         <div v-for="action in actions" :key="action.sys.id">
             <Action :action="action" className="related"/>
@@ -11,6 +11,7 @@
 
 <script>
 import client from '~/plugins/contentful'
+import translate from '~/plugins/translations'
 import Loader from '~/components/Loader'
 import Action from '~/components/Action'
 
@@ -24,6 +25,11 @@ export default {
         return {
             actions: [],
             loading: true
+        }
+    },
+    methods: {
+        t(key){
+            return translate(this.$route.params.locale, key)
         }
     },
     mounted(){

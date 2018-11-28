@@ -2,29 +2,25 @@
     <footer class="footer has-background-black has-text-white">
         <div class="container is-fluid">
             <div class="columns">
-                <div class="column is-half ">
-                    <ul>
+                <div class="column is-half links">
+                    <ul v-if="$route.params.locale === 'fr'">
                         <li class="is-size-4 is-uppercase"><a href="/fr/a-propos">À propos</a></li>
                         <li class="is-size-4 is-uppercase"><a href="/fr/mentions-legales">Mentions légales</a></li>
                     </ul>
-                    <p>
-                        Graphics: Emi Sakurai<br/>
-                        Website: Nicolas Bauwens
+                    <ul v-if="$route.params.locale === 'nl'">
+                        <li class="is-size-4 is-uppercase"><a href="/nl/about">Over ons</a></li>
+                        <li class="is-size-4 is-uppercase"><a href="/nl/legal">Juridische informatie</a></li>
+                    </ul>
+                    <p class="credits">
+                        Graphics: <a href="http://www.emisakurai.com/" target="_blank">Emi Sakurai</a><br/>
+                        Website: <a href="https://www.linkedin.com/in/nicolasbauwens" target="_blank">Nicolas Bauwens</a>
                     </p>
                 </div>
                 <div class="column">
                     <div class="content is-size-4">
-                        <p>Citizens for climate est une 
-                        plateforme issue d’un mouvement 
-                        citoyen spontané, né dans la 
-                        foulée des récentes mobilisations 
-                        massives dans le monde. Son 
-                        objectif est de référencer les 
-                        actions et événements qui vous 
-                        permettent de vous mobiliser en 
-                        masse pour le climat !</p>
+                        <p>{{t("footer-text")}}</p>
                         <p>
-                            <a class="has-text-weight-bold" href="mailto:citizensforclimate.be@gmail.com">citizensforclimate.be@gmail.com</a>
+                            <a class="has-text-weight-bold" href="mailto:rise@citizensforclimate.be">rise@citizensforclimate.be</a>
                         </p>
                     </div>
                 </div>
@@ -34,8 +30,14 @@
 </template>
 
 <script>
+import translate from '~/plugins/translations'
+
 export default{
-    
+    methods: {
+        t(key){
+            return translate(this.$route.params.locale, key)
+        }
+  }
 }
 </script>
 
@@ -48,5 +50,16 @@ export default{
     a:hover {
         color: #67de97 ;
         transition: all 0.2s;
+    }
+
+    .links{
+        display:flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+
+    .credits{
+  margin-top: auto;
+
     }
 </style>

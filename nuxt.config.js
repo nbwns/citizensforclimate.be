@@ -50,8 +50,14 @@ module.exports = {
       }
     }
   },
-  plugins: ['~/plugins/contentful'],
-  modules: ['@nuxtjs/dotenv', '@nuxtjs/markdownit'],
+  plugins: ['~/plugins/contentful', '~/plugins/translations'],
+  modules: [
+    '@nuxtjs/dotenv', 
+    '@nuxtjs/markdownit',
+    ['@nuxtjs/google-analytics', {
+      id: 'UA-129338926-1'
+    }]
+],
   markdownit: {
     html: true,
     injected: true

@@ -6,12 +6,16 @@
         <p>
             {{action.fields.introductionText}}
         </p>
-        <nuxt-link  class="button" :to="{path:'/'+$route.params.locale+'/action/'+action.fields.slug}">{{action.fields.callToAction}}</nuxt-link>
+        <div class="buttons">
+            <a class="button is-primary" target="_blank" :href="action.fields.link">{{action.fields.callToAction}}</a>
+            <nuxt-link class="button is-uppercase" :to="{path:'/'+$route.params.locale+'/action/'+action.fields.slug}">{{t('read-more')}}</nuxt-link>
+        </div>
     </div> 
 </template>
 
 <script>
 import moment from 'moment-with-locales-es6'
+import translate from '~/plugins/translations'
 
 export default {
     props: ['action', 'className'],
@@ -28,11 +32,13 @@ export default {
             else{
                 return ''
             }
+        },
+        t(key){
+            return translate(this.$route.params.locale, key)
         }
     },
     mounted(){
         moment.locale(this.$route.params.locale)
-        console.log(this.className)
     }
 
 

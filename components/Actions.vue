@@ -3,8 +3,8 @@
         <div class="highlight-actions-background">
             <div class="container is-fluid">
                 <div class="action-head has-text-centered">
-                    <h2 class="title is-1 has-text-black">ACTION LABEL</h2>
-                    <p class="subtitle has-text-black">Nice subtitle</p>
+                    <h2 class="title is-1 has-text-black">{{t("actions-highlight-title")}}</h2>
+                    <p class="subtitle has-text-black">{{t("actions-highlight-subtitle")}}</p>
                 </div>
                 <Loader v-if="loading"/>
                 <div v-if="!loading" class="columns is-multiline is-centered">
@@ -17,8 +17,8 @@
         <div class="actions-background">
             <div class="container is-fluid">
                 <div class="action-head has-text-centered">
-                    <h2 class="title is-1 has-text-black">ACTION LABEL</h2>
-                    <p class="subtitle has-text-black">Nice subtitle</p>
+                    <h2 class="title is-1 has-text-black">{{t("actions-title")}}</h2>
+                    <p class="subtitle has-text-black">{{t("actions-subtitle")}}</p>
                 </div>
                 <Loader v-if="loading"/>
                 <div v-if="!loading" class="columns is-multiline is-centered">
@@ -26,7 +26,7 @@
                         <Action :action="action"/>                        
                     </div>
                     <div class="see-more-actions" v-if="!showAllActions" @click="displayAllActions()">
-                        Plus d'actions
+                        {{t("actions-more")}}
                         <img src="~/assets/images/white-arrow.png" />
                     </div>
                 </div>
@@ -37,6 +37,7 @@
 
 <script>
 import client from '~/plugins/contentful'
+import translate from '~/plugins/translations'
 import Loader from '~/components/Loader'
 import Action from '~/components/Action'
 
@@ -69,10 +70,14 @@ export default{
         displayAllActions(){
             this.maxActions += 12;
             this.showAllActions = this.maxActions >= this.normalActions.length;
+        },
+        t(key){
+            return translate(this.$route.params.locale, key)
         }
     },
     mounted(){
         if(this.$route.params.locale){
+            //this.$i18n.locale = this.$route.params.locale
             return client.getEntries({
                 content_type: 'action',
                 'locale':this.$route.params.locale+ "-BE",

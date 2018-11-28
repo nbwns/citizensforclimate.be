@@ -4,7 +4,7 @@ html, body{
 
 
 
-.button {
+.button.is-primary {
   text-transform: uppercase;
   align-items: flex-end;
   border-radius: 0;
@@ -15,11 +15,29 @@ html, body{
   transition: all 0.3s;
 }
 
-.button:hover {
+.button.is-primary:hover {
   border: 2px #67de97 solid;
   background-color: #67de97;
   transition: all 0.3s;
   color: black;
+}
+
+.button {
+  text-transform: uppercase;
+  align-items: flex-end;
+  border-radius: 0;
+  background-color: white;
+  border: 2px black solid;
+  color: black;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+
+.button:hover {
+  border: 2px #67de97 solid;
+  background-color: white;
+  transition: all 0.3s;
+  color: #67de97;
 }
 
 .action{
@@ -30,7 +48,7 @@ html, body{
   margin: 5px 25px 25px 5px;
   padding: 10px;
   font-size: 0.75rem;
-  min-height: 270px;
+  min-height: 320px;
 }
 
 .action.related{
@@ -67,8 +85,7 @@ html, body{
   font-size: 1rem;
 }
 
-.action.highlight p, 
-.action.highlight .button  {
+.action.highlight p  {
   font-size: 1.25rem;
 }
 
@@ -76,7 +93,7 @@ html, body{
   font-family: 'Fjalla One', sans-serif;
 }
 
-.action .button{
+.action .buttons{
   align-self: center;
   margin-top: auto;
 }

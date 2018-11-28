@@ -14,7 +14,7 @@
                                 ET TOI ? Qu’as-tu prévu le 2 décembre ? Un repas de famille, une virée dans les Ardennnes ? Non, non... Dimanche 2, y’a 1000 fois plus important! Y’a CLIMAT !
                             </p>
                             <p class="has-text-centered">
-                                <img src="~/assets/images/crowd.jpg">
+                                <img src="~/assets/images/people.png">
                             </p>
                             <p class="has-text-centered title">
                                 L'ACTION CONTINUE ICI
@@ -70,7 +70,7 @@
                                 Ja maar nee... Zondag 2 is er 1000 keer belangrijker! Er is KLIMAAT!
                             </p>
                             <p class="has-text-centered">
-                                <img src="~/assets/images/crowd.jpg">
+                                <img src="~/assets/images/people.png">
                             </p>
                             <p>Citizens for climate is een spontane burgerbeweging, geboren in de nasleep van recente massale mobilisaties overal ter wereld. Het doel is om te verwijzen naar acties en evenementen die je in staat stellen massaal te mobiliseren voor het klimaat!</p>
                             <p>Blijf op de hoogte van Citizens for climate :</p>

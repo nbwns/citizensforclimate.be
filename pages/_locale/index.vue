@@ -1,8 +1,7 @@
 <template>
   <div>
-    <div class="column is-8 is-offset-2">
-      <div class="content" v-html="$md.render(page.fields.body)"></div>
-    </div>
+    <!-- <div class="content" v-html="$md.render(page.fields.body)"></div> -->
+    
     <HomePage :page="page" />
   </div>
 </template>

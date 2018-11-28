@@ -2,9 +2,9 @@
     <div>
         <div class="citizen-message">            
             <div class="container is-fluid has-text-centered">
-                <p class="is-size-6 has-text-black is-uppercase has-text-weight-bold">Citoyen.ne,</p>
-                <p class="is-size-2 has-text-black is-uppercase has-text-weight-bold">Je reste au courant</p>
-                <p class="is-size-5 has-text-grey">Reçois l'agenda des mobilisations en Belgique</p>
+                <p class="is-size-6 has-text-black is-uppercase has-text-weight-bold">{{t("citizen")}}</p>
+                <p class="is-size-2 has-text-black is-uppercase has-text-weight-bold">{{t("i-stay-up-to-date")}}</p>
+                <p class="is-size-5 has-text-grey">{{t("get-the-agenda")}}</p>
                 <div class="columns is-centered">
                     <div class="column is-two-fifths">
                             <div id="mc_embed_signup" class="has-top-padding">
@@ -14,7 +14,7 @@
                                 <input type="email" value="" name="EMAIL" class="input" id="mce-EMAIL" placeholder="e-mail" required>
                             </div>
                             <div class="control">
-                                <input type="submit" value="GO !" name="subscribe" id="mc-embedded-subscribe" class="button">
+                                <input type="submit" value="GO !" name="subscribe" id="mc-embedded-subscribe" class="button is-primary">
                             </div>
 
                             <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
@@ -29,11 +29,11 @@
         </div>
         <div class="citizen-message contribute">            
             <div class="container is-fluid has-text-centered">
-                <p class="is-size-6 has-text-black is-uppercase has-text-weight-bold">Association, ONG, collectif,</p>
-                <p class="is-size-2 has-text-black is-uppercase has-text-weight-bold">Je contribue au site</p>
-                <p class="is-size-5 has-text-grey">Envoie-nous les infos de ton action ou événement</p>
+                <p class="is-size-6 has-text-black is-uppercase has-text-weight-bold">{{t("association")}}</p>
+                <p class="is-size-2 has-text-black is-uppercase has-text-weight-bold">{{t("i-contribute")}}</p>
+                <p class="is-size-5 has-text-grey">{{t("send-your-action")}}</p>
                 <div class="has-top-padding">
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLScW2b6otniVVL9i49BOJ1tuSe25fj0Gw-CzR6k6GLGV0RmZyw/viewform" target="_blank" class="button">Je remplis le formulaire en ligne</a>               
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLScW2b6otniVVL9i49BOJ1tuSe25fj0Gw-CzR6k6GLGV0RmZyw/viewform" target="_blank" class="button">{{t("i-fill-the-form")}}</a>               
                 </div>
             </div>
         </div>
@@ -41,8 +41,14 @@
 </template>
 
 <script>
-export default {
+import translate from '~/plugins/translations'
 
+export default {
+    methods: {
+        t(key){
+            return translate(this.$route.params.locale, key)
+        }
+    }
 }
 </script>
 

@@ -8,13 +8,13 @@
               <h1 class="title has-text-weight-normal is-3 is-uppercase">{{action.fields.name}}</h1>
               <small class="action-meta has-text-grey is-size-6">{{action.fields.promoter}}</small>
               <div class="content is-size-5" v-html="$md.render(action.fields.body)"></div>
-              <a class="button is-size-4" v-if="action.fields.link" :href="action.fields.link">{{action.fields.callToAction}}</a>              
+              <a class="button is-primary is-size-4" v-if="action.fields.link" :href="action.fields.link">{{action.fields.callToAction}}</a>              
               <div class="container is-fluid pratical-info">
                 <div class="columns">
                     <div class="column is-half" v-if="action.fields.start || action.fields.end">
                         <div class="info-block" v-if="action.fields.start">
                           <p class="is-uppercase label">
-                              Début
+                              {{t("data-start")}}
                           </p>
                           <p class="is-uppercase">
                               {{formatDate(action.fields.start)}}
@@ -22,7 +22,7 @@
                         </div>
                         <div class="info-block" v-if="action.fields.end">
                           <p class="is-uppercase label">
-                              Fin
+                              {{t("data-end")}}
                           </p>
                           <p class="is-uppercase">
                               {{formatDate(action.fields.end)}}
@@ -32,7 +32,7 @@
                     <div class="column" v-if="action.fields.localisationDescription || action.fields.link">
                         <div class="info-block" v-if="action.fields.localisationDescription">
                           <p class="is-uppercase label">
-                              Adresse
+                              {{t("address")}}
                           </p>
                           <p>
                               <a v-if="action.fields.localisationGeo" 
@@ -42,7 +42,7 @@
                         </div>
                         <div class="info-block"  v-if="action.fields.link">
                           <p class="is-uppercase label">
-                              Infos
+                              {{t("infos")}}
                           </p>
                           <p>
                               <a :href="action.fields.link" target="_blank">{{action.fields.link}}</a>
@@ -53,7 +53,7 @@
               </div>  
             </div>
             <nuxt-link class="see-all-actions has-text-black" :to="'/'+ $route.params.locale">
-              <img src="~/assets/images/white-arrow.png" /> <span>Toutes les actions</span>
+              <img src="~/assets/images/white-arrow.png" /> <span>{{t("all-actions")}}</span>
             </nuxt-link>
           </div>
           <div class="column">
@@ -67,6 +67,7 @@
 
 <script>
 import client from '~/plugins/contentful'
+import translate from '~/plugins/translations'
 import moment from 'moment-with-locales-es6'
 import RelatedActions from '~/components/RelatedActions'
 
@@ -93,6 +94,9 @@ export default {
         else{
             return ''
         }
+    },
+    t(key){
+            return translate(this.$route.params.locale, key)
     }
   },
   asyncData({params,error, route}){
