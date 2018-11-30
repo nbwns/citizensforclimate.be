@@ -1,6 +1,6 @@
 <template>
     <div class="has-text-centered">
-        <img src="~/assets/images/loader.gif">
+        ...
     </div>
 </template>
 

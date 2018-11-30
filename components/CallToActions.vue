@@ -1,10 +1,12 @@
 <template>
     <div>
-        <div class="citizen-message">            
+        <div class="citizen-message newsletter">            
             <div class="container is-fluid has-text-centered">
-                <p class="is-size-6 has-text-black is-uppercase has-text-weight-bold">{{t("citizen")}}</p>
-                <p class="is-size-2 has-text-black is-uppercase has-text-weight-bold">{{t("i-stay-up-to-date")}}</p>
-                <p class="is-size-5 has-text-grey">{{t("get-the-agenda")}}</p>
+                <div class="text-container">
+                    <p class="is-size-6 has-text-black is-uppercase has-text-weight-bold">{{t("citizen")}}</p>
+                    <p class="is-size-2 has-text-black is-uppercase has-text-weight-bold">{{t("i-stay-up-to-date")}}</p>
+                    <p class="is-size-5 has-text-grey">{{t("get-the-agenda")}}</p>
+                </div>
                 <div class="columns is-centered">
                     <div class="column is-two-fifths">
                             <div id="mc_embed_signup" class="has-top-padding">
@@ -29,9 +31,11 @@
         </div>
         <div class="citizen-message contribute">            
             <div class="container is-fluid has-text-centered">
-                <p class="is-size-6 has-text-black is-uppercase has-text-weight-bold">{{t("association")}}</p>
-                <p class="is-size-2 has-text-black is-uppercase has-text-weight-bold">{{t("i-contribute")}}</p>
-                <p class="is-size-5 has-text-grey">{{t("send-your-action")}}</p>
+                <div class="text-container">
+                    <p class="is-size-6 has-text-black is-uppercase has-text-weight-bold">{{t("association")}}</p>
+                    <p class="is-size-2 has-text-black is-uppercase has-text-weight-bold">{{t("i-contribute")}}</p>
+                    <p class="is-size-5 has-text-grey">{{t("send-your-action")}}</p>
+                </div>
                 <div class="has-top-padding">
                     <a href="https://docs.google.com/forms/d/e/1FAIpQLScW2b6otniVVL9i49BOJ1tuSe25fj0Gw-CzR6k6GLGV0RmZyw/viewform" target="_blank" class="button">{{t("i-fill-the-form")}}</a>               
                 </div>
@@ -54,5 +58,38 @@ export default {
 
 <style>
 
+    .citizen-message{
+        padding: 60px 0 60px 0;
+    }
+
+    .citizen-message.newsletter .text-container:before{
+        content:"";
+        position:absolute;
+        top:-50px;
+        right:340px;
+        width:50px;
+        height:72px;
+        background:url('/coeur_50px.png') no-repeat center/cover;
+    }
+
+    .citizen-message.contribute .text-container:before{
+        content:"";
+        position:absolute;
+        top:-50px;
+        left:300px;
+        width:75px;
+        height:100px;
+        background:url('/etoile_75px.png') no-repeat center/cover;
+    }
+
+    @media screen and (max-width: 768px) {
+        .citizen-message.newsletter .text-container:before {
+            display: none;
+        }
+
+        .citizen-message.contribute .text-container:before {
+            display: none;
+        }
+    }
 
 </style>

@@ -3,7 +3,7 @@
         <div class="container">
         <div class="navbar-brand">
             <nuxt-link class="navbar-item" :to="'/' + $route.params.locale">
-                Citizens for climate
+                <img src="~/assets/images/Citizens_for_climate_logo_300px.png" alt="Citizens for climate"/>
             </nuxt-link>
             <span :class="{'navbar-burger burger': true, 'is-active' : burgerActive}" @click="toggle">
                 <span></span>

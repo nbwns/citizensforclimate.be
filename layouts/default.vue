@@ -1,15 +1,6 @@
 <template>
   <div>
-    <div class="hero is-black is-bold">
-    <div class="hero-body">
-        <div class="container has-text-centered">
-          <nuxt-link :to="'/' + $route.params.locale">
-            <h1 class="title is-1 is-uppercase">Citizens for climate</h1>
-          </nuxt-link>
-          <div class="subtitle">Belgiëk</div>
-        </div>
-    </div>
-    </div>
+    <Header/>
     <nuxt/>
     <CallToActions/>
     <Footer />
@@ -17,13 +8,13 @@
 </template>
 
 <script>
-import Navbar from '~/components/Navbar'
+import Header from '~/components/Header'
 import Footer from '~/components/Footer'
 import CallToActions from '~/components/CallToActions'
 
 export default {
   components: {
-      Navbar,
+      Header,
       Footer,
       CallToActions
   }
@@ -31,6 +22,10 @@ export default {
 </script>
 
 <style>
+.hero{
+    background-color: white;
+}
+
 .hero .title{
   font-family: 'Fjalla One', sans-serif;
   letter-spacing: 5px;
@@ -40,10 +35,6 @@ export default {
   color: #67de97 !important;
   letter-spacing: 2px;
 
-}
-
-.citizen-message{
-    padding: 40px 0 40px 0;
 }
 
 .has-top-padding{

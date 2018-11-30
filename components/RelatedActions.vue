@@ -3,7 +3,7 @@
         <div class="title-box is-uppercase has-text-centered">
             <h2 class="subtitle has-text-black is-size-5">{{categoryId ? t("related-actions") : t("highlighted-actions") }}</h2>
         </div>
-        <div v-for="action in actions" :key="action.sys.id">
+        <div class="related-action-container" v-for="action in actions" :key="action.sys.id">
             <Action :action="action" className="related"/>
         </div>
     </div>

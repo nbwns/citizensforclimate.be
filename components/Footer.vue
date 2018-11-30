@@ -9,13 +9,19 @@
                     </ul>
                     <ul v-if="$route.params.locale === 'nl'">
                         <li class="is-size-4 is-uppercase"><a href="/nl/about">Over ons</a></li>
-                        <li class="is-size-4 is-uppercase"><a href="/nl/legal">Juridische informatie</a></li>
+                        <li class="is-size-4 is-uppercase"><a href="/nl/legal">Algemene gebruiksvoorwaarden</a></li>
                     </ul>
+                    <p>
+                        <a href="https://www.facebook.com/citizensforclimate.be" target="_blank">
+                            <img src="~/assets/images/facebook.png"/>
+                        </a>
+                    </p>
                     <p class="credits">
                         Graphics: <a href="http://www.emisakurai.com/" target="_blank">Emi Sakurai</a><br/>
                         Website: <a href="https://www.linkedin.com/in/nicolasbauwens" target="_blank">Nicolas Bauwens</a>
                     </p>
                 </div>
+                
                 <div class="column">
                     <div class="content is-size-4">
                         <p>{{t("footer-text")}}</p>

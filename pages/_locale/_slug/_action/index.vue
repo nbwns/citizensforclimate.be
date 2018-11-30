@@ -127,9 +127,36 @@ export default {
       throw({ statusCode: 404, message: 'page not found' });
     })
   },
-  head () {
+   head() {
     return {
-      title: this.action.fields.name
+      title: this.action.fields.name,
+      meta: [
+        {
+          hid: `description`,
+          name: 'description',
+          content: this.action.fields.name.introductionText
+        },
+        {
+          hid: `og:title`,
+          property: 'og:title',
+          content: this.action.fields.name
+        },
+        {
+          hid: `og:url`,
+          property: 'og:url',
+          content: 'http://www.citizensforclimate.be' + this.$route.fullPath
+        },
+        {
+          hid: `og:image`,
+          property: 'og:image',
+          content: `http://www.citizensforclimate.be/facebookcover.jpg`
+        },
+        {
+          hid: `og:description`,
+          property: 'og:description',
+          content: this.action.fields.name.introductionText
+        }
+      ]
     }
   }
 }

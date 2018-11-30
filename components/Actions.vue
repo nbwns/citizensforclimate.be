@@ -26,7 +26,7 @@
                         <Action :action="action"/>                        
                     </div>
                     <div class="see-more-actions" v-if="!showAllActions" @click="displayAllActions()">
-                        {{t("actions-more")}}
+                        <p>{{t("actions-more")}}</p>
                         <img src="~/assets/images/white-arrow.png" />
                     </div>
                 </div>
@@ -101,11 +101,22 @@ export default{
     }
         
     .actions {
-        margin: 40px 0 40px 0;
+        margin: 150px 0 40px 0;
     }
 
     .highlight-actions-background{
         background-color: #67de97;
+        position:relative;
+    }
+
+    .highlight-actions-background:before {
+        content:"";
+        position:absolute;
+        top:-130px;
+        right:180px;
+        width:180px;
+        height:251px;
+        background:url('/main_mobile_180px.png') no-repeat center/cover;
     }
 
     .actions-background{
@@ -123,6 +134,10 @@ export default{
         justify-content: flex-start;
     }
 
+    .see-more-actions p{
+        align-self: center;
+    }
+
     .see-more-actions img{
         transform: rotate(-90deg);
         align-self: center;
@@ -131,5 +146,34 @@ export default{
     .action-head{
         padding: 35px 0 35px 0;
     }
+
+    @media screen and (max-width: 1088px) {
+        .highlight-actions-background {
+            padding-left: 15px;
+        }
+
+        .actions-background{
+            padding-left: 15px;
+        }
+
+        .highlight-actions-background:before {
+            right:110px;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .highlight-actions-background:before {
+            display: none;
+        }
+    }
+
+    @media screen and (min-width: 768px) and (max-width: 1087px) {
+        .highlight-actions-background:before {
+            right:20px;
+        }
+    }
+
+    
+
     
 </style>

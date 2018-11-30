@@ -23,7 +23,7 @@ export default {
         formatDate(date) {
             if(date){
                 let momentDate = moment(date);
-                let format = "dddd D MMMM YYYY";
+                let format = "dddd D MMM YYYY";
                 if(momentDate.hour() > 0){
                     format += " - HH:mm"
                 }

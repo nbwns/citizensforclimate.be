@@ -54,6 +54,10 @@ html, body{
 .action.related{
   border: 4px black solid;
   font-size: 1rem;
+}
+
+.related-action-container{
+  padding-left: 5px;
 
 }
 
@@ -125,9 +129,22 @@ a.read-more {
   opacity: 0;
 }
 
-@font-face {
-  font-family: 'alpha_echoregular';
-  src: url('alpha_echo-webfont.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
+@media screen and (min-width: 769px) and (max-width: 1206px) {
+  .action{
+    min-height: 550px;
+  }
+
+  .action.highlight{
+    min-height: 600px;
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  .action{
+    min-height: auto;
+  }
+  .action.highlight{
+    min-height: auto;
+  }
 }
