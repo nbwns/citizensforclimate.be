@@ -25,7 +25,7 @@ const translations = {
     "nl": {
         "read-more": "> Verder lezen",        
         "actions-highlight-title": "CLIMATE NOW",
-        "actions-highlight-subtitle": "Onvermijdelijke en dreigende events",
+        "actions-highlight-subtitle": "Onvermeidelijke en drigende events",
         "actions-title": "LOPENDE ACTIES",
         "actions-subtitle": "Voor elke ambitie",
         "actions-more": "Méér acties",

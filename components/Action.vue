@@ -8,7 +8,7 @@
         </p>
         <div class="buttons">
             <a class="button is-primary" target="_blank" :href="action.fields.link">{{action.fields.callToAction}}</a>
-            <nuxt-link class="button is-uppercase" :to="{path:'/'+$route.params.locale+'/action/'+action.fields.slug}">{{t('read-more')}}</nuxt-link>
+            <nuxt-link class="button is-uppercase" target="_blank" :to="{path:'/'+$route.params.locale+'/action/'+action.fields.slug}">{{t('read-more')}}</nuxt-link>
         </div>
     </div> 
 </template>
