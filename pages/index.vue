@@ -116,6 +116,7 @@
 <script>
 export default {
   layout: 'empty',
+  middleware: 'redirect'
 }
 </script>
 

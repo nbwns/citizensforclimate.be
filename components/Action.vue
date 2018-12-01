@@ -1,5 +1,5 @@
 <template>
-    <div :class="['has-background-white', 'action', className]">
+    <div :class="['has-background-white', 'action', className]" v-if="action.fields.name">
         <small class="action-meta has-text-grey is-size-6">{{action.fields.tag}}</small>
         <small class="action-meta action-date is-size-6">{{formatDate(action.fields.start)}}</small>
         <h3 class="title is-3 has-text-weight-normal has-text-black">{{action.fields.name}}</h3>

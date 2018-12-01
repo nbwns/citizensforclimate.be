@@ -8,8 +8,8 @@
                         <li class="is-size-4 is-uppercase"><a href="/fr/mentions-legales">Mentions légales</a></li>
                     </ul>
                     <ul v-if="$route.params.locale === 'nl'">
-                        <li class="is-size-4 is-uppercase"><a href="/nl/about">Over ons</a></li>
-                        <li class="is-size-4 is-uppercase"><a href="/nl/legal">Algemene gebruiksvoorwaarden</a></li>
+                        <li class="is-size-4 is-uppercase"><a href="/nl/over-ons">Over ons</a></li>
+                        <li class="is-size-4 is-uppercase"><a href="/nl/disclaimer">Disclaimer</a></li>
                     </ul>
                     <p>
                         <a href="https://www.facebook.com/citizensforclimate.be" target="_blank">
