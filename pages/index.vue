@@ -6,10 +6,13 @@
                     <p>
                         Citizens for climate est une plateforme issue d’un mouvement citoyen spontané, né dans la foulée des récentes mobilisations massives dans le monde. Son objectif est de référencer les actions et événements qui vous permettent de vous mobiliser en masse pour le climat !
                     </p>
+                    <br/>
                     <nuxt-link class="button" to="fr">Français</nuxt-link>
                     
                     <hr/>
                     <p>Citizens for Climate is een platform dat is ontstaan uit een spontane burgerbeweging, geboren in de nasleep van recente massale mobilisaties overal ter wereld. Ons doel is te verwijzen naar acties en evenementen die burgers in staat stellen massaal te mobiliseren voor het klimaat!</p>
+                    <br/>
+                    
                     <nuxt-link class="button" to="nl">Nederlands</nuxt-link>
                 </div>                
             </div>
@@ -64,7 +67,7 @@ export default {
 
 <style>
 .lang-chooser{
-    padding: 50px 0 50px 0;
+    padding: 40px 0 30px 0;
 }
 </style>
 
