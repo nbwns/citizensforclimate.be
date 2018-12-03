@@ -4,7 +4,22 @@
 
 <script>
 export default {
-  middleware: 'redirect'
+  middleware: 'redirect',
+  asyncData({params,error, store, payload}){
+    return null;
+  },
+  head() {
+    return {
+      meta: [
+        
+        {
+          hid: `og:url`,
+          property: 'og:url',
+          content: 'http://www.citizensforclimate.be/fr'
+        }
+      ]
+    }
+  }
 }
 </script>
 
