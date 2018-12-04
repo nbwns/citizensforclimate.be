@@ -36,7 +36,7 @@
                           </p>
                           <p>
                               <a v-if="action.fields.localisationGeo" 
-                                :href="'https://www.openstreetmap.org/#map=17/'+action.fields.localisationGeo.lat+'/'+action.fields.localisationGeo.lon" 
+                                :href="'https://www.openstreetmap.org/directions?from=&to='+action.fields.localisationGeo.lat+'%2C'+action.fields.localisationGeo.lon+'#map=17/'+action.fields.localisationGeo.lat+'/'+action.fields.localisationGeo.lon" 
                                 target="_blank">{{action.fields.localisationDescription}}</a>
                               <span v-else>{{action.fields.localisationDescription}}</span>
                           </p>
@@ -85,12 +85,13 @@ export default {
   methods: {
     formatDate(date) {
         if(date){
-            let momentDate = moment(date);
-            let format = "dddd D MMM YYYY";
+            let momentDate = moment(date)
+            momentDate.locale(this.$route.params.locale)
+            let format = "dddd D MMM YYYY"
             if(momentDate.hour() > 0){
                 format += " - HH:mm"
             }
-            return moment(date).format(format)
+            return momentDate.format(format)
         }
         else{
             return ''

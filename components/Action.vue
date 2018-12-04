@@ -22,12 +22,13 @@ export default {
     methods: {
         formatDate(date) {
             if(date){
-                let momentDate = moment(date);
-                let format = "dddd D MMM YYYY";
+                let momentDate = moment(date)
+                momentDate.locale(this.$route.params.locale)
+                let format = "dddd D MMM YYYY"
                 if(momentDate.hour() > 0){
                     format += " - HH:mm"
                 }
-                return moment(date).format(format)
+                return momentDate.format(format)
             }
             else{
                 return ''
@@ -36,13 +37,7 @@ export default {
         t(key){
             return translate(this.$route.params.locale, key)
         }
-    },
-    mounted(){
-        moment.locale(this.$route.params.locale)
     }
-
-
-
 }
 </script>
 
