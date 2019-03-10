@@ -8,7 +8,7 @@
                 </div>
                 <Loader v-if="loading"/>
                 <div v-if="!loading" class="columns is-multiline is-centered">
-                    <div class="column is-one-third" v-if="action.fields.name" v-for="action in highlightActions" :key="action.id">
+                    <div class="column is-one-third" v-for="action in highlightActions" :key="action.id">
                         <Action :action="action" className="highlight"/>
                     </div>
                 </div>
@@ -21,15 +21,19 @@
                     <p class="subtitle has-text-black">{{t("actions-subtitle")}}</p>
                 </div>
                 <Loader v-if="loading"/>
-                <div v-if="!loading" class="columns is-multiline is-centered">
-                    <div  class="column is-one-third" v-if="index < maxActions && action.fields.name" v-for="(action, index) in normalActions" :key="action.id">
-                        <Action :action="action"/>                        
+                <template v-if="!loading">
+                    <ActionCategories :items="categories" @categoryChanged="categoryFilter = $event"/>
+                    <div v-if="!loading" class="columns is-multiline is-centered">
+                        <div  class="column is-one-third" v-for="action in normalActions" :key="action.id">
+                            <Action :action="action"/>                        
+                        </div>
+                        
                     </div>
-                    <div class="see-more-actions" v-if="!showAllActions" @click="displayAllActions()">
-                        <p>{{t("actions-more")}}</p>
-                        <img src="~/assets/images/white-arrow.png" />
+                    <div class="see-more-actions" v-if="!showAllActions && !categoryFilter" @click="displayAllActions()">
+                            <p>{{t("actions-more")}}</p>
+                            <img src="~/assets/images/white-arrow.png" />
                     </div>
-                </div>
+                </template>
             </div>
         </div>
     </div>
@@ -40,30 +44,43 @@ import client from '~/plugins/contentful'
 import translate from '~/plugins/translations'
 import Loader from '~/components/Loader'
 import Action from '~/components/Action'
+import ActionCategories from '~/components/ActionCategories'
 
 export default{
     data () {
         return {
             actions: [],
+            categories:[],
             loading: true,
             maxActions: 12,
-            showAllActions: false
+            showAllActions: false,
+            categoryFilter: null
         }
     },
     components: {
         Loader,
-        Action
+        Action,
+        ActionCategories
     },
     computed: {
         highlightActions () {
             return this.actions.filter(action => {
-                return action.fields.highlight == true
+                return action.fields.highlight == true && action.fields.name 
             })
         },
         normalActions () {
-            return this.actions.filter(action => {
-                return action.fields.highlight == false
-            })
+            if(this.categoryFilter){
+                return this.actions.filter(action => {
+                    return action.fields.categories.find(cat => {
+                        return cat.sys.id == this.categoryFilter
+                    })
+                })
+            }
+            else{
+                return this.actions.filter((action, index) => {
+                    return action.fields.highlight == false && index <= this.maxActions+1
+                })
+            }
         }
     },
     methods: {
@@ -77,17 +94,33 @@ export default{
     },
     mounted(){
         if(this.$route.params.locale){
+            
             //this.$i18n.locale = this.$route.params.locale
-            return client.getEntries({
+            let allActions = client.getEntries({
                 content_type: 'action',
                 'locale':this.$route.params.locale+ "-BE",
                 'order': 'fields.sortOrder,fields.name'
             })
             .then(entries => {
-                this.actions = entries.items
+                return entries.items
+            })
+
+             let allCategories = client.getEntries({
+                content_type: 'actionCategory',
+                'locale':this.$route.params.locale+ "-BE",
+                'order': 'fields.sortOrder'
+            })
+            .then(entries => {
+                return entries.items
+            })
+
+            return Promise.all([allActions, allCategories])
+            .then(values => {
+                this.actions = values[0]
+                this.categories = values[1]
                 this.loading = false
             })
-            .catch(console.error)
+
         }
         
     }

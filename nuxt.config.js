@@ -17,6 +17,7 @@ module.exports = {
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Fjalla+One|Niramit'}
     ]
   },
+  mode: 'universal',
   css: [
     'assets/css/main.css'
   ],
