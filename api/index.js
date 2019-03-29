@@ -16,19 +16,25 @@ app.get('/timeline', (req, res, next) => {
     .then(entries => {
         let timelineItems = [];
         entries.items.forEach(item => {
-            let mDate = moment(item.fields.start)
-            
-            timelineItems.push({
-                "start_date": {
-                  "month": mDate.month(),
-                  "day": mDate.day(),
-                  "year": mDate.year()
-                },
+
+            let newTimelineItem = {
                 "text": {
-                  "headline": item.fields.name,
-                  "text": item.fields.body
+                    "headline": item.fields.name,
+                    "text": item.fields.body
+                  }
+            }
+
+            if(item.fields.start){
+                let mDate = moment(item.fields.start)
+                let startDate = {
+                    "month": mDate.month(),
+                    "day": mDate.date(),
+                    "year": mDate.year()
                 }
-              })
+                newTimelineItem["start_date"] = startDate
+            }
+            
+            timelineItems.push(newTimelineItem)
         })
 
         res.json(timelineItems)
