@@ -53,6 +53,10 @@ module.exports = {
       }
     }
   },
+  serverMiddleware: [
+    // API middleware
+    '~/api/index.js'
+  ],
   plugins: ['~/plugins/contentful', '~/plugins/translations'],
   modules: [
     '@nuxtjs/dotenv', 
@@ -60,7 +64,7 @@ module.exports = {
     ['@nuxtjs/google-analytics', {
       id: 'UA-129338926-1'
     }]
-],
+  ],
   markdownit: {
     html: true,
     injected: true
