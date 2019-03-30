@@ -3,7 +3,7 @@ const serverless = require('serverless-http');
 const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors')
-const client = require('contentful')
+const contentful = require('contentful')
 const moment = require('moment')
 
 app.use(bodyParser);
