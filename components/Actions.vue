@@ -14,7 +14,7 @@
                 </div>
             </div>
         </div>
-        <div id="actions-section" class="actions-background">
+        <div class="actions-background">
             <div class="container is-fluid">
                 <div class="action-head has-text-centered">
                     <h2 class="title is-1 has-text-black">{{t("actions-title")}}</h2>

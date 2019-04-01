@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper-filters">
+  <div id="actions-section" class="wrapper-filters">
   <nav class="tabs navbar" :class="{'is-fixed-top': sticky}" v-on:scroll="handleScroll">
     <div
       v-for="cat in items"
@@ -64,8 +64,7 @@ export default {
     console.log('scrolling Destroyed');
   },
   mounted() {
-    this.actionsOffset = document.getElementById('actions-section').offsetTop
-
+    this.actionsOffset = document.getElementById('actions-section').offsetParent.offsetTop + document.querySelector('.action-head').offsetHeight
   },
   methods: {
     selectCategory(id, color) {
@@ -76,7 +75,7 @@ export default {
         this.bgColor = color //add the bgcolor when click
       }
       this.$emit("categoryChanged", this.selected)
-      this.scrollTop(this.actionsOffset + 150)
+      this.scrollTop(this.actionsOffset)
     },
     // Ajoute d'une retour a la ligne apres le first word
     filterTitle(value) {
@@ -90,13 +89,10 @@ export default {
         left: 0,
         behavior: 'smooth'
       })
-      console.log('scrollto');
-      
     },
     handleScroll(e){
-      console.log('scrolling...')
       const windowScroll = window.pageYOffset
-      if(windowScroll >= this.actionsOffset + 150){
+      if(windowScroll >= this.actionsOffset){
         this.sticky = true
       } else {
         this.sticky = false
@@ -170,6 +166,9 @@ export default {
   }
 }
 .wrapper-filters {
+  position: static;
+  top: 0;
+  left: 0;
   height: 130px;
 }
 </style>
