@@ -76,6 +76,7 @@ export default {
         this.bgColor = color //add the bgcolor when click
       }
       this.$emit("categoryChanged", this.selected)
+      this.scrollTop(this.actionsOffset + 150)
     },
     // Ajoute d'une retour a la ligne apres le first word
     filterTitle(value) {
@@ -83,13 +84,22 @@ export default {
       const firstWord = words.shift()
       return `${firstWord}<br>${words.join(" ")}`
     },
+    scrollTop(offset){
+      window.scrollTo({
+        top: offset,
+        left: 0,
+        behavior: 'smooth'
+      })
+      console.log('scrollto');
+      
+    },
     handleScroll(e){
-      console.log('scrolling...');
-      const windowScroll = window.pageYOffset;
+      console.log('scrolling...')
+      const windowScroll = window.pageYOffset
       if(windowScroll >= this.actionsOffset + 150){
-        this.sticky = true;
+        this.sticky = true
       } else {
-        this.sticky = false;
+        this.sticky = false
       }
     }
   }
