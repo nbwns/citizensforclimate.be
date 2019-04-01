@@ -1,5 +1,6 @@
 <template>
-  <div class="tabs">
+  <div class="wrapper-filters">
+  <nav class="tabs navbar" :class="{'is-fixed-top': sticky}" v-on:scroll="handleScroll">
     <div
       v-for="cat in items"
       :key="cat.sys.id"
@@ -31,6 +32,7 @@
         </div>
       </a>
     </div>
+  </nav>
   </div>
 </template>
 
@@ -40,7 +42,9 @@ export default {
   data() {
     return {
       selected: null,
-      bgColor: 'blue'
+      bgColor: 'blue',
+      sticky: false,
+      actionsOffset: Number
     }
   },
   computed: {
@@ -50,6 +54,18 @@ export default {
         '--bg-picto-color': this.bgColor
         }
     }
+  },
+  created() {
+    window.addEventListener('scroll', this.handleScroll);
+    console.log('scrolling Injected');
+  },
+  destroyed() {
+    window.removeEventListener('scroll', this.handleScroll);
+    console.log('scrolling Destroyed');
+  },
+  mounted() {
+    this.actionsOffset = document.getElementById('actions-section').offsetTop
+
   },
   methods: {
     selectCategory(id, color) {
@@ -66,6 +82,15 @@ export default {
       const words = value.trim().split(" ")
       const firstWord = words.shift()
       return `${firstWord}<br>${words.join(" ")}`
+    },
+    handleScroll(e){
+      console.log('scrolling...');
+      const windowScroll = window.pageYOffset;
+      if(windowScroll >= this.actionsOffset + 150){
+        this.sticky = true;
+      } else {
+        this.sticky = false;
+      }
     }
   }
 };
@@ -76,6 +101,7 @@ export default {
   display: flex;
   white-space: normal;
   justify-content: center;
+  background-color: #CDCDCD;
   
   @media screen and (max-width: 770px) {
     justify-content: stretch;
@@ -132,5 +158,8 @@ export default {
       transform: scale(1.1);
     }
   }
+}
+.wrapper-filters {
+  height: 130px;
 }
 </style>
