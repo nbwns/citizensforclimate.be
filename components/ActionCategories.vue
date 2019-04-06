@@ -1,5 +1,5 @@
 <template>
-  <div id="actions-section" class="wrapper-filters">
+  <div id="actions-section">
   <nav class="tabs navbar" :class="{'is-fixed-top': sticky}" v-on:scroll="handleScroll">
     <div
       v-for="cat in items"
@@ -57,11 +57,11 @@ export default {
   },
   created() {
     window.addEventListener('scroll', this.handleScroll);
-    console.log('scrolling Injected');
+    window.addEventListener('resize', this.handleResize);
   },
   destroyed() {
     window.removeEventListener('scroll', this.handleScroll);
-    console.log('scrolling Destroyed');
+    window.removeEventListener('resize', this.handleResize);
   },
   mounted() {
     this.actionsOffset = document.getElementById('actions-section').offsetParent.offsetTop + document.querySelector('.action-head').offsetHeight
@@ -97,18 +97,20 @@ export default {
       } else {
         this.sticky = false
       }
+    },
+    handleResize(){
+      this.actionsOffset = document.getElementById('actions-section').offsetParent.offsetTop + document.querySelector('.action-head').offsetHeight
     }
   }
-};
+}
 </script>
 
 <style lang="scss">
 .tabs {
   display: flex;
-  white-space: normal;
   justify-content: center;
+  white-space: normal;
   background-color: #CDCDCD;
-  
   @media screen and (max-width: 770px) {
     justify-content: stretch;
   }
@@ -165,10 +167,28 @@ export default {
     }
   }
 }
-.wrapper-filters {
-  position: static;
-  top: 0;
-  left: 0;
-  height: 130px;
+#actions-section {
+  position: relative;
+  width: calc(100% + 15px);
+  left: -15px;
+  height: 120px;
+  margin-bottom: 20px;
+  @media screen and ( max-width: 375px ){
+    margin-bottom: 5px;
+   .tab-item {
+     padding: 10px;
+     padding-bottom: 12px;
+     font-size: .8em;
+     .filter-one {
+       min-width: 60px;
+     }
+     .filter-picto{
+       height: 45px;
+       width: 45px;
+       border: 2px solid;
+     }
+   }
+  }
+
 }
 </style>

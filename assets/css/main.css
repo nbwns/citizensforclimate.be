@@ -1,7 +1,12 @@
 html, body{
   font-family: 'Niramit', sans-serif;
+  margin:0;
+  padding:0;
 }
-
+.columns {
+  margin-left: 0;
+  margin-right: 0;
+}
 
 
 

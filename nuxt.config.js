@@ -9,13 +9,16 @@ module.exports = {
     title: 'Citizens for climate',
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' }
+      { name: 'viewport', content: 'width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1.0, user-scalable=no, height=device-height' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css'},
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Fjalla+One|Niramit'}
-    ]
+    ],
+    bodyAttrs: {
+      class: 'has-navbar-fixed-top'
+    }
   },
   mode: 'universal',
   css: [
