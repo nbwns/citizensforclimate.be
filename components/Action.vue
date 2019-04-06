@@ -7,9 +7,10 @@
             {{action.fields.introductionText}}
         </p>
         <div class="catego-list">
-            <a href="" class="button-category"></a>
-            <a href="" class="button-category"></a>
-            <a href="" class="button-category"></a>
+            <a v-for="(cat, i) in action.fields.categories" :key="i" href="" >
+                <span v-if="cat.fields" class="button-category" :style="{backgroundColor: cat.fields.color}">
+                </span>
+            </a>
             <!-- <p v-for="(cat, i) in action.fields.categories" :key="i">
                 <span v-if="cat.fields">{{ cat.fields.color }}</span>
             </p> -->
@@ -72,13 +73,15 @@ export default {
     height: 15px;
     margin: 10px 0;
     margin-top: auto;
-    a.button-category {
+    span.button-category {
         display: inline-block;
         width: 15px;
         height: 15px;
         background: #000;
         border-radius: 50%;
         color: white;
+    }
+    a {
         margin: 0 2px;
         &:first-child {
             margin-left: 0;
