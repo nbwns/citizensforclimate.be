@@ -6,6 +6,14 @@
         <p>
             {{action.fields.introductionText}}
         </p>
+        <div class="catego-list">
+            <a href="" class="button-category"></a>
+            <a href="" class="button-category"></a>
+            <a href="" class="button-category"></a>
+            <!-- <p v-for="(cat, i) in action.fields.categories" :key="i">
+                <span v-if="cat.fields">{{ cat.fields.color }}</span>
+            </p> -->
+        </div>
         <div class="buttons">
             <a class="button is-primary" target="_blank" :href="action.fields.link">{{action.fields.callToAction}}</a>
             <nuxt-link class="button is-uppercase" target="_blank" :to="{path:'/'+$route.params.locale+'/action/'+action.fields.slug}">{{t('read-more')}}</nuxt-link>
@@ -41,6 +49,45 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+.action {
+    padding: 20px;
+    justify-content: space-evenly;
+    small, p {
+        margin-bottom: .6em;
+    }
+    small {
+        line-height: 1.2em;
+    }
+    .buttons {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin-top: 0;
+    }
+}
+.catego-list {
+    width: 100%;
+    height: 15px;
+    margin: 10px 0;
+    margin-top: auto;
+    a.button-category {
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+        background: #000;
+        border-radius: 50%;
+        color: white;
+        margin: 0 2px;
+        &:first-child {
+            margin-left: 0;
+        }
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}
+
 
 </style>

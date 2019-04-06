@@ -54,7 +54,7 @@ html, body{
   margin: 5px 25px 25px 5px;
   padding: 10px;
   font-size: 0.75rem;
-  min-height: 320px;
+  min-height: 360px;
 }
 
 .action.related{
@@ -137,7 +137,7 @@ a.read-more {
 
 @media screen and (min-width: 769px) and (max-width: 1206px) {
   .action{
-    min-height: 550px;
+    min-height: 425px;
   }
 
   .action.highlight{

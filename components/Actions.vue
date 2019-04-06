@@ -24,7 +24,7 @@
                 <template v-if="!loading">
                     <ActionCategories :items="categories" @categoryChanged="categoryFilter = $event"/>
                     <div v-if="!loading" class="columns is-multiline is-centered">
-                        <div  class="column is-one-third" v-for="action in normalActions" :key="action.id">
+                        <div  class="column is-one-third-desktop is-half-tablet" v-for="action in normalActions" :key="action.id">
                             <Action :action="action"/>                        
                         </div>
                         
