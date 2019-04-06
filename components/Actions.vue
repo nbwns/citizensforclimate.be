@@ -25,7 +25,7 @@
                     <ActionCategories :items="categories" @categoryChanged="categoryFilter = $event"/>
                     <div v-if="!loading" class="columns is-multiline is-centered">
                         <div  class="column is-one-third-desktop is-half-tablet" v-for="action in normalActions" :key="action.id">
-                            <Action :action="action" @categoryChanged="categoryFilter = $event"/>                        
+                            <Action :action="action" @categoryChanged="categoryFilter = $event" />                        
                         </div>
                         
                     </div>
@@ -54,7 +54,7 @@ export default{
             loading: true,
             maxActions: 12,
             showAllActions: false,
-            categoryFilter: null
+            categoryFilter: null,
         }
     },
     components: {
@@ -93,8 +93,8 @@ export default{
         }
     },
     mounted(){
+
         if(this.$route.params.locale){
-            
             //this.$i18n.locale = this.$route.params.locale
             let allActions = client.getEntries({
                 content_type: 'action',
@@ -120,9 +120,8 @@ export default{
                 this.categories = values[1]
                 this.loading = false
             })
-
         }
-        
+      
     }
 }
 </script>

@@ -27,6 +27,11 @@ import moment from 'moment-with-locales-es6'
 import translate from '~/plugins/translations'
 
 export default {
+    data() {
+        return {
+            actionsOffset: Number
+        }
+    },
     props: ['action', 'className'],
     methods: {
         formatDate(date) {
@@ -54,8 +59,21 @@ export default {
                 this.bgColor = color //add the bgcolor when click
             }
             this.$emit("categoryChanged", this.selected)
-            //this.scrollTop(this.actionsOffset)
+            this.scrollTop(this.actionsOffset)
+        },
+        scrollTop(offset){
+            window.scrollTo({
+                top: offset,
+                left: 0,
+                behavior: 'smooth'
+            })
+        },
+        handleResize(){
+            this.actionsOffset = document.getElementById('actions-section').offsetParent.offsetTop + document.querySelector('.action-head').offsetHeight
         }
+    },
+    mounted() {
+        this.actionsOffset = document.getElementById('actions-section').offsetParent.offsetTop + document.querySelector('.action-head').offsetHeight
     }
 }
 </script>
@@ -92,7 +110,7 @@ export default {
         color: white;
     }
     a {
-        margin: 0 2px;
+        margin: 0 3px;
         &:first-child {
             margin-left: 0;
         }
