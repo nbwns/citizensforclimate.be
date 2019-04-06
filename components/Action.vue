@@ -7,7 +7,7 @@
             {{action.fields.introductionText}}
         </p>
         <div class="catego-list">
-            <a v-for="(cat, i) in action.fields.categories" :key="i" href="" >
+            <a v-for="(cat, i) in action.fields.categories" :key="i" @click="selectCategory(cat.sys.id)" >
                 <span v-if="cat.fields" class="button-category" :style="{backgroundColor: cat.fields.color}">
                 </span>
             </a>
@@ -45,6 +45,16 @@ export default {
         },
         t(key){
             return translate(this.$route.params.locale, key)
+        },
+        selectCategory(id, color) {
+            if (id == this.selected) {
+                this.selected = null
+            } else {
+                this.selected = id
+                this.bgColor = color //add the bgcolor when click
+            }
+            this.$emit("categoryChanged", this.selected)
+            //this.scrollTop(this.actionsOffset)
         }
     }
 }
