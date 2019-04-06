@@ -71,14 +71,14 @@ export default{
         normalActions () {
             if(this.categoryFilter){
                 return this.actions.filter(action => {
-                    return action.fields.highlight == false && action.fields.name && action.fields.categories.find(cat => {
+                    return action.fields.name && action.fields.categories.find(cat => {
                         return cat.sys.id == this.categoryFilter
                     })
                 })
             }
             else{
                 return this.actions.filter((action, index) => {
-                    return action.fields.highlight == false && action.fields.name && index <= this.maxActions+1
+                    return action.fields.name && index <= this.maxActions+1
                 })
             }
         }
