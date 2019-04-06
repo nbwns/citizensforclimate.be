@@ -6,15 +6,19 @@
         <p>
             {{action.fields.introductionText}}
         </p>
-        <div class="catego-list">
-            <a v-for="(cat, i) in action.fields.categories" :key="i" @click="selectCategory(cat.sys.id)" >
+        <div v-if="!$route.params.slug" class="catego-list">
+            <a  v-for="(cat, i) in action.fields.categories" :key="i" @click="selectCategory(cat.sys.id)" >
                 <span v-if="cat.fields" class="button-category" :style="{backgroundColor: cat.fields.color}">
                 </span>
             </a>
-            <!-- <p v-for="(cat, i) in action.fields.categories" :key="i">
-                <span v-if="cat.fields">{{ cat.fields.color }}</span>
-            </p> -->
         </div>
+        <div v-else class="catego-list">
+            <span v-for="(cat, i) in action.fields.categories" :key="i">
+                <span v-if="cat.fields" class="button-category" :style="{backgroundColor: cat.fields.color}">
+                </span>
+            </span>
+        </div>
+        
         <div class="buttons">
             <a class="button is-primary" target="_blank" :href="action.fields.link">{{action.fields.callToAction}}</a>
             <nuxt-link class="button is-uppercase" target="_blank" :to="{path:'/'+$route.params.locale+'/action/'+action.fields.slug}">{{t('read-more')}}</nuxt-link>
@@ -73,7 +77,10 @@ export default {
         }
     },
     mounted() {
-        this.actionsOffset = document.getElementById('actions-section').offsetParent.offsetTop + document.querySelector('.action-head').offsetHeight
+        console.log( this.$route.params )
+        if ( !this.$route.params.slug ) {
+            this.actionsOffset = document.getElementById('actions-section').offsetParent.offsetTop + document.querySelector('.action-head').offsetHeight
+        }
     }
 }
 </script>
@@ -109,7 +116,7 @@ export default {
         border-radius: 50%;
         color: white;
     }
-    a {
+    a, span {
         margin: 0 3px;
         &:first-child {
             margin-left: 0;
