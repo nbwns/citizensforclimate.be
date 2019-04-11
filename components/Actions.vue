@@ -36,7 +36,8 @@
 </template>
 
 <script>
-import client from '~/plugins/contentful'
+//import client from '~/plugins/contentful'
+const client = require('~/plugins/contentful')
 import translate from '~/plugins/translations'
 import Loader from '~/components/Loader'
 import Action from '~/components/Action'

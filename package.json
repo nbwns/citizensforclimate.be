@@ -19,7 +19,7 @@
     "contentful": "^7.0.5",
     "cors": "^2.8.5",
     "express": "^4.16.4",
-    "moment": "^2.22.2",
+    "moment": "^2.18.1",
     "moment-with-locales-es6": "^1.0.1",
     "nuxt": "^2.0.0",
     "nuxt-i18n": "^5.4.4"

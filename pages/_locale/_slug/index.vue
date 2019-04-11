@@ -19,7 +19,8 @@
 </template>
 
 <script>
-import client from '~/plugins/contentful'
+//import client from '~/plugins/contentful'
+const client = require('~/plugins/contentful')
 import RelatedActions from '~/components/RelatedActions'
 
 
