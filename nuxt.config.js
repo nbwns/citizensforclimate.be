@@ -1,4 +1,3 @@
-require('dotenv').config()
 const client = require('./plugins/contentful')
 
 module.exports = {
@@ -53,11 +52,8 @@ module.exports = {
       }
     }
   },
-  serverMiddleware: [
-    // API middleware
-    '~/api/index.js'
-  ],
-  plugins: ['~/plugins/contentful', '~/plugins/translations'],
+  plugins: [
+    '~/plugins/contentful', '~/plugins/translations'],
   modules: [
     '@nuxtjs/dotenv', 
     '@nuxtjs/markdownit',

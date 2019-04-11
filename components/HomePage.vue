@@ -1,19 +1,5 @@
 <template>
-    <div v-if="page.fields.pageRef">
-        <!-- <section class="heading">
-            {{page.fields.pageRef.fields.heading}}
-        </section> -->
-        <!-- <div class="container is-fluid video">
-            <div class="columns ">
-                <div class="column is-two-thirds is-hidden-desktop">
-                    <iframe width="320" height="180" src="https://www.youtube.com/embed/Xl-fRQ2Tgr8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                <div>
-                    <img src="~/assets/images/jaiclimat_350px.png"/>
-                </div>
-            </div>
-        </div> -->
-        
+    <div v-if="page.fields.pageRef">       
         <div class="container is-fluid introduction has-text-black">
             <div class="columns">
                 <!-- lui en relatif -->
@@ -23,17 +9,20 @@
                 <div class="column is-size-5" v-html="$md.render(page.fields.pageRef.fields.introduction)"></div>
             </div>
         </div>
+        <Timeline/>
         <Actions/>
     </div>
 </template>
 
 <script>
 import Actions from '~/components/Actions'
+import Timeline from '~/components/Timeline'
 
 export default {
     props: ['page'],
     components: {
-        Actions
+        Actions,
+        Timeline
     }
 }
 </script>
