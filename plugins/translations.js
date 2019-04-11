@@ -49,23 +49,14 @@ const translations = {
 
 function translate(locale, key){
     if(locale && key){
-        return translations[locale][key]
-    }
-    else{
-        return ''
-    }
-}
-
-function coucou(locale, key){
-    if(locale && key){
         let localized = translations[locale];
         if(localized){
             return localized[key]
         }
     }
     else{
-        return 'coucou'
+        return ''
     }
 }
 
-module.exports = coucou
+module.exports = translate
