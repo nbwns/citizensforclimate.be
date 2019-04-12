@@ -35,6 +35,7 @@ export default {
         position: relative;
         background-color: #64D7DE;
         color: black;
+        height: 250px;
         .bg-black{
             background-color: black;
         }
@@ -45,6 +46,10 @@ export default {
             color: black;
             font-size: 18px;
             font-weight: bold;
+        }
+        .hero-body {
+            display: flex;
+            align-items: center;
         }
     }
     .logo {
