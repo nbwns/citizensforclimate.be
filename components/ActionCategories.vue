@@ -169,8 +169,8 @@ export default {
 }
 #actions-section {
   position: relative;
-  width: calc(100% + 15px);
-  left: -15px;
+  // width: calc(100% + 15px);
+  // left: -15px;
   height: 120px;
   margin-bottom: 20px;
   @media screen and ( max-width: 375px ){
