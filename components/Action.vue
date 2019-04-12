@@ -9,19 +9,19 @@
         <p>
             {{action.fields.introductionText}}
         </p>
-        <div v-if="!$route.params.slug && !className" class="catego-list">
-            <a  v-for="(cat, i) in action.fields.categories" :key="i" @click="selectCategory(cat.sys.id)" >
-                <span v-if="cat.fields" class="button-category" :style="{backgroundColor: cat.fields.color}">
-                </span>
-            </a>
-        </div>
-        <div v-else-if="$route.params.slug" class="catego-list">
-            <span v-for="(cat, i) in action.fields.categories" :key="i">
-                <span v-if="cat.fields" class="button-category" :style="{backgroundColor: cat.fields.color}">
-                </span>
-            </span>
-        </div>
         <div class="buttons">
+            <div v-if="!$route.params.slug && !className" class="catego-list">
+                <a  v-for="(cat, i) in action.fields.categories" :key="i" @click="selectCategory(cat.sys.id)" >
+                    <span v-if="cat.fields" class="button-category" :style="{backgroundColor: cat.fields.color}">
+                    </span>
+                </a>
+            </div>
+            <div v-else-if="$route.params.slug" class="catego-list">
+                <span v-for="(cat, i) in action.fields.categories" :key="i">
+                    <span v-if="cat.fields" class="button-category" :style="{backgroundColor: cat.fields.color}">
+                    </span>
+                </span>
+            </div>
             <a class="button is-primary" target="_blank" :href="action.fields.link">{{action.fields.callToAction}}</a>
             <nuxt-link class="button is-uppercase" target="_blank" :to="{path:'/'+$route.params.locale+'/action/'+action.fields.slug}">{{t('read-more')}}</nuxt-link>
         </div>
@@ -90,7 +90,6 @@ export default {
 .action {
     position: relative;
     padding: 20px;
-    justify-content: space-evenly;
     overflow: visible;
     
     small, p {
@@ -104,7 +103,7 @@ export default {
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
-        margin-top: 0;
+        margin-top: auto;
     }
     .picto-highlight {
         height: 80px;
