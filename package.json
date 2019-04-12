@@ -4,7 +4,6 @@
   "description": "belgian citizen actions for climate",
   "author": "nbwns <nicolas.bauwens@gmail.com>",
   "private": true,
-  
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",

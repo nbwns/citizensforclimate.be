@@ -1,7 +1,7 @@
 <template>
     <div :class="['has-background-white', 'action', className]" v-if="action.fields.name">
         <div v-if="className">
-            ICI ICONE
+            <img :src="action.fields.categories[0].fields.picto.fields.file.url" :alt="action.fields.categories[0].fields.picto.fields.title + '-icon'" class="picto-highlight">
         </div>
         <small class="action-meta has-text-grey is-size-6">{{action.fields.tag}}</small>
         <small class="action-meta action-date is-size-6">{{formatDate(action.fields.start)}}</small>
@@ -88,8 +88,11 @@ export default {
 
 <style lang="scss">
 .action {
+    position: relative;
     padding: 20px;
     justify-content: space-evenly;
+    overflow: visible;
+    
     small, p {
         margin-bottom: .6em;
     }
@@ -102,6 +105,23 @@ export default {
         justify-content: space-between;
         flex-wrap: wrap;
         margin-top: 0;
+    }
+    .picto-highlight {
+        height: 80px;
+        width: 80px;
+        padding: 5px;
+        border: 3px solid black;
+        border-radius: 50%;
+        box-sizing: border-box;
+        background-color: white;
+        position: absolute;
+        top: -38px;
+        right: 10px;
+    }
+    &.highlight {
+        small.action-meta.has-text-grey {
+            padding-right: 70px;
+        }
     }
 }
 .catego-list {
