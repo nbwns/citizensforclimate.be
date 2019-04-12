@@ -1,14 +1,18 @@
 <template>
     <div class="hero">
         <div class="lang-selector">
-            <nuxt-link v-if="$route.params.locale" :to="'/' + ($route.params.locale == 'fr' ? 'nl' : 'fr' )">
+            <nuxt-link v-if="$route.params.locale" :to="'/' + ($route.params.locale == 'fr' ? 'nl' : 'fr' )" :class="{'is-white': $route.params.slug}">
                 {{$route.params.locale == 'fr' ? 'NL' : 'FR'}}
             </nuxt-link>
         </div>
-        <div class="hero-body">
+        <div class="hero-body" :class="{'bg-black': $route.params.slug}">
             <div class="container has-text-centered">
             <nuxt-link :to="($route.params.locale ? '/' + $route.params.locale : '')">
-                <img src="~/assets/images/Citizens_for_climate_logo_300px.png" alt="Citizens for climate"/>
+                <div class="logo" :class="{'is-white': $route.params.slug}">
+                    <div class="logo-title">Citizens for Climate</div>
+                    <div class="logo-sub">Belgium</div>
+                </div>
+                <!-- <img src="~/assets/images/Citizens_for_climate_logo_300px.png" alt="Citizens for climate"/> -->
             </nuxt-link>
             </div>
         </div>
@@ -17,19 +21,44 @@
 
 <script>
 export default {
-
+    mounted(){
+        console.log(this.$route)
+    }
 }
 </script>
 
-<style>
-    .lang-selector{
-        display: flex;
-        align-self: flex-end;
-        padding: 5px 5px 0 0;
-        color: black;
-    }
-
+<style lang='scss'>
     .lang-selector a, .lang-selector a:hover{
         color: black;
+    }
+    .hero{
+        position: relative;
+        background-color: #64D7DE;
+        color: black;
+        .bg-black{
+            background-color: black;
+        }
+        .lang-selector {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: black;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    }
+    .logo {
+        font-family: 'Fjalla One', sans-serif;
+        font-size: 48px;
+        color: black;
+        text-transform: uppercase;
+        .logo-sub {
+            font-family: 'Niramit', sans-serif;
+            font-size: 20px;
+            letter-spacing: 4px;
+        }
+    }
+    .is-white {
+        color: white !important;
     }
 </style>

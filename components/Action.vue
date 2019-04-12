@@ -1,6 +1,6 @@
 <template>
     <div :class="['has-background-white', 'action', className]" v-if="action.fields.name">
-        <div v-if="className">
+        <div v-if="className == 'highlight'">
             <img v-if="action.fields.categories[0].fields.picto.fields.file" :src="action.fields.categories[0].fields.picto.fields.file.url" :alt="action.fields.categories[0].fields.picto.fields.title + '-icon'" class="picto-highlight">
         </div>
         <small class="action-meta has-text-grey is-size-6">{{action.fields.tag}}</small>
