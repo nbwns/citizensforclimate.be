@@ -5,6 +5,9 @@
         <div class="columns" >
           <div class="column is-two-thirds">
             <div class="action-detail has-background-white">
+              <span class="action-detail-picto">
+                <img v-if="action.fields.categories[0].fields.picto.fields.file" :src="action.fields.categories[0].fields.picto.fields.file.url" :alt="action.fields.categories[0].fields.picto.fields.title + '-icon'">
+              </span>
               <h1 class="title has-text-weight-normal is-3 is-uppercase">{{action.fields.name}}</h1>
               <small class="action-meta has-text-grey is-size-6">{{action.fields.promoter}}</small>
               <div class="content is-size-5" v-html="$md.render(action.fields.body)"></div>
@@ -29,7 +32,7 @@
                           </p>
                         </div>
                     </div>
-                    <div class="column" v-if="action.fields.localisationDescription || action.fields.link">
+                    <div class="column is-half" v-if="action.fields.localisationDescription || action.fields.link">
                         <div class="info-block" v-if="action.fields.localisationDescription">
                           <p class="is-uppercase label">
                               {{t("address")}}
@@ -57,7 +60,7 @@
               <img src="~/assets/images/white-arrow.png" /> <span>{{t("all-actions")}}</span>
             </nuxt-link>
           </div>
-          <div class="column">
+          <div class="column actions-related">
             <RelatedActions :categoryId="categoryId" :excludeId="action.sys.id"/>
           </div>
         </div>
@@ -163,18 +166,20 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
   h1 {
       font-family: 'Fjalla One', sans-serif;
       letter-spacing: 1px;
   }
 
   .columns{
-    padding: 50px 0 50px 0;
+    padding: 100px 0 50px 0;
   }
 
   .action-detail{
-    padding: 10px;
+    position: relative;
+    padding: 20px;
+    padding-top: 50px;
   }
 
    .action-detail a:not(.button){
@@ -188,9 +193,24 @@ export default {
     text-decoration: underline;
     transition: all 0.5s;
   }
-
+  .action-detail-picto {
+    position: absolute;
+    top: -50px;
+    left: -5px;
+    border: 3px solid black;
+    border-radius: 50%;
+    background-color: #fff;
+    height: 90px;
+    width: 90px;
+    padding: 5px;
+    @media screen and (min-width: 1088px) {
+      left: -40px;
+    }
+  }
+ 
   .info-block{
     margin-top: 20px;
+    word-wrap: break-word;
   }
 
   .label{
@@ -222,6 +242,12 @@ export default {
   }
   .see-all-actions span{
       padding: 0 0 0 10px;
+  }
+  @media screen and (min-width: 1088px){
+    .container.is-fluid.pratical-info {
+      margin-left: 0px;
+      margin-right: 0px;
+    }
   }
 </style>
 
