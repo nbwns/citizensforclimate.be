@@ -10,7 +10,7 @@
       <a @click="selectCategory(cat.sys.id, cat.fields.color)">
         <div class="filter-one">
           <div class="filter-picto" :style="[{ borderColor: cat.fields.color },cssProps]">
-            <img
+            <img v-if="cat.fields.picto.fields.file"
               :src="cat.fields.picto.fields.file.url"
               :alt="'icon-'+cat.fields.picto.fields.title"
             >
