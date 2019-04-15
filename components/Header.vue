@@ -5,7 +5,7 @@
                 {{$route.params.locale == 'fr' ? 'NL' : 'FR'}}
             </nuxt-link>
         </div>
-        <div class="hero-body" :class="{'bg-black': $route.params.slug}">
+        <div class="hero-body" :class="{'bg-black': $route.params.slug, 'bg-blue': $route.params.locale}">
             <div class="container has-text-centered">
             <nuxt-link :to="($route.params.locale ? '/' + $route.params.locale : '')">
                 <div class="logo" :class="{'is-white': $route.params.slug}">
@@ -33,9 +33,12 @@ export default {
     }
     .hero{
         position: relative;
-        background-color: #64D7DE;
+        background-color: white;
         color: black;
         height: 250px;
+        .bg-blue{
+            background-color: #64D7DE;
+        }
         .bg-black{
             background-color: black;
         }
