@@ -3,7 +3,7 @@ import moment from 'moment'
 const client = require('~/plugins/contentful')
 
 function timeline(locale){
-    console("timeline locale", locale)
+    //console("timeline locale", locale)
     let lang = locale || 'fr';
     
     return client.getEntries({
