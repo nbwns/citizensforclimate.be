@@ -43,7 +43,7 @@ const translations = {
         "address": "Adres",
         "infos": "Info",
         "all-actions": "Alle acties",
-        "footer-text": "Citizens for Climate is een platform dat is ontstaan uit een spontane burgerbeweging, geboren in de nasleep van recente massale mobilisaties overal ter wereld. Ons doel is te verwijzen naar acties en evenementen die burgers in staat stellen massaal te mobiliseren voor het klimaat!"
+        "footer-text": "Contacteer ons:"
     }
 }
 
