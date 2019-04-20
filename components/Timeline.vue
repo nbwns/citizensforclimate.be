@@ -21,7 +21,8 @@ export default {
             timelineMaker(this.$route.params.locale)
             .then(data => {
                 new TL.Timeline('timeline-embed',data, {
-                    language: this.$route.params.locale
+                    language: this.$route.params.locale,
+                    script_path: 'https://cdn.knightlab.com/libs/timeline3/latest/js'
                 });
             })
         }             
