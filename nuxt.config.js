@@ -54,7 +54,9 @@ module.exports = {
     }
   },
   plugins: [
-    '~/plugins/contentful', '~/plugins/translations'],
+    '~/plugins/contentful', '~/plugins/translations'
+    ,  { src:'~/plugins/load-script', ssr: false}
+  ],
   modules: [
     '@nuxtjs/dotenv', 
     '@nuxtjs/markdownit',
