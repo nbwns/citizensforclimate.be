@@ -22,9 +22,6 @@ export default {
 </script>
 
 <style>
-.hero{
-    background-color: white;
-}
 
 .hero .title{
   font-family: 'Fjalla One', sans-serif;
@@ -39,6 +36,9 @@ export default {
 
 .has-top-padding{
     padding: 20px 0 0 0;
+}
+.has-navbar-fixed-top {
+  padding-top: 0 !important;
 }
 
 #mc_embed_signup_scroll .input {

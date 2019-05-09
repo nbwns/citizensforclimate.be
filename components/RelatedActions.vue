@@ -66,7 +66,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 .title-box {
     background-color: #67de97;
 }
@@ -75,5 +75,10 @@ export default {
     font-family: 'Fjalla One', sans-serif;
     letter-spacing: 1px;
     padding: 1.3rem;
+}
+.actions-related {
+    .related {
+        margin: 20px 0;
+    }
 }
 </style>

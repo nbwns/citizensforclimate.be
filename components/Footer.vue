@@ -26,7 +26,7 @@
                     <div class="content is-size-4">
                         <p>{{t("footer-text")}}</p>
                         <p>
-                            <a class="has-text-weight-bold" href="mailto:rise@citizensforclimate.be">rise@citizensforclimate.be</a>
+                            <a class="has-text-weight-bold" href="mailto:rise@citizensforclimate.be">hello@citizensforclimate.be</a>
                         </p>
                     </div>
                 </div>
