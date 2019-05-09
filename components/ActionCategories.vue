@@ -1,38 +1,39 @@
 <template>
   <div id="actions-section">
-  <nav class="tabs navbar" :class="{'is-fixed-top': sticky}" v-on:scroll="handleScroll">
-    <div
-      v-for="cat in items"
-      :key="cat.sys.id"
-      class="tab-item"
-      :class="{'is-active': (cat.sys.id == selected)}"
-    >
-      <a @click="selectCategory(cat.sys.id, cat.fields.color)">
-        <div class="filter-one">
-          <div class="filter-picto" :style="[{ borderColor: cat.fields.color },cssProps]">
-            <img v-if="cat.fields.picto.fields.file"
-              :src="cat.fields.picto.fields.file.url"
-              :alt="'icon-'+cat.fields.picto.fields.title"
-            >
+    <nav class="tabs navbar" :class="{'is-fixed-top': sticky}" v-on:scroll="handleScroll">
+      <div
+        v-for="cat in items"
+        :key="cat.sys.id"
+        class="tab-item"
+        :class="{'is-active': (cat.sys.id == selected)}"
+      >
+        <a @click="selectCategory(cat.sys.id, cat.fields.color)">
+          <div class="filter-one">
+            <div class="filter-picto" :style="[{ borderColor: cat.fields.color },cssProps]">
+              <img
+                v-if="cat.fields.picto.fields.file"
+                :src="cat.fields.picto.fields.file.url"
+                :alt="'icon-'+cat.fields.picto.fields.title"
+              >
+            </div>
+            <span v-html="filterTitle(cat.fields.name)"></span>
           </div>
-          <span v-html="filterTitle(cat.fields.name)"></span>
-        </div>
-      </a>
-    </div>
-    <div class="tab-item">
-      <a @click="selectCategory()">
-        <div class="filter-one">
-          <div class="filter-picto" :style="{ borderColor: 'black' }">
-            <img src="~/assets/images/toutafficher.png" alt="icon-all">
+        </a>
+      </div>
+      <div class="tab-item">
+        <a @click="selectCategory()">
+          <div class="filter-one">
+            <div class="filter-picto" :style="{ borderColor: 'black' }">
+              <img src="~/assets/images/toutafficher.png" alt="icon-all">
+            </div>
+            <span>
+              Tout
+              <br>afficher
+            </span>
           </div>
-          <span>
-            Tout
-            <br>afficher
-          </span>
-        </div>
-      </a>
-    </div>
-  </nav>
+        </a>
+      </div>
+    </nav>
   </div>
 </template>
 
@@ -42,67 +43,71 @@ export default {
   data() {
     return {
       selected: null,
-      bgColor: 'blue',
+      bgColor: "blue",
       sticky: false,
       actionsOffset: Number
-    }
+    };
   },
   computed: {
     // Create CSS Props for variables
     cssProps() {
       return {
-        '--bg-picto-color': this.bgColor
-        }
+        "--bg-picto-color": this.bgColor
+      };
     }
   },
   created() {
-    window.addEventListener('scroll', this.handleScroll);
-    window.addEventListener('resize', this.handleResize);
+    window.addEventListener("scroll", this.handleScroll);
+    window.addEventListener("resize", this.handleResize);
   },
   destroyed() {
-    window.removeEventListener('scroll', this.handleScroll);
-    window.removeEventListener('resize', this.handleResize);
+    window.removeEventListener("scroll", this.handleScroll);
+    window.removeEventListener("resize", this.handleResize);
   },
   mounted() {
-    this.actionsOffset = document.getElementById('actions-section').offsetParent.offsetTop + document.querySelector('.action-head').offsetHeight
+    this.actionsOffset =
+      document.getElementById("actions-section").offsetParent.offsetTop +
+      document.querySelector(".action-head").offsetHeight;
   },
   methods: {
     selectCategory(id, color) {
       if (id == this.selected) {
-        this.selected = null
+        this.selected = null;
       } else {
-        this.selected = id
-        this.bgColor = color //add the bgcolor when click
+        this.selected = id;
+        this.bgColor = color; //add the bgcolor when click
       }
-      this.$emit("categoryChanged", this.selected)
-      this.scrollTop(this.actionsOffset)
+      this.$emit("categoryChanged", this.selected);
+      this.scrollTop(this.actionsOffset);
     },
     // Ajoute d'une retour a la ligne apres le first word
     filterTitle(value) {
-      const words = value.trim().split(" ")
-      const firstWord = words.shift()
-      return `${firstWord}<br>${words.join(" ")}`
+      const words = value.trim().split(" ");
+      const firstWord = words.shift();
+      return `${firstWord}<br>${words.join(" ")}`;
     },
-    scrollTop(offset){
+    scrollTop(offset) {
       window.scrollTo({
         top: offset,
         left: 0,
-        behavior: 'smooth'
-      })
+        behavior: "smooth"
+      });
     },
-    handleScroll(e){
-      const windowScroll = window.pageYOffset
-      if(windowScroll >= this.actionsOffset){
-        this.sticky = true
+    handleScroll(e) {
+      const windowScroll = window.pageYOffset;
+      if (windowScroll >= this.actionsOffset) {
+        this.sticky = true;
       } else {
-        this.sticky = false
+        this.sticky = false;
       }
     },
-    handleResize(){
-      this.actionsOffset = document.getElementById('actions-section').offsetParent.offsetTop + document.querySelector('.action-head').offsetHeight
+    handleResize() {
+      this.actionsOffset =
+        document.getElementById("actions-section").offsetParent.offsetTop +
+        document.querySelector(".action-head").offsetHeight;
     }
   }
-}
+};
 </script>
 
 <style lang="scss">
@@ -110,7 +115,7 @@ export default {
   display: flex;
   justify-content: center;
   white-space: normal;
-  background-color: #CDCDCD;
+  background-color: #c8e3e3;
   @media screen and (max-width: 770px) {
     justify-content: stretch;
   }
@@ -130,7 +135,7 @@ export default {
   }
 
   .filter-picto {
-    transition: all .2s ease-in-out;
+    transition: all 0.2s ease-in-out;
     background-color: #fff;
     height: 55px;
     width: 55px;
@@ -146,7 +151,7 @@ export default {
     img {
       height: 100%;
       width: 100%;
-      transition: all .2s ease-in-out;
+      transition: all 0.2s ease-in-out;
     }
   }
   .tab-item {
@@ -155,7 +160,7 @@ export default {
   .tab-item.is-active {
     .filter-picto {
       background-color: var(--bg-picto-color);
-      
+
       img {
         filter: invert(1);
       }
@@ -173,22 +178,21 @@ export default {
   // left: -15px;
   height: 120px;
   margin-bottom: 20px;
-  @media screen and ( max-width: 375px ){
+  @media screen and (max-width: 375px) {
     margin-bottom: 5px;
-   .tab-item {
-     padding: 10px;
-     padding-bottom: 12px;
-     font-size: .8em;
-     .filter-one {
-       min-width: 60px;
-     }
-     .filter-picto{
-       height: 45px;
-       width: 45px;
-       border: 2px solid;
-     }
-   }
+    .tab-item {
+      padding: 10px;
+      padding-bottom: 12px;
+      font-size: 0.8em;
+      .filter-one {
+        min-width: 60px;
+      }
+      .filter-picto {
+        height: 45px;
+        width: 45px;
+        border: 2px solid;
+      }
+    }
   }
-
 }
 </style>
