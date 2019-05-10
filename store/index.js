@@ -21,17 +21,7 @@ const createStore = () => {
             commit('setActivePage', page)
         },
         nuxtServerInit ({ commit }) {
-          client.getEntries({
-                content_type: 'simplePage',
-                'locale':"*",
-                order: 'fields.sortOrder',
-                'fields.sortOrder[gte]' : "1"
-            })
-            .then(entries => {
-                console.log("from store",entries.items.length)
-                commit('saveNavigationItems',entries.items)
-            })
-            .catch(console.error)
+          
         }
       }
   })

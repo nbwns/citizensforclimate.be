@@ -59,4 +59,4 @@ function translate(locale, key){
     }
 }
 
-module.exports = translate
+export default translate

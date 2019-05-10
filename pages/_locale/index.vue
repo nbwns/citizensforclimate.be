@@ -7,8 +7,8 @@
 </template>
 
 <script>
-//import client from '~/plugins/contentful'
-const client = require('~/plugins/contentful')
+import client from '~/plugins/contentful'
+//const client = require('~/plugins/contentful')
 import HomePage from '~/components/HomePage'
 
 export default {

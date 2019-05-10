@@ -1,10 +1,19 @@
 <template>
     <div>
-        <div>
-            <nuxt-link to="#">Actions</nuxt-link>
-            <nuxt-link to="#timeline">Timeline</nuxt-link>
-            <nuxt-link to="#map">Map</nuxt-link>
+        <div class="tabs navbar">
+            <ul>
+                <li class="tab-item" :class="{'is-active': currentHash === '#'}">
+                    <nuxt-link to="#">Actions</nuxt-link>
+                </li>
+                <li class="tab-item" :class="{'is-active': currentHash === '#timeline'}">
+                    <nuxt-link to="#timeline">Timeline</nuxt-link>
+                </li>
+                <li class="tab-item" :class="{'is-active': currentHash === '#map'}">
+                    <nuxt-link to="#map">Map</nuxt-link>
+                </li>
+            </ul>
         </div>
+ 
         <div>
             <div v-if="currentHash === '#'">
                 <Actions/>
