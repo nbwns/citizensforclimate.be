@@ -9,20 +9,23 @@
                 <div class="column is-size-5" v-html="$md.render(page.fields.pageRef.fields.introduction)"></div>
             </div>
         </div>
-        <Timeline/>
-        <Actions/>
+        <!-- <Timeline/> -->
+        <!-- <Actions/> -->
+        <ContentTabs/>
     </div>
 </template>
 
 <script>
 import Actions from '~/components/Actions'
 import Timeline from '~/components/Timeline'
+import ContentTabs from '~/components/ContentTabs'
 
 export default {
     props: ['page'],
     components: {
         Actions,
-        Timeline
+        Timeline,
+        ContentTabs
     }
 }
 </script>
