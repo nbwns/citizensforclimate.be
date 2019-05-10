@@ -70,7 +70,8 @@
 </template>
 
 <script>
-import client from '~/plugins/contentful'
+//import client from '~/plugins/contentful'
+const client = require('~/plugins/contentful')
 import translate from '~/plugins/translations'
 import moment from 'moment-with-locales-es6'
 import RelatedActions from '~/components/RelatedActions'

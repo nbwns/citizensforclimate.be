@@ -1,5 +1,6 @@
 import Vuex from 'vuex'
-import client from '~/plugins/contentful'
+//import client from '~/plugins/contentful'
+const client = require('~/plugins/contentful')
 
 const createStore = () => {
   return new Vuex.Store({
