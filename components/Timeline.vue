@@ -30,4 +30,8 @@ export default {
 
 <style>
 @import url('https://cdn.knightlab.com/libs/timeline3/latest/css/timeline.css');
+
+.tl-timeline, .tl-text .tl-headline-date {
+    font-family: 'Niramit', sans-serif;
+}
 </style>

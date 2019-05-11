@@ -44,7 +44,6 @@ export default {
     }).then(entries => {
       
       if(entries.items[0]){
-        store.dispatch('setActivePage', entries.items[0].fields.slug)
         return {
           page : entries.items[0],
           pageRef: entries.items[0].fields.pageRef ? entries.items[0].fields.pageRef.sys.contentType.sys.id : null

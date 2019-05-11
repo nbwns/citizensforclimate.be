@@ -5,23 +5,26 @@ const client = require('~/plugins/contentful')
 const createStore = () => {
   return new Vuex.Store({
     state: {
-      navigationItems: [],
-      activePage: ''
+      actions: []
     },
     mutations: {
-      saveNavigationItems (state, items) {
-        state.navigationItems = items
-      },
-      setActivePage (state, page) {
-        state.activePage = page
+      setActions(state,items){
+        state.actions = items
       }
     },
     actions: {
-        setActivePage({commit}, page){
-            commit('setActivePage', page)
-        },
-        nuxtServerInit ({ commit }) {
-          
+      fetchActions({commit}, params){
+      console.log("fetch actions in store")  
+
+            return client
+            .getEntries({
+              content_type: "action",
+              locale: params.locale + "-BE",
+              order: "fields.sortOrder,fields.name"
+            })
+            .then(entries => {
+              commit('setActions',entries.items)
+            });
         }
       }
   })

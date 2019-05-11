@@ -60,6 +60,7 @@ module.exports = {
   modules: [
     '@nuxtjs/dotenv', 
     '@nuxtjs/markdownit',
+    'nuxt-leaflet',
     ['@nuxtjs/google-analytics', {
       id: 'UA-129338926-1'
     }]

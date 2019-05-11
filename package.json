@@ -19,11 +19,14 @@
     "contentful": "^7.0.5",
     "cors": "^2.8.5",
     "express": "^4.16.4",
+    "leaflet": "^1.5.1",
     "moment": "^2.18.1",
     "moment-with-locales-es6": "^1.0.1",
     "nuxt": "^2.0.0",
     "nuxt-i18n": "^5.4.4",
-    "vue-plugin-load-script": "^1.2.0"
+    "nuxt-leaflet": "0.0.18",
+    "vue-plugin-load-script": "^1.2.0",
+    "vue2-leaflet": "^2.1.1"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",

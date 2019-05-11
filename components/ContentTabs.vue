@@ -22,7 +22,7 @@
                 <Timeline/>
             </div>
             <div v-if="currentHash === '#map'">
-                <Map/>
+                <Map :actions="actions"/>
             </div>
         </div>
     </div>
