@@ -16,7 +16,7 @@
  
         <div>
             <div v-if="currentHash === '#'">
-                <Actions/>
+                <Actions :actions="actions"/>
             </div>
             <div v-if="currentHash === '#timeline'">
                 <Timeline/>
@@ -39,7 +39,7 @@ export default {
     data() {
         return {
             actions: [],
-            currentHash: ''
+            currentHash: '#'
         }
     },
     components: {
@@ -66,7 +66,7 @@ export default {
     },
     watch: {
     '$route' (to, from) {
-        this.currentHash = to.hash
+        this.currentHash = to.hash || "#"
     }
   }
 }

@@ -55,9 +55,9 @@ import Action from "~/components/Action";
 import ActionCategories from "~/components/ActionCategories";
 
 export default {
+  props: ['actions'],
   data() {
     return {
-      actions: [],
       categories: [],
       loading: true,
       maxActions: 12,
@@ -126,7 +126,7 @@ export default {
         });
 
       return Promise.all([allActions, allCategories]).then(values => {
-        this.actions = values[0];
+        //this.actions = values[0];
         this.categories = values[1];
         this.loading = false;
       });
