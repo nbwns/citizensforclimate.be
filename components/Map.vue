@@ -1,5 +1,5 @@
 <template>
-    <div style="height: 100vh">
+    <div>
         <no-ssr>
             <l-map :zoom="zoom" :center="center">
                 <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
@@ -12,7 +12,12 @@
 <script>
 
 export default {
-    props: ['actions'],
+    // props: ['actions'],
+    data() {
+        return {
+            actions: []
+        }
+    },
     computed: {
         actionMarkers() {
             let items =  this.actions.filter(a => {
@@ -43,10 +48,5 @@ export default {
             //marker: this.$L.latLng(47.413220, -1.219482)
             markers: this.actionMarkers
         }
-  }
+    }
 }
-</script>
-
-<style>
-
-</style>

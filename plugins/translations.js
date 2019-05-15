@@ -60,3 +60,4 @@ function translate(locale, key){
 }
 
 export default translate
+//module.exports = translate
