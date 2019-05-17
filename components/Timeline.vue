@@ -1,6 +1,8 @@
 <template>
-    <div>
-        <div id='timeline-embed' style="width: 100%; height: 350px"></div>
+    <div class="timeline">
+        <div class="container is-fluid">
+            <div id='timeline-embed'></div>
+        </div>
     </div>
 </template>
 
@@ -28,8 +30,18 @@ export default {
 }
 </script>
 
-<style>
+<style scoped lang="scss">
 @import url('https://cdn.knightlab.com/libs/timeline3/latest/css/timeline.css');
+
+.timeline{
+
+  #timeline-embed{
+      width: 100%; 
+      height: 350px;
+  }
+}
+
+
 
 .tl-timeline, .tl-text .tl-headline-date {
     font-family: 'Niramit', sans-serif;

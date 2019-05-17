@@ -23,7 +23,7 @@
                 <Timeline/>
             </div>
             <div v-if="currentHash === '#map'">
-                <!-- <Map /> -->
+                <Map :actions="actions" />
             </div>
         </div>
     </div>
@@ -34,7 +34,7 @@ const client = require('~/plugins/contentful')
 
 import Actions from '~/components/Actions'
 import Timeline from '~/components/Timeline'
-// import Map from '~/components/Map'
+import Map from '~/components/Map'
 
 export default {
     data() {
@@ -46,10 +46,11 @@ export default {
     components: {
         Actions,
         Timeline,
-        // Map
+        Map
     },
     mounted(){
-        console.log("hash",this.$route)
+        console.log("hash",this.$route.hash)
+        this.currentHash = this.$route.hash
         if(this.$route.params.locale){
             //this.$i18n.locale = this.$route.params.locale
             return client.getEntries({
