@@ -3,6 +3,13 @@ html, body{
   margin:0;
   padding:0;
 }
+
+h2 {
+  font-family: "Fjalla One", sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
 .columns {
   margin-left: 0;
   margin-right: 0;
@@ -46,6 +53,10 @@ html, body{
   color: #67de97;
 }
 
+.title-head {
+  padding: 35px 0 35px 0;
+}
+
 .action{
   display:flex;
   flex-direction: column;
@@ -57,7 +68,7 @@ html, body{
   min-height: 360px;
 }
 
-.action.related{
+.action.highlight{
   border: 4px black solid;
   font-size: 1rem;
 }
@@ -67,36 +78,9 @@ html, body{
 
 }
 
-.action.highlight:hover {
-  -webkit-box-shadow: 0px 0px 0px 0px rgba(0,0,0,1);
-  -moz-box-shadow: 0px 0px 0px 0px rgba(0,0,0,1);
-  box-shadow: 0px 0px 0px 0px rgba(0,0,0,1);
-  transition: all 0.1s;
-}
-
-.action.highlight{
-  -webkit-box-shadow: -7px 7px 0px 0px rgba(0,0,0,1);
-  -moz-box-shadow: -7px 7px 0px 0px rgba(0,0,0,1);
-  box-shadow: -7px 7px 0px 0px rgba(0,0,0,1);
-  border: 4px black solid;
-  font-size: 1rem;
-  transition: all 0.2s;
-  min-height: 270px;
-
-}
-
-.action.highlight{
-  min-height: 450px;
-}
-
-
 .action p,
 .action .button {
   font-size: 1rem;
-}
-
-.action.highlight p  {
-  font-size: 1.25rem;
 }
 
 .action .title {

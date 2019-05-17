@@ -1,8 +1,5 @@
 <template>
     <div :class="['has-background-white', 'action', className]" v-if="action.fields.name">
-        <div v-if="className == 'highlight'">
-            <img v-if="action.fields.categories[0].fields.picto.fields.file" :src="action.fields.categories[0].fields.picto.fields.file.url" :alt="action.fields.categories[0].fields.picto.fields.title + '-icon'" class="picto-highlight">
-        </div>
         <small class="action-meta has-text-grey is-size-6">{{action.fields.tag}}</small>
         <small class="action-meta action-date is-size-6">{{formatDate(action.fields.start)}}</small>
         <h3 class="title is-3 has-text-weight-normal has-text-black">{{action.fields.name}}</h3>
@@ -75,12 +72,12 @@ export default {
             })
         },
         handleResize(){
-            this.actionsOffset = document.getElementById('actions-section').offsetParent.offsetTop + document.querySelector('.action-head').offsetHeight
+            this.actionsOffset = document.getElementById('actions-section').offsetParent.offsetTop + document.querySelector('.title-head').offsetHeight
         }
     },
     mounted() {
         if ( !this.$route.params.slug ) {
-            this.actionsOffset = document.getElementById('actions-section').offsetParent.offsetTop + document.querySelector('.action-head').offsetHeight
+            this.actionsOffset = document.getElementById('actions-section').offsetParent.offsetTop + document.querySelector('.title-head').offsetHeight
         }
     }
 }

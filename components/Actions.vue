@@ -1,22 +1,8 @@
 <template>
   <div class="actions has-text-black">
-    <div class="highlight-actions-background">
-      <div class="container is-fluid">
-        <div class="action-head has-text-centered">
-          <h2 class="title is-1 has-text-black">{{t("actions-highlight-title")}}</h2>
-          <p class="subtitle has-text-black">{{t("actions-highlight-subtitle")}}</p>
-        </div>
-        <Loader v-if="loading"/>
-        <div v-if="!loading" class="columns is-multiline is-centered">
-          <div class="column is-one-third" v-for="action in highlightActions" :key="action.id">
-            <Action :action="action" class="highlight"/>
-          </div>
-        </div>
-      </div>
-    </div>
     <div class="actions-background">
       <div class="container is-fluid">
-        <div class="action-head has-text-centered">
+        <div class="title-head has-text-centered">
           <h2 class="title is-1 has-text-black">{{t("actions-title")}}</h2>
           <p class="subtitle has-text-black">{{t("actions-subtitle")}}</p>
         </div>
@@ -29,7 +15,7 @@
               v-for="action in normalActions"
               :key="action.id"
             >
-              <Action :action="action" @categoryChanged="categoryFilter = $event"/>
+              <Action :action="action" :class="{highlight: action.fields.highlight}" @categoryChanged="categoryFilter = $event"/>
             </div>
           </div>
           <div
@@ -110,7 +96,7 @@ export default {
         .getEntries({
           content_type: "action",
           locale: this.$route.params.locale + "-BE",
-          order: "fields.sortOrder,fields.name"
+          order: "-fields.highlight,fields.sortOrder,fields.name"
         })
         .then(entries => {
           return entries.items;
@@ -137,30 +123,6 @@ export default {
 </script>
 
 <style scoped>
-h2 {
-  font-family: "Fjalla One", sans-serif;
-  letter-spacing: 1px;
-}
-
-.actions {
-  margin: 150px 0 40px 0;
-}
-
-.highlight-actions-background {
-  background-color: #67de97;
-  position: relative;
-}
-
-.highlight-actions-background:before {
-  content: "";
-  position: absolute;
-  top: -130px;
-  right: 180px;
-  width: 180px;
-  height: 251px;
-  background: url("/main_mobile_180px.png") no-repeat center/cover;
-}
-
 .actions-background {
   background-color: #c8e3e3;
 }
@@ -185,33 +147,17 @@ h2 {
   align-self: center;
 }
 
-.action-head {
-  padding: 35px 0 35px 0;
-}
-
 @media screen and (max-width: 1088px) {
-  .highlight-actions-background {
-    padding-left: 15px;
-  }
-
   .actions-background {
     padding-left: 15px;
-  }
-
-  .highlight-actions-background:before {
-    right: 110px;
   }
 }
 
 @media screen and (max-width: 768px) {
-  .highlight-actions-background:before {
-    display: none;
-  }
+
 }
 
 @media screen and (min-width: 768px) and (max-width: 1087px) {
-  .highlight-actions-background:before {
-    right: 20px;
-  }
+
 }
 </style>

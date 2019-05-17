@@ -67,7 +67,7 @@ export default {
   mounted() {
     this.actionsOffset =
       document.getElementById("actions-section").offsetParent.offsetTop +
-      document.querySelector(".action-head").offsetHeight;
+      document.querySelector(".title-head").offsetHeight;
   },
   methods: {
     selectCategory(id, color) {
@@ -104,7 +104,7 @@ export default {
     handleResize() {
       this.actionsOffset =
         document.getElementById("actions-section").offsetParent.offsetTop +
-        document.querySelector(".action-head").offsetHeight;
+        document.querySelector(".title-head").offsetHeight;
     }
   }
 };

@@ -1,6 +1,10 @@
 <template>
     <div class="timeline">
         <div class="container is-fluid">
+             <div class="title-head has-text-centered">
+                <h2 class="title is-1 has-text-black">Time is action</h2>
+                <p class="subtitle has-text-black">Actions &amp; rendez-vous climat</p>
+            </div>
             <div id='timeline-embed'></div>
         </div>
     </div>
@@ -34,11 +38,10 @@ export default {
 @import url('https://cdn.knightlab.com/libs/timeline3/latest/css/timeline.css');
 
 .timeline{
-
-  #timeline-embed{
-      width: 100%; 
-      height: 350px;
-  }
+    #timeline-embed{
+        width: 100%; 
+        height: 350px;
+    }
 }
 
 

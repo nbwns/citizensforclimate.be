@@ -1,23 +1,22 @@
 <template>
     <div>
-        <div class="tabs navbar">
+        <div class="container is-fluid tabs is-centered is-uppercase has-text-weight-bold has-text-centered">
             <ul>
-                <li class="tab-item" :class="{'is-active': currentHash === '#'}">
-                    <nuxt-link to="#">Actions</nuxt-link>
+                <li :class="{'is-active': currentHash === '#'}">
+                    <nuxt-link to="#">Guide</nuxt-link>
                 </li>
-                <li class="tab-item" :class="{'is-active': currentHash === '#timeline'}">
-                    <nuxt-link to="#timeline">Timeline</nuxt-link>
+                <li :class="{'is-active': currentHash === '#timeline'}">
+                    <nuxt-link to="#timeline">Ligne du temps</nuxt-link>
                 </li>
-                <li class="tab-item" :class="{'is-active': currentHash === '#map'}">
-                    <nuxt-link to="#map">Map</nuxt-link>
+                <li  :class="{'is-active': currentHash === '#map'}">
+                    <nuxt-link to="#map">Carte</nuxt-link>
                 </li>
             </ul>
         </div>
  
-        <div>
+        <div class="content-panel">
             <div v-if="currentHash === '#'">
                 <Actions />
-                actions
             </div>
             <div v-if="currentHash === '#timeline'">
                 <Timeline/>
@@ -49,8 +48,10 @@ export default {
         Map
     },
     mounted(){
-        console.log("hash",this.$route.hash)
         this.currentHash = this.$route.hash
+        if(this.currentHash === ''){
+            this.currentHash = '#'
+        }
         if(this.$route.params.locale){
             //this.$i18n.locale = this.$route.params.locale
             return client.getEntries({
@@ -74,6 +75,43 @@ export default {
 }
 </script>
 
-<style>
+<style scoped lang="scss">
+.tabs {
+    margin-bottom: 0;
+    background-color: white;
+    display: flex;
+    justify-content: center;
 
+    ul {
+        padding:0;
+        margin:0;
+    }
+
+    li {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+        padding: 0 10px 0 0;
+    }
+
+    li a {    
+        background-color:rgb(230,230,230);
+        height:50px;
+        width:120px;
+        border:solid gray 1px;
+        border-bottom:none;
+        color:black;
+    }
+
+    li.is-active a {
+        z-index:1;
+        background-color:#c8e3e3;
+    }
+}
+.content-panel{
+    border:solid gray 1px;
+    background-color: #c8e3e3;
+    padding: 0 0 40px 0;
+}
 </style>
