@@ -1,6 +1,10 @@
 <template>
     <div>
+        <div class="breaking-title container is-fluid is-centered is-uppercase has-text-weight-bold has-text-centered">
+            Trouve ici les actions qui font bouger les lignes
+        </div>
         <div class="container is-fluid tabs is-centered is-uppercase has-text-weight-bold has-text-centered">
+
             <ul>
                 <li :class="{'is-active': currentHash === '#'}">
                     <nuxt-link to="#">Guide</nuxt-link>
@@ -82,36 +86,49 @@ export default {
     display: flex;
     justify-content: center;
 
-    ul {
-        padding:0;
-        margin:0;
-    }
 
     li {
         display: flex;
         justify-content: center;
         flex-direction: column;
         text-align: center;
-        padding: 0 10px 0 0;
+        padding: 0 7px 0 0;
+
+        a {    
+            background-color:rgb(230,230,230);
+            height:50px;
+            width:150px;
+            border:solid black 2.5px;
+            border-bottom:none;
+            color: black;
+           font-size: 1em;
+        }
     }
 
-    li a {    
-        background-color:rgb(230,230,230);
-        height:50px;
-        width:120px;
-        border:solid gray 1px;
-        border-bottom:none;
-        color:black;
-    }
 
     li.is-active a {
         z-index:1;
         background-color:#c8e3e3;
+        border-bottom-color: #c8e3e3;
     }
 }
 .content-panel{
-    border:solid gray 1px;
+    border-bottom:solid black 2.5px;
+    border-top:solid black 2.5px;
     background-color: #c8e3e3;
     padding: 0 0 40px 0;
+}
+
+@media screen and (max-width: 454px) {
+  .tabs{
+    li{
+        padding: 0 2px 0 0;
+    }
+
+    li a {    
+            width:110px;
+            font-size: 0.80em;
+        }
+    }
 }
 </style>

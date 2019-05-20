@@ -22,7 +22,8 @@ export default {
                 .then(data => {
                     new TL.Timeline('timeline-embed',data, {
                         language: this.$route.params.locale,
-                        script_path: 'https://cdn.knightlab.com/libs/timeline3/latest/js'
+                        script_path: 'https://cdn.knightlab.com/libs/timeline3/latest/js',
+                        timenav_height_min: 100
                     });
                 })
             })
@@ -40,7 +41,7 @@ export default {
 .timeline{
     #timeline-embed{
         width: 100%; 
-        height: 350px;
+        height: 500px;
     }
 }
 

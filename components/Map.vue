@@ -62,7 +62,7 @@ export default {
         return {
             zoom:8,
             center: this.$L.latLng(50.49, 4.46),
-            url:'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
+            url:'https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoiam9ubmllZGViIiwiYSI6ImNqdm5peWF4azE5N2Y0NHBpNTlpazlnZHcifQ.1PLGiM8IHFrSw0u5Qt4eLw',
             attribution:'&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
             markers: []
 
@@ -79,7 +79,7 @@ export default {
 <style lang="scss" scoped>
 .map-container{
     .map{
-        height: 350px;
+        height: 500px;
     }
 }
 
