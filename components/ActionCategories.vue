@@ -26,10 +26,10 @@
             <div class="filter-picto" :style="{ borderColor: 'black' }">
               <img src="~/assets/images/toutafficher.png" alt="icon-all">
             </div>
-            <span>
+            <!-- <span>
               Tout
               <br>afficher
-            </span>
+            </span> -->
           </div>
         </a>
       </div>

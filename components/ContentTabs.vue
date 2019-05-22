@@ -1,32 +1,39 @@
 <template>
     <div>
-        <div class="breaking-title container is-fluid is-centered is-uppercase has-text-weight-bold has-text-centered">
-            Trouve ici les actions qui font bouger les lignes
+        <div class="citizen-message">            
+            <div class="container is-fluid has-text-centered">
+                <div class="text-container">
+                    <p class="is-size-4 has-text-black is-uppercase has-text-weight-bold is-breaking">
+                        {{t('breaking-title')}}
+                    </p>
+                </div>
+            </div>
         </div>
         <div class="container is-fluid tabs is-centered is-uppercase has-text-weight-bold has-text-centered">
 
             <ul>
                 <li :class="{'is-active': currentHash === '#'}">
-                    <nuxt-link to="#">Guide</nuxt-link>
+                    <nuxt-link to="#">{{t('actions-tab')}}</nuxt-link>
                 </li>
                 <li :class="{'is-active': currentHash === '#timeline'}">
-                    <nuxt-link to="#timeline">Ligne du temps</nuxt-link>
+                    <nuxt-link to="#timeline">{{t('timeline-tab')}}</nuxt-link>
                 </li>
                 <li  :class="{'is-active': currentHash === '#map'}">
-                    <nuxt-link to="#map">Carte</nuxt-link>
+                    <nuxt-link to="#map">{{t('map-tab')}}</nuxt-link>
                 </li>
             </ul>
         </div>
  
         <div class="content-panel">
             <div v-if="currentHash === '#'">
-                <Actions title="Guide des actions" subtitle="Pour toutes les ambitions" />
+                <Actions :title="t('actions-title')" :subtitle="t('actions-subtitle')" />
             </div>
             <div v-if="currentHash === '#timeline'">
-                <Timeline/>
+                <Timeline :title="t('timeline-title')" :subtitle="t('timeline-subtitle')"/>
             </div>
             <div v-if="currentHash === '#map'">
-                <Map :actions="actions" />
+                <Map :title="t('map-title')" :subtitle="t('map-subtitle')"
+                    :actions="actions" />
             </div>
         </div>
     </div>
@@ -61,22 +68,22 @@ export default {
         //this.$i18n.locale = this.$route.params.locale
         let allActions = client
             .getEntries({
-            content_type: "action",
-            locale: this.$route.params.locale + "-BE",
-            order: "-fields.highlight,fields.sortOrder,fields.name"
+                content_type: "action",
+                locale: this.$route.params.locale + "-BE",
+                order: "-fields.highlight,fields.sortOrder,fields.name"
             })
             .then(entries => {
-            return entries.items;
+                return entries.items;
             });
 
         let allCategories = client
             .getEntries({
-            content_type: "actionCategory",
-            locale: this.$route.params.locale + "-BE",
-            order: "fields.sortOrder"
+                content_type: "actionCategory",
+                locale: this.$route.params.locale + "-BE",
+                order: "fields.sortOrder"
             })
             .then(entries => {
-            return entries.items;
+                return entries.items;
             });
 
         return Promise.all([allActions, allCategories]).then(values => {

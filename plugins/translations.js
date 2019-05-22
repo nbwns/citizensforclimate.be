@@ -1,8 +1,6 @@
 const translations = {
     "fr": {
         "read-more": "> Lire la suite",
-        "actions-highlight-title": "CLIMATE NOW",
-        "actions-highlight-subtitle": "Événements incontournables et imminents",
         "actions-title": "GUIDE DES ACTIONS",
         "actions-subtitle": "Pour toutes les ambitions",
         "actions-more": "Plus d'actions",
@@ -20,12 +18,18 @@ const translations = {
         "address": "Adresse",
         "infos": "Infos",
         "all-actions": "Toutes les actions",
-        "footer-text": "Pour nous contacter:"
+        "footer-text": "Pour nous contacter:",
+        "breaking-title": "Trouve ici les actions qui font bouger les lignes",
+        "timeline-title": "LIGNE DU TEMPS",
+        "timeline-subtitle": "Dates-clés pour le mouvement",
+        "map-title": "GEOLOCALIS'ACTIONS",
+        "map-subtitle": "Ca se passe près de chez vous",
+        "actions-tab": "Guide",
+        "timeline-tab": "Ligne du temps",
+        "map-tab": "Carte"
     },
     "nl": {
         "read-more": "> Verder lezen",        
-        "actions-highlight-title": "CLIMATE NOW",
-        "actions-highlight-subtitle": "Onvermeidelijke en dringende events",
         "actions-title": "LOPENDE ACTIES",
         "actions-subtitle": "Voor elke ambitie",
         "actions-more": "Méér acties",
@@ -43,7 +47,16 @@ const translations = {
         "address": "Adres",
         "infos": "Info",
         "all-actions": "Alle acties",
-        "footer-text": "Contacteer ons:"
+        "footer-text": "Contacteer ons:",
+        "breaking-title": "Vind hier een overzicht van acties voor verandering",
+        "timeline-title": "TIJDLIJN",
+        "timeline-subtitle": "",
+        "map-title": "MOBILISATIEMAP",
+        "map-subtitle": "",
+        "actions-tab": "Gids",
+        "timeline-tab": "Tijdlijn",
+        "map-tab": "Kaart"
+
     }
 }
 

@@ -56,7 +56,7 @@
                 </div>
               </div>  
             </div>
-            <nuxt-link class="see-all-actions has-text-black" :to="'/'+ $route.params.locale">
+            <nuxt-link class="see-all-actions has-text-black" :to="'/'+ $route.params.locale + $route.query.returnTo">
               <img src="~/assets/images/white-arrow.png" /> <span>{{t("all-actions")}}</span>
             </nuxt-link>
           </div>

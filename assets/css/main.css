@@ -61,14 +61,10 @@ h2 {
   padding: 35px 0 35px 0;
 }
 
-.breaking-title{
-  padding: 60px 0 80px 0;
+.is-breaking{
   font-family: 'Rock Salt', cursive;
-  text-transform: uppercase;
   letter-spacing: 3px;
-  font-size: 1.2em;
-  font-weight: bold;
-  color: black;
+  padding: 3px;
 }
 
 .action{

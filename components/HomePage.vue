@@ -42,9 +42,9 @@ export default {
 }
 
 .introduction h1 {
-    font-family: 'Fjalla One', sans-serif;
+    font-family: 'Rock Salt', cursive;
     letter-spacing: 1px;
-    font-size: 1.75rem;
+    font-size: 1.2rem;
 }
 
 img.people{

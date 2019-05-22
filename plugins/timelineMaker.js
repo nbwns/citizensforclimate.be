@@ -61,7 +61,7 @@ function timeline(locale){
             else if(type === "Action"){
                 let action = item.fields.linkedAction;
 
-                newTimelineItem.link = `http://www.citizensforclimate.be/${lang}/actions/${action.fields.slug}`;
+                newTimelineItem.link = `http://www.citizensforclimate.be/${lang}/actions/${action.fields.slug}?returnTo=#timeline`;
                  
                 let title = {
                     "text": {

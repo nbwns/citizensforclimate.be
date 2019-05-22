@@ -3,8 +3,8 @@
     <div class="light-blue-background">
       <div class="container is-fluid">
         <div class="title-head has-text-centered">
-          <h2 class="title is-1 has-text-black">{{t("actions-title")}}</h2>
-          <p class="subtitle has-text-black">{{t("actions-subtitle")}}</p>
+          <h2 class="title is-1 has-text-black">{{title}}</h2>
+          <p class="subtitle has-text-black">{{subtitle}}</p>
         </div>
         <Loader v-if="loading"/>
         <template v-if="!loading">
@@ -41,7 +41,7 @@ import Action from "~/components/Action";
 import ActionCategories from "~/components/ActionCategories";
 
 export default {
-  // props: ['actions'],
+  props: ['title', 'subtitle'],
   data() {
     return {
       actions: [],

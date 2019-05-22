@@ -2,8 +2,8 @@
     <div class="timeline">
         <div class="container is-fluid">
              <div class="title-head has-text-centered">
-                <h2 class="title is-1 has-text-black">Time is action</h2>
-                <p class="subtitle has-text-black">Actions &amp; rendez-vous climat</p>
+                <h2 class="title is-1 has-text-black">{{title}}</h2>
+                <p class="subtitle has-text-black">{{subtitle}}</p>
             </div>
             <div id='timeline-embed'></div>
         </div>
