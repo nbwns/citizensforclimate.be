@@ -1,10 +1,10 @@
 <template>
     <div>
-      <div class="has-background-grey-lighter">
+      <div class="light-blue-background">
         <div class="container is-fluid">
           <div class="columns" >
             <div class="column is-two-thirds">
-              <div class="action-detail has-background-white">
+              <div class="page-content has-background-white">
                 <h1 class="title has-text-weight-normal is-3 is-uppercase">{{page.fields.title}}</h1>
                 <div class="content is-size-5" v-html="$md.render(page.fields.body)"></div>
               </div>
@@ -83,14 +83,20 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
   h1 {
       font-family: 'Fjalla One', sans-serif;
       letter-spacing: 1px;
   }
+
+  .columns{
+    padding: 100px 0 50px 0;
+  }
   
-  .action-detail{
-    padding: 10px;
+  .page-content{
+    position: relative;
+    padding: 20px;
+    padding-top: 50px;
   }
 </style>
 

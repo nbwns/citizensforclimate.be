@@ -14,6 +14,7 @@
 import timelineMaker from '~/plugins/timelineMaker'
 
 export default {
+    props: ['title', 'subtitle'],
     mounted(){
         if (process.client) {
             this.$loadScript("https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js")

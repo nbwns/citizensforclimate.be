@@ -35,7 +35,7 @@ function timeline(locale){
                     if(item.fields.start){
                         let mStartDate = moment(item.fields.start)
                         let startDate = {
-                            "display_date": mStartDate.format("DD/MM/YYYY HH:mm"),
+                            "display_date": mStartDate.format("DD/MM/YYYY"),
                             "month": mStartDate.month() + 1,
                             "day": mStartDate.date(),
                             "year": mStartDate.year()
@@ -45,7 +45,7 @@ function timeline(locale){
                         if(item.fields.end){
                             let mEndDate = moment(item.fields.end)
                             let endDate = {
-                                "display_date": mEndDate.format("DD/MM/YYYY HH:mm"),
+                                "display_date": mEndDate.format("DD/MM/YYYY"),
                                 "month": mEndDate.month() + 1,
                                 "day": mEndDate.date(),
                                 "year": mEndDate.year()

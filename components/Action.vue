@@ -7,15 +7,9 @@
             {{action.fields.introductionText}}
         </p>
         <div class="buttons">
-            <div v-if="!$route.params.slug && !className" class="catego-list">
-                <a  v-for="(cat, i) in action.fields.categories" :key="i" @click="selectCategory(cat.sys.id)" >
-                    <span v-if="cat.fields" class="button-category" :style="{backgroundColor: cat.fields.color}">
-                    </span>
-                </a>
-            </div>
-            <div v-else-if="$route.params.slug" class="catego-list">
+            <div class="catego-list">
                 <span v-for="(cat, i) in action.fields.categories" :key="i">
-                    <span v-if="cat.fields" class="button-category" :style="{backgroundColor: cat.fields.color}">
+                    <span v-if="cat.fields" class="button-category" :style="{backgroundColor: cat.fields.color}" :title="cat.fields.name">
                     </span>
                 </span>
             </div>

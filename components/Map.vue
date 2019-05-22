@@ -38,7 +38,7 @@
 <script>
 import translate from "~/plugins/translations"
 export default {
-    props: ['actions'],
+    props: ['actions', 'title', 'subtitle'],
     mounted(){
         this.markers =  this.actions.filter(a => {
                 return a.fields.localisationGeo

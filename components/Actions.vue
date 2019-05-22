@@ -1,6 +1,6 @@
 <template>
   <div class="actions has-text-black">
-    <div class="actions-background">
+    <div class="light-blue-background">
       <div class="container is-fluid">
         <div class="title-head has-text-centered">
           <h2 class="title is-1 has-text-black">{{t("actions-title")}}</h2>
@@ -123,10 +123,6 @@ export default {
 </script>
 
 <style scoped>
-.actions-background {
-  background-color: #c8e3e3;
-}
-
 .see-more-actions {
   text-transform: uppercase;
   font-weight: bold;
@@ -148,7 +144,7 @@ export default {
 }
 
 @media screen and (max-width: 1088px) {
-  .actions-background {
+  .light-blue-background {
     padding-left: 15px;
   }
 }

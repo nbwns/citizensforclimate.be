@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="has-background-grey-lighter">
+    <div class="light-blue-background">
       <div class="container is-fluid">
         <div class="columns" >
           <div class="column is-two-thirds">

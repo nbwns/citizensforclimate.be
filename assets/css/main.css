@@ -4,6 +4,10 @@ html, body{
   padding:0;
 }
 
+.light-blue-background{
+  background-color: #c8e3e3;
+}
+
 h2 {
   font-family: "Fjalla One", sans-serif;
   letter-spacing: 1px;
@@ -75,12 +79,23 @@ h2 {
   margin: 5px 25px 25px 5px;
   padding: 10px;
   font-size: 0.75rem;
-  min-height: 360px;
+  min-height: 400px;
 }
 
 .action.highlight{
+  -webkit-box-shadow: 0px 0px 0px 0px rgba(0,0,0,1);
+  -moz-box-shadow: 0px 0px 0px 0px rgba(0,0,0,1);
+  box-shadow: 0px 0px 0px 0px rgba(0,0,0,1);
   border: 4px black solid;
   font-size: 1rem;
+  transition: all 0.2s;
+}
+
+.action.highlight:hover {
+  -webkit-box-shadow: -7px 7px 0px 0px rgba(0,0,0,1);
+  -moz-box-shadow: -7px 7px 0px 0px rgba(0,0,0,1);
+  box-shadow: -7px 7px 0px 0px rgba(0,0,0,1);
+  transition: all 0.1s;
 }
 
 .related-action-container{

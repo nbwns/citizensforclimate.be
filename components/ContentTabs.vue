@@ -20,7 +20,7 @@
  
         <div class="content-panel">
             <div v-if="currentHash === '#'">
-                <Actions />
+                <Actions title="Guide des actions" subtitle="Pour toutes les ambitions" />
             </div>
             <div v-if="currentHash === '#timeline'">
                 <Timeline/>
@@ -34,7 +34,7 @@
 
 <script>
 const client = require('~/plugins/contentful')
-
+import translate from "~/plugins/translations";
 import Actions from '~/components/Actions'
 import Timeline from '~/components/Timeline'
 import Map from '~/components/Map'
@@ -43,6 +43,7 @@ export default {
     data() {
         return {
             actions: [],
+            categories: [],
             currentHash: '#'
         }
     },
@@ -51,25 +52,44 @@ export default {
         Timeline,
         Map
     },
-    mounted(){
+    mounted() {
         this.currentHash = this.$route.hash
         if(this.currentHash === ''){
             this.currentHash = '#'
         }
-        if(this.$route.params.locale){
-            //this.$i18n.locale = this.$route.params.locale
-            return client.getEntries({
-                content_type: 'action',
-                'locale':this.$route.params.locale+ "-BE",
-                'order': 'fields.sortOrder,fields.name'
+        if (this.$route.params.locale) {
+        //this.$i18n.locale = this.$route.params.locale
+        let allActions = client
+            .getEntries({
+            content_type: "action",
+            locale: this.$route.params.locale + "-BE",
+            order: "-fields.highlight,fields.sortOrder,fields.name"
             })
             .then(entries => {
-                this.actions = entries.items
-                this.loading = false
+            return entries.items;
+            });
+
+        let allCategories = client
+            .getEntries({
+            content_type: "actionCategory",
+            locale: this.$route.params.locale + "-BE",
+            order: "fields.sortOrder"
             })
-            .catch(console.error)
+            .then(entries => {
+            return entries.items;
+            });
+
+        return Promise.all([allActions, allCategories]).then(values => {
+            this.actions = values[0];
+            this.categories = values[1];
+            // this.loading = false;
+        });
         }
-        
+    },
+    methods:{
+        t(key) {
+            return translate(this.$route.params.locale, key);
+        }
     },
     watch: {
     '$route' (to, from) {
