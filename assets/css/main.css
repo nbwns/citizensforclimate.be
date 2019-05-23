@@ -75,7 +75,7 @@ h2 {
   margin: 5px 25px 25px 5px;
   padding: 10px;
   font-size: 0.75rem;
-  min-height: 400px;
+  min-height: 405px;
 }
 
 .action.highlight{
@@ -141,13 +141,7 @@ a.read-more {
 }
 
 @media screen and (min-width: 769px) and (max-width: 1206px) {
-  .action{
-    min-height: 425px;
-  }
 
-  .action.highlight{
-    min-height: 600px;
-  }
 }
 
 

@@ -24,7 +24,8 @@ export default {
                     new TL.Timeline('timeline-embed',data, {
                         language: this.$route.params.locale,
                         script_path: 'https://cdn.knightlab.com/libs/timeline3/latest/js',
-                        timenav_height_min: 100
+                        timenav_height_min: 100,
+                        initial_zoom: 1
                     });
                 })
             })
