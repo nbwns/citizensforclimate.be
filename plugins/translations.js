@@ -50,9 +50,9 @@ const translations = {
         "footer-text": "Contacteer ons:",
         "breaking-title": "Vind hier een overzicht van acties voor verandering",
         "timeline-title": "TIJDLIJN",
-        "timeline-subtitle": "Dit gebeurt bij u in de buurt",
+        "timeline-subtitle": "Belangrijke data voor de beweging",
         "map-title": "MOBILISATIEMAP",
-        "map-subtitle": "Belangrijke data voor de beweging",
+        "map-subtitle": "Dit gebeurt bij u in de buurt",
         "actions-tab": "Gids",
         "timeline-tab": "Tijdlijn",
         "map-tab": "Kaart"

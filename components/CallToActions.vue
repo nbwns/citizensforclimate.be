@@ -4,7 +4,7 @@
             <div class="container is-fluid has-text-centered">
                 <div class="text-container">
                     <p class="is-size-6 has-text-black is-uppercase has-text-weight-bold">{{t("citizen")}}</p>
-                    <p class="is-size-4 has-text-black is-uppercase has-text-weight-bold is-breaking">{{t("i-stay-up-to-date")}}</p>
+                    <p class="is-size-5 has-text-black is-uppercase has-text-weight-bold is-breaking">{{t("i-stay-up-to-date")}}</p>
                     <p class="is-size-5 has-text-grey">{{t("get-the-agenda")}}</p>
                 </div>
                 <div class="columns is-centered">
@@ -33,7 +33,7 @@
             <div class="container is-fluid has-text-centered">
                 <div class="text-container">
                     <p class="is-size-6 has-text-black is-uppercase has-text-weight-bold">{{t("association")}}</p>
-                    <p class="is-size-4 has-text-black is-uppercase has-text-weight-bold is-breaking">{{t("i-contribute")}}</p>
+                    <p class="is-size-5 has-text-black is-uppercase has-text-weight-bold is-breaking">{{t("i-contribute")}}</p>
                     <p class="is-size-5 has-text-grey">{{t("send-your-action")}}</p>
                 </div>
                 <div class="has-top-padding">
