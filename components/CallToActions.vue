@@ -37,8 +37,8 @@
                     <p class="is-size-5 has-text-grey">{{t("send-your-action")}}</p>
                 </div>
                 <div class="has-top-padding">
-                    <a v-if="$route.params.locale === 'fr'" href="https://forms.gle/hFwGEthZBkt9hr1k9" target="_blank" class="button">{{t("i-fill-the-form")}}</a>               
-                    <a v-else href="https://forms.gle/enzPL6FuBGzipp2M9" target="_blank" class="button">{{t("i-fill-the-form")}}</a>               
+                    <a v-if="$route.params.locale === 'fr'" href="https://forms.gle/aSi3pqoGDFw3Z3jw8" target="_blank" class="button">{{t("i-fill-the-form")}}</a>               
+                    <a v-else href="https://forms.gle/aSi3pqoGDFw3Z3jw8" target="_blank" class="button">{{t("i-fill-the-form")}}</a>               
                 </div>
             </div>
         </div>
