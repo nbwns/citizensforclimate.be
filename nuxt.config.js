@@ -1,5 +1,6 @@
 require('dotenv').config()
 const client = require('./plugins/contentful')
+const axios = require('axios')
 
 module.exports = {
   /*
@@ -58,12 +59,61 @@ module.exports = {
     ,  { src:'~/plugins/load-script', ssr: false}
   ],
   modules: [
-    '@nuxtjs/dotenv', 
+    '@nuxtjs/dotenv',
     '@nuxtjs/markdownit',
     'nuxt-leaflet',
     ['@nuxtjs/google-analytics', {
       id: 'UA-129338926-1'
-    }]
+    }],
+    ['@nuxtjs/feed']
+  ],
+  feed: [
+    {
+      path: '/fr/feed.xml',
+      cacheTime: 1000 * 60 * 15,
+      type: 'rss2',
+      async create(feed) {
+        feed.options = {
+          title: 'Citizens for Climate',
+          link: 'https://www.citizensforclimate.be/fr/feed.xml',
+          description: 'Flux RSS de Citizens for Climate'
+        }
+
+        const content = await axios.get(`https://cdn.contentful.com/spaces/${process.env.CTF_SPACE_ID}/environments/${process.env.CTF_ENV}/entries?access_token=${process.env.CTF_ACCESS_TOKEN}&locale=fr-BE`)
+        content.data.items.forEach(post => {
+          feed.addItem({
+            title: post.fields.name,
+            id: post.sys.id,
+            link: post.fields.link,
+            description: post.fields.introductionText,
+            content: post.fields.body
+          })
+        })
+      }
+    },
+    {
+      path: '/nl/feed.xml',
+      cacheTime: 1000 * 60 * 15,
+      type: 'rss2',
+      async create(feed) {
+        feed.options = {
+          title: 'Citizens for Climate',
+          link: 'https://www.citizensforclimate.be/nl/feed.xml',
+          description: 'RSS-feed van Citizens for Climate'
+        }
+
+        const content = await axios.get(`https://cdn.contentful.com/spaces/${process.env.CTF_SPACE_ID}/environments/${process.env.CTF_ENV}/entries?access_token=${process.env.CTF_ACCESS_TOKEN}&locale=nl-BE`)
+        content.data.items.forEach(post => {
+          feed.addItem({
+            title: post.fields.name,
+            id: post.sys.id,
+            link: post.fields.link,
+            description: post.fields.introductionText,
+            content: post.fields.body
+          })
+        })
+      }
+    }
   ],
   markdownit: {
     html: true,
@@ -124,7 +174,7 @@ module.exports = {
       })
 
       return Promise.all([frPages,nlPages, nlActions, frActions]).then(values => {
-        return [...values[0], ...values[1], ...values[2], ...values[3]] 
+        return [...values[0], ...values[1], ...values[2], ...values[3]]
       })
     },
     fallback: true
