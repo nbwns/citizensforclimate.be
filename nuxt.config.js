@@ -85,8 +85,7 @@ module.exports = {
             title: post.fields.name,
             id: post.sys.id,
             link: post.fields.link,
-            description: post.fields.introductionText,
-            content: post.fields.body
+            description: post.fields.introductionText
           })
         })
       }
@@ -108,8 +107,7 @@ module.exports = {
             title: post.fields.name,
             id: post.sys.id,
             link: post.fields.link,
-            description: post.fields.introductionText,
-            content: post.fields.body
+            description: post.fields.introductionText
           })
         })
       }
