@@ -84,7 +84,7 @@ module.exports = {
           feed.addItem({
             title: post.fields.name,
             id: post.sys.id,
-            link: post.fields.link,
+            link: `https://www.citizensforclimate.be/fr/action/${post.fields.slug}`,
             description: post.fields.introductionText
           })
         })
@@ -97,7 +97,7 @@ module.exports = {
       async create(feed) {
         feed.options = {
           title: 'Citizens for Climate',
-          link: 'https://www.citizensforclimate.be/nl/feed.xml',
+          link: `https://www.citizensforclimate.be/nl/action/${post.fields.slug}`,
           description: 'RSS-feed van Citizens for Climate'
         }
 
