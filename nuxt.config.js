@@ -80,7 +80,7 @@ module.exports = {
         }
 
         const content = await axios.get(`https://cdn.contentful.com/spaces/${process.env.CTF_SPACE_ID}/environments/${process.env.CTF_ENV}/entries?access_token=${process.env.CTF_ACCESS_TOKEN}&locale=fr-BE`)
-        content.data.items.forEach(post => {
+        content.data.items.filter(post => post.fields.slug && post.sys.contentType.sys.id !== 'simplePage').forEach(post => {
           feed.addItem({
             title: post.fields.name,
             id: post.sys.id,
@@ -102,7 +102,7 @@ module.exports = {
         }
 
         const content = await axios.get(`https://cdn.contentful.com/spaces/${process.env.CTF_SPACE_ID}/environments/${process.env.CTF_ENV}/entries?access_token=${process.env.CTF_ACCESS_TOKEN}&locale=nl-BE`)
-        content.data.items.forEach(post => {
+        content.data.items.filter(post => post.fields.slug && post.sys.contentType.sys.id !== 'simplePage').forEach(post => {
           feed.addItem({
             title: post.fields.name,
             id: post.sys.id,
