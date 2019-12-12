@@ -11,11 +11,21 @@
                         <li class="is-size-4 is-uppercase"><a href="/nl/over-ons">Over ons</a></li>
                         <li class="is-size-4 is-uppercase"><a href="/nl/disclaimer">Disclaimer</a></li>
                     </ul>
-                    <p>
-                        <a href="https://www.facebook.com/citizensforclimate.be" target="_blank">
-                            <img src="~/assets/images/facebook.png"/>
+                    <ul class="social-links">
+                      <li>
+                        <a href="https://www.facebook.com/citizensforclimate.be" target="_blank" class="social-link">
+                          <img src="~/assets/images/facebook.png" class="social-icon"/>
                         </a>
-                    </p>
+                      </li>
+                      <li>
+                        <a v-if="$route.params.locale === 'fr'" href="https://www.citizensforclimate.be/fr/feed.xml" class="social-link">
+                          <img src="~/assets/images/rss.svg" class="social-icon"/>
+                        </a>
+                        <a v-if="$route.params.locale === 'nl'" href="https://www.citizensforclimate.be/nl/feed.xml" class="social-link">
+                          <img src="~/assets/images/rss.svg" class="social-icon"/>
+                        </a>
+                      </li>
+                    </ul>
                     <p class="credits">
                         Graphics: <a href="http://www.emisakurai.com/" target="_blank">Emi Sakurai</a><br/>
                         Website: <a href="https://www.linkedin.com/in/nicolasbauwens" target="_blank">Nicolas Bauwens</a>
@@ -65,7 +75,18 @@ export default{
     }
 
     .credits{
-  margin-top: auto;
+      margin-top: auto;
+    }
 
+    .social-links {
+      display: flex;
+    }
+
+    .social-link {
+      margin-right: 10px;
+    }
+
+    .social-icon {
+      width: 40px;
     }
 </style>
