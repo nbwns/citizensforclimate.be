@@ -154,7 +154,7 @@ export default {
         {
           hid: `og:image`,
           property: 'og:image',
-          content: `http://www.citizensforclimate.be/facebookcover.jpg`
+          content: (this.action.fields.image ? this.action.fields.image.fields.file.url : `http://www.citizensforclimate.be/facebookcover.jpg`)
         },
         {
           hid: `og:description`,
