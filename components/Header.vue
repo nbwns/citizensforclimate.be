@@ -1,8 +1,8 @@
 <template>
     <div class="hero">
         <div class="lang-selector">
-            <nuxt-link v-if="$route.params.locale" :to="'/' + ($route.params.locale == 'fr' ? 'nl' : 'fr' )" :class="{'is-white': $route.params.slug}">
-                {{$route.params.locale == 'fr' ? 'NL' : 'FR'}}
+            <nuxt-link v-if="$route.params.locale" :to="'/' + (newLang)" :class="{'is-white': $route.params.slug}" @click.native='changeLanguage(newLang)'>
+                {{newLang.toUpperCase()}}
             </nuxt-link>
         </div>
         <div class="hero-body" :class="{'bg-black': $route.params.slug, 'bg-blue': $route.params.locale}">
@@ -21,8 +21,15 @@
 
 <script>
 export default {
-    mounted(){
-        console.log(this.$route)
+    methods: {
+      changeLanguage (newLang) {
+        localStorage.setItem('language', newLang);
+      }
+    },
+    computed: {
+      newLang: function () {
+        return this.$route.params.locale == 'fr' ? 'nl' : 'fr'
+      }
     }
 }
 </script>
