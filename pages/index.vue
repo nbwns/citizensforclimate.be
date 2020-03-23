@@ -56,8 +56,8 @@ export default {
 <style>
   .loader {
     position: relative;
-    width: 11em;
-    height: 11em;
+    width: 60px;
+    height: 60px;
     margin: 50px auto;
     font-size: 10px;
     text-indent: -9999em;
