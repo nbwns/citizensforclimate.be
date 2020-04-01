@@ -61,6 +61,27 @@ export default {
                     }
                 } 
             })
+        this.actions.filter(a => {
+                return a.fields.locationsList
+        }).forEach(a => {
+            a.fields.locationsList.forEach(l => {
+                this.markers.push({
+                    id: a.sys.id,
+                    title: a.fields.name,
+                    tag: a.fields.tag,
+                    intro: a.fields.introductionText,
+                    promoter: a.fields.promoter,
+                    date: a.fields.start || '',
+                    link: `https://www.citizensforclimate.be/${this.$route.params.locale}/action/${a.fields.slug}?returnTo=#map`,
+                    category: a.fields.categories[0].fields.picto.fields.title,
+                    position: {
+                        lat: l.fields.locationGeo.lat,
+                        lng: l.fields.locationGeo.lon
+                    }
+                })
+            })
+        })
+
     },
     data() {
         return {
