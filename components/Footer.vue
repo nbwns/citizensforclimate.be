@@ -21,18 +21,18 @@
                         Website: <a href="https://www.linkedin.com/in/nicolasbauwens" target="_blank">Nicolas Bauwens</a>
                     </p>
                 </div>
-                
+
                 <div class="column">
                     <div class="content is-size-4">
                         <p>{{t("footer-text")}}</p>
                         <p>
-                            <a class="has-text-weight-bold" href="mailto:rise@citizensforclimate.be">hello@citizensforclimate.be</a>
+                            <a class="has-text-weight-bold" href="mailto:hello@citizensforclimate.be">hello@citizensforclimate.be</a>
                         </p>
                     </div>
                 </div>
             </div>
         </div>
-    </footer> 
+    </footer>
 </template>
 
 <script>
