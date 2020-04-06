@@ -12,7 +12,6 @@
                     <div class="logo-title">Citizens for Climate</div>
                     <div class="logo-sub">Belgium</div>
                 </div>
-                <!-- <img src="~/assets/images/Citizens_for_climate_logo_300px.png" alt="Citizens for climate"/> -->
             </nuxt-link>
             </div>
         </div>
@@ -50,6 +49,8 @@ export default {
             position: absolute;
             top: 20px;
             right: 30px;
+            padding: 10px;
+            background-color: white;
             color: black;
             font-size: 18px;
             font-weight: bold;
