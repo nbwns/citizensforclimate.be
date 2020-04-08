@@ -1,7 +1,7 @@
 <template>
     <div class="hero">
-        <div class="lang-selector">
-            <nuxt-link v-if="$route.params.locale" :to="'/' + (newLang)" :class="{'is-white': $route.params.slug}" @click.native='changeLanguage(newLang)'>
+        <div class="lang-selector" v-if="$route.path !== '/'">
+            <nuxt-link v-if="$route.params.locale" :to="'/' + (newLang)" @click.native='changeLanguage(newLang)'>
                 {{newLang.toUpperCase()}}
             </nuxt-link>
         </div>
