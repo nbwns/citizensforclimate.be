@@ -4,6 +4,7 @@
     <nuxt/>
     <CallToActions/>
     <Footer />
+    <SurveyBanner />
   </div>
 </template>
 
@@ -11,12 +12,14 @@
 import Header from '~/components/Header'
 import Footer from '~/components/Footer'
 import CallToActions from '~/components/CallToActions'
+import SurveyBanner from '~/components/SurveyBanner'
 
 export default {
   components: {
       Header,
       Footer,
-      CallToActions
+      CallToActions,
+      SurveyBanner
   }
 }
 </script>
@@ -60,7 +63,7 @@ export default {
 .contribute .button{
     font-size: 1.2rem;
     border: 2px black solid;
-    text-transform: none;    
+    text-transform: none;
 }
 </style>
 
