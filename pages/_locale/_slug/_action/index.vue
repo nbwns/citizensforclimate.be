@@ -42,6 +42,15 @@
                                 :href="'https://www.openstreetmap.org/directions?from=&to='+action.fields.localisationGeo.lat+'%2C'+action.fields.localisationGeo.lon+'#map=17/'+action.fields.localisationGeo.lat+'/'+action.fields.localisationGeo.lon" 
                                 target="_blank">{{action.fields.localisationDescription}}</a>
                               <span v-else>{{action.fields.localisationDescription}}</span>
+
+                              <template v-if="action.fields.locationsList">
+                                <div v-for="location in action.fields.locationsList" :key="location.sys.id">
+                                  <a v-if="location.fields.locationGeo" 
+                                  :href="'https://www.openstreetmap.org/directions?from=&to='+location.fields.locationGeo.lat+'%2C'+location.fields.locationGeo.lon+'#map=17/'+location.fields.locationGeo.lat+'/'+location.fields.locationGeo.lon" 
+                                  target="_blank">{{location.fields.locationDescription}}</a>
+                                  <span v-else>{{location.fields.locationDescription}}</span>
+                                </div>
+                              </template>
                           </p>
                         </div>
                         <div class="info-block"  v-if="action.fields.link">
