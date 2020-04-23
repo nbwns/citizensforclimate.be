@@ -27,7 +27,7 @@ const translations = {
         "actions-tab": "Guide",
         "timeline-tab": "Ligne du temps",
         "map-tab": "Carte",
-        "survey-message": "Nous menons actuellement une enquête pour que ce site puisse mieux correspondre tes attentes. Avec 10 minutes de ton temps, tu nous aiderais beaucoup !",
+        "survey-message": "Nous menons actuellement une enquête pour que ce site puisse mieux correspondre à tes attentes. Avec 10 minutes de ton temps, tu nous aiderais beaucoup !",
         "i-answer-survey": "Je réponds à l'enquête"
     },
     "nl": {
