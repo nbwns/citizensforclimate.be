@@ -11,26 +11,19 @@
               <h1 class="title has-text-weight-normal is-3 is-uppercase">{{action.fields.name}}</h1>
               <small class="action-meta has-text-grey is-size-6">{{action.fields.promoter}}</small>
               <div class="content is-size-5" v-html="$md.render(action.fields.body)"></div>
-              <a class="button is-primary is-size-4" v-if="action.fields.link" :href="action.fields.link">{{action.fields.callToAction}}</a>              
+              <a class="button is-primary is-size-4" v-if="action.fields.link" :href="action.fields.link">{{action.fields.callToAction}}</a>
               <div class="container is-fluid pratical-info">
                 <div class="columns">
                     <div class="column is-half" v-if="action.fields.start || action.fields.end">
-                        <div class="info-block" v-if="action.fields.start">
-                          <p class="is-uppercase label">
-                              {{t("date-start")}}
-                          </p>
-                          <p class="is-uppercase">
-                              {{formatDate(action.fields.start)}}
-                          </p>
-                        </div>
-                        <div class="info-block" v-if="action.fields.end">
-                          <p class="is-uppercase label">
-                              {{t("date-end")}}
-                          </p>
-                          <p class="is-uppercase">
-                              {{formatDate(action.fields.end)}}
-                          </p>
-                        </div>
+                      <div class="info-block">
+                        <p class="is-uppercase label">
+                          {{t("date-when")}}
+                        </p>
+                        <p class="is-uppercase" v-if="action.fields.start && !action.fields.end">{{t("date-start-only")}} {{formatDate(action.fields.start)}}</p>
+                        <p class="is-uppercase" v-else-if="action.fields.end && !action.fields.start">{{t("date-end-only")}} {{formatDate(action.fields.end)}}</p>
+                        <p class="is-uppercase" v-else-if="action.fields.start === action.fields.end">{{formatDate(action.fields.start)}}</p>
+                        <p class="is-uppercase" v-else>{{t("date-start")}} {{formatDate(action.fields.start)}} {{t("date-end")}} {{formatDate(action.fields.end)}}</p>
+                      </div>
                     </div>
                     <div class="column is-half" v-if="action.fields.localisationDescription || action.fields.link">
                         <div class="info-block" v-if="action.fields.localisationDescription">
@@ -38,15 +31,15 @@
                               {{t("address")}}
                           </p>
                           <p>
-                              <a v-if="action.fields.localisationGeo" 
-                                :href="'https://www.openstreetmap.org/directions?from=&to='+action.fields.localisationGeo.lat+'%2C'+action.fields.localisationGeo.lon+'#map=17/'+action.fields.localisationGeo.lat+'/'+action.fields.localisationGeo.lon" 
+                              <a v-if="action.fields.localisationGeo"
+                                :href="'https://www.openstreetmap.org/directions?from=&to='+action.fields.localisationGeo.lat+'%2C'+action.fields.localisationGeo.lon+'#map=17/'+action.fields.localisationGeo.lat+'/'+action.fields.localisationGeo.lon"
                                 target="_blank">{{action.fields.localisationDescription}}</a>
                               <span v-else>{{action.fields.localisationDescription}}</span>
 
                               <template v-if="action.fields.locationsList">
                                 <div v-for="location in action.fields.locationsList" :key="location.sys.id">
-                                  <a v-if="location.fields.locationGeo" 
-                                  :href="'https://www.openstreetmap.org/directions?from=&to='+location.fields.locationGeo.lat+'%2C'+location.fields.locationGeo.lon+'#map=17/'+location.fields.locationGeo.lat+'/'+location.fields.locationGeo.lon" 
+                                  <a v-if="location.fields.locationGeo"
+                                  :href="'https://www.openstreetmap.org/directions?from=&to='+location.fields.locationGeo.lat+'%2C'+location.fields.locationGeo.lon+'#map=17/'+location.fields.locationGeo.lat+'/'+location.fields.locationGeo.lon"
                                   target="_blank">{{location.fields.locationDescription}}</a>
                                   <span v-else>{{location.fields.locationDescription}}</span>
                                 </div>
@@ -63,7 +56,7 @@
                         </div>
                     </div>
                 </div>
-              </div>  
+              </div>
             </div>
             <nuxt-link class="see-all-actions has-text-black" :to="'/'+ $route.params.locale + $route.query.returnTo">
               <img src="~/assets/images/white-arrow.png" /> <span>{{t("all-actions")}}</span>
@@ -214,9 +207,8 @@ export default {
     padding: 5px;
     border: 3px solid;
     border-radius: 50%;
-    
   }
- 
+
   .info-block{
     margin-top: 20px;
     word-wrap: break-word;
