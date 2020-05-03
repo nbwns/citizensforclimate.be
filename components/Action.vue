@@ -1,7 +1,10 @@
 <template>
     <div :class="['has-background-white', 'action', className]" v-if="action.fields.name">
         <small class="action-meta has-text-grey is-size-6">{{action.fields.tag}}</small>
-        <small class="action-meta action-date is-size-6">{{formatDate(action.fields.start)}}</small>
+        <small class="action-meta action-date is-size-6" v-if="action.fields.start && !action.fields.end">{{t("date-start-only")}} {{formatDate(action.fields.start)}}</small>
+        <small class="action-meta action-date is-size-6" v-else-if="action.fields.end && !action.fields.start">{{t("date-end-only")}} {{formatDate(action.fields.end)}}</small>
+        <small class="action-meta action-date is-size-6" v-else-if="action.fields.start === action.fields.end">{{formatDate(action.fields.start)}}</small>
+        <small class="action-meta action-date is-size-6" v-else>{{t("date-start")}} {{formatDate(action.fields.start)}} {{t("date-end")}} {{formatDate(action.fields.end)}}</small>
         <h3 class="title is-3 has-text-weight-normal has-text-black">{{action.fields.name}}</h3>
         <p>
             {{action.fields.introductionText}}
@@ -16,7 +19,7 @@
             <a class="button is-primary" target="_blank" :href="action.fields.link">{{action.fields.callToAction}}</a>
             <nuxt-link class="button is-uppercase" target="_blank" :to="{path:'/'+$route.params.locale+'/action/'+action.fields.slug, query: { returnTo: '#' }}">{{t('read-more')}}</nuxt-link>
         </div>
-    </div> 
+    </div>
 </template>
 
 <script>
@@ -82,7 +85,7 @@ export default {
     position: relative;
     padding: 20px;
     overflow: visible;
-    
+
     small, p {
         margin-bottom: .6em;
     }
