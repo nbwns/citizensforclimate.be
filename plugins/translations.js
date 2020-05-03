@@ -26,9 +26,7 @@ const translations = {
         "map-subtitle": "Ca se passe près de chez vous",
         "actions-tab": "Guide",
         "timeline-tab": "Ligne du temps",
-        "map-tab": "Carte",
-        "survey-message": "Nous menons actuellement une enquête pour que ce site puisse mieux correspondre à tes attentes. Avec 10 minutes de ton temps, tu nous aiderais beaucoup !",
-        "i-answer-survey": "Je réponds à l'enquête"
+        "map-tab": "Carte"
     },
     "nl": {
         "read-more": "> Verder lezen",
@@ -57,9 +55,7 @@ const translations = {
         "map-subtitle": "Dit gebeurt bij u in de buurt",
         "actions-tab": "Gids",
         "timeline-tab": "Tijdlijn",
-        "map-tab": "Kaart",
-        "survey-message": "We voeren momenteel een onderzoek uit zodat deze site beter aan jouw verwachtingen kan voldoen. Met 10 minuutjes van je tijd, zou je ons veel helpen!",
-        "i-answer-survey": "Ik vul de enquête in"
+        "map-tab": "Kaart"
     }
 }
 
