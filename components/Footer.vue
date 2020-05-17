@@ -27,8 +27,7 @@
                       </li>
                     </ul>
                     <p class="credits">
-                        Graphics: <a href="http://www.emisakurai.com/" target="_blank">Emi Sakurai</a><br/>
-                        Website: <a href="https://www.linkedin.com/in/nicolasbauwens" target="_blank">Nicolas Bauwens</a>
+                        <a href="https://www.contentful.com/" rel="nofollow" target="_blank"><img src="//images.ctfassets.net/fo9twyrwpveg/7F5pMEOhJ6Y2WukCa2cYws/398e290725ef2d3b3f0f5a73ae8401d6/PoweredByContentful_DarkBackground.svg" style="max-width:100px;width:100%;" alt="Powered by Contentful" /></a>
                     </p>
                 </div>
 
