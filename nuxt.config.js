@@ -65,7 +65,10 @@ module.exports = {
     ['@nuxtjs/google-analytics', {
       id: 'UA-129338926-1'
     }],
-    ['@nuxtjs/feed']
+    ['@nuxtjs/feed'],
+    ['@netsells/nuxt-hotjar', { 
+      id: '1823329'
+    }],
   ],
   feed: [
     {
