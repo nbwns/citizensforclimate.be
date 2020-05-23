@@ -10,7 +10,7 @@
               </span>
               <h1 class="title has-text-weight-normal is-3 is-uppercase">{{action.fields.name}}</h1>
               <small class="action-meta has-text-grey is-size-6">{{action.fields.promoter}}</small>
-              <div class="content is-size-5" v-html="$md.render(action.fields.body)"></div>
+              <div class="content is-size-5" v-html="actionBody"></div>
               <a class="button is-primary is-size-4" v-if="action.fields.link" :href="action.fields.link">{{action.fields.callToAction}}</a>
               <div class="container is-fluid pratical-info">
                 <div class="columns">
@@ -76,8 +76,8 @@
 const client = require('~/plugins/contentful')
 import translate from '~/plugins/translations'
 import moment from 'moment-with-locales-es6'
+import marked from 'marked'
 import RelatedActions from '~/components/RelatedActions'
-
 
 export default {
   components: {
@@ -86,6 +86,11 @@ export default {
   data () {
     return {
       categoryId: null
+    }
+  },
+  computed: {
+    actionBody: function () {
+      return marked(this.action.fields.body)
     }
   },
   methods: {
