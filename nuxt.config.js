@@ -60,13 +60,12 @@ module.exports = {
   ],
   modules: [
     '@nuxtjs/dotenv',
-    '@nuxtjs/markdownit',
     'nuxt-leaflet',
     ['@nuxtjs/google-analytics', {
       id: 'UA-129338926-1'
     }],
     ['@nuxtjs/feed'],
-    ['@netsells/nuxt-hotjar', { 
+    ['@netsells/nuxt-hotjar', {
       id: '1823329'
     }],
   ],
@@ -116,10 +115,6 @@ module.exports = {
       }
     }
   ],
-  markdownit: {
-    html: true,
-    injected: true
-  },
   generate: {
     routes () {
       let frPages = client.getEntries({
