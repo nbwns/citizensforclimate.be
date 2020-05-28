@@ -6,7 +6,7 @@
             <div class="column is-two-thirds">
               <div class="page-content has-background-white">
                 <h1 class="title has-text-weight-normal is-3 is-uppercase">{{page.fields.title}}</h1>
-                <div class="content is-size-5" v-html="$md.render(page.fields.body)"></div>
+                <div class="content is-size-5" v-html="actionBody"></div>
               </div>
             </div>
             <div class="column">
@@ -19,7 +19,7 @@
 </template>
 
 <script>
-//import client from '~/plugins/contentful'
+import marked from 'marked'
 const client = require('~/plugins/contentful')
 import RelatedActions from '~/components/RelatedActions'
 
@@ -29,9 +29,14 @@ export default {
   components: {
     RelatedActions
   },
+  computed: {
+    actionBody: function () {
+      return marked(this.action.fields.body)
+    }
+  },
   asyncData({params,error, store, payload}){
     console.log("params",params.locale, params.slug)
-    if(payload){ 
+    if(payload){
       console.log("payload", payload)
       return {
         page: payload
@@ -42,7 +47,7 @@ export default {
       'fields.slug': params.slug,
       'locale': params.locale + "-BE"
     }).then(entries => {
-      
+
       if(entries.items[0]){
         return {
           page : entries.items[0],
@@ -92,7 +97,7 @@ export default {
   .columns{
     padding: 100px 0 50px 0;
   }
-  
+
   .page-content{
     position: relative;
     padding: 20px;
