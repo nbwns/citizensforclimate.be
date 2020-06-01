@@ -1,12 +1,12 @@
 <template>
-    <div v-if="page.fields.pageRef">       
+    <div v-if="page.fields.pageRef">
         <div class="container is-fluid introduction has-text-black">
             <div class="columns">
                 <!-- lui en relatif -->
                 <div class="column is-one-third">
                     <!-- retirer absolu en responsive -->
                     <img class="people" src="~/assets/images/people.png"/></div>
-                <div class="column is-size-5" v-html="$md.render(page.fields.pageRef.fields.introduction)"></div>
+                <div class="column is-size-5" v-html="introduction"></div>
             </div>
         </div>
         <!-- <Timeline/> -->
@@ -16,6 +16,7 @@
 </template>
 
 <script>
+import marked from 'marked'
 import Actions from '~/components/Actions'
 import Timeline from '~/components/Timeline'
 import ContentTabs from '~/components/ContentTabs'
@@ -26,6 +27,11 @@ export default {
         Actions,
         Timeline,
         ContentTabs
+    },
+    computed: {
+      introduction: function() {
+        return marked(this.page.fields.pageRef.fields.introduction)
+      }
     }
 }
 </script>

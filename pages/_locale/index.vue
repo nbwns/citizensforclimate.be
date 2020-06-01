@@ -1,13 +1,10 @@
 <template>
   <div>
-    <!-- <div class="content" v-html="$md.render(page.fields.body)"></div> -->
-    
     <HomePage :page="page" />
   </div>
 </template>
 
 <script>
-//import client from '~/plugins/contentful'
 const client = require('~/plugins/contentful')
 import HomePage from '~/components/HomePage'
 
@@ -17,7 +14,7 @@ export default {
     HomePage
   },
   asyncData({params,error, store, payload}){
-    if(payload){ 
+    if(payload){
       return {
         page: payload
       }
@@ -27,7 +24,7 @@ export default {
       'fields.slug': 'home',
       'locale': params.locale + "-BE"
     }).then(entries => {
-      
+
       if(entries.items[0]){
         return {
           page : entries.items[0],
