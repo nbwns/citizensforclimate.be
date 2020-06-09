@@ -117,6 +117,9 @@ module.exports = {
   ],
   generate: {
     routes () {
+      const frStatic = ['/fr', '/fr/a-propos', '/fr/mentions-legales']
+      const nlStatic = ['/nl', '/nl/over-ons', '/nl/disclaimer']
+
       let frPages = client.getEntries({
           content_type: 'simplePage',
           'locale':"fr-BE"
@@ -170,7 +173,7 @@ module.exports = {
       })
 
       return Promise.all([frPages,nlPages, nlActions, frActions]).then(values => {
-        return [...values[0], ...values[1], ...values[2], ...values[3]]
+        return [...frStatic, ...nlStatic, ...values[0], ...values[1], ...values[2], ...values[3]]
       })
     },
     fallback: true
