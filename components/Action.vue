@@ -1,23 +1,22 @@
 <template>
-    <div :class="['has-background-white', 'action', className]" v-if="action.fields.name">
-        <small class="action-meta has-text-grey is-size-6">{{action.fields.tag}}</small>
-        <small class="action-meta action-date is-size-6" v-if="action.fields.start && !action.fields.end">{{t("date-start-only")}} {{formatDate(action.fields.start)}}</small>
-        <small class="action-meta action-date is-size-6" v-else-if="action.fields.end && !action.fields.start">{{t("date-end-only")}} {{formatDate(action.fields.end)}}</small>
-        <small class="action-meta action-date is-size-6" v-else-if="action.fields.start === action.fields.end">{{formatDate(action.fields.start)}}</small>
-        <small class="action-meta action-date is-size-6" v-else>{{t("date-start")}} {{formatDate(action.fields.start)}} {{t("date-end")}} {{formatDate(action.fields.end)}}</small>
-        <h3 class="title is-3 has-text-weight-normal has-text-black">{{action.fields.name}}</h3>
-        <p>
-            {{action.fields.introductionText}}
-        </p>
-        <div class="buttons">
-            <div class="catego-list">
-                <span v-for="(cat, i) in action.fields.categories" :key="i">
-                    <span v-if="cat.fields" class="button-category" :style="{backgroundColor: cat.fields.color}" :title="cat.fields.name">
-                    </span>
-                </span>
+    <div :class="['card', className]" v-if="action.fields.name">
+        <div class="card-image">
+            <figure class="image is-4by3">
+                <img v-if="action.fields.image" :src="action.fields.image.fields.file.url" :title="action.fields.image.fields.title">
+            </figure>
+        </div>
+        <div class="card-content">
+            <div class="media-content">
+                <nuxt-link class="title is-3 has-text-weight-normal has-text-black" target="_blank" :to="{path:'/'+$route.params.locale+'/action/'+action.fields.slug}">{{action.fields.name}}</nuxt-link>
+                <a :key="keyword" v-for="keyword in action.fields.keywords">{{keyword}}</a>
             </div>
-            <a class="button is-primary" target="_blank" :href="action.fields.link">{{action.fields.callToAction}}</a>
-            <nuxt-link class="button is-uppercase" target="_blank" :to="{path:'/'+$route.params.locale+'/action/'+action.fields.slug, query: { returnTo: '#' }}">{{t('read-more')}}</nuxt-link>
+            <div class="content">
+                <small class="action-meta action-date is-size-6" v-if="action.fields.start && !action.fields.end">{{t("date-start-only")}} {{formatDate(action.fields.start)}}</small>
+                <small class="action-meta action-date is-size-6" v-else-if="action.fields.end && !action.fields.start">{{t("date-end-only")}} {{formatDate(action.fields.end)}}</small>
+                <small class="action-meta action-date is-size-6" v-else-if="action.fields.start === action.fields.end">{{formatDate(action.fields.start)}}</small>
+                <small class="action-meta action-date is-size-6" v-else>{{t("date-start")}} {{formatDate(action.fields.start)}} {{t("date-end")}} {{formatDate(action.fields.end)}}</small>
+                <!-- <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time> -->
+            </div>
         </div>
     </div>
 </template>
@@ -92,54 +91,12 @@ export default {
     small {
         line-height: 1.2em;
     }
-    .buttons {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        margin-top: auto;
-    }
-    .picto-highlight {
-        height: 80px;
-        width: 80px;
-        padding: 5px;
-        border: 3px solid black;
-        border-radius: 50%;
-        box-sizing: border-box;
-        background-color: white;
-        position: absolute;
-        top: -38px;
-        right: 10px;
-    }
-    &.highlight {
-        small.action-meta.has-text-grey {
-            padding-right: 70px;
-        }
+
+    .highlight {
+        
     }
 }
-.catego-list {
-    width: 100%;
-    height: 15px;
-    margin: 10px 0;
-    margin-top: auto;
-    span.button-category {
-        display: inline-block;
-        width: 15px;
-        height: 15px;
-        background: #000;
-        border-radius: 50%;
-        color: white;
-    }
-    a, span {
-        margin: 0 3px;
-        &:first-child {
-            margin-left: 0;
-        }
-        &:last-child {
-            margin-right: 0;
-        }
-    }
-}
+
 
 
 </style>

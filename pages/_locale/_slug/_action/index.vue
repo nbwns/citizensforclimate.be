@@ -5,69 +5,48 @@
         <div class="columns" >
           <div class="column is-two-thirds">
             <div class="action-detail has-background-white">
-              <span class="action-detail-picto" :style="[{ borderColor: action.fields.categories[0].fields.color }]">
-                <img v-if="action.fields.categories[0].fields.picto.fields.file" :src="action.fields.categories[0].fields.picto.fields.file.url" :alt="action.fields.categories[0].fields.picto.fields.title + '-icon'" >
-              </span>
+              <figure>
+                <img v-if="action.fields.image" :src="action.fields.image.fields.file.url" :title="action.fields.image.fields.title">
+            </figure>
+              <span>{{action.fields.categories[0].fields.name}}</span>
               <h1 class="title has-text-weight-normal is-3 is-uppercase">{{action.fields.name}}</h1>
-              <small class="action-meta has-text-grey is-size-6">{{action.fields.promoter}}</small>
+              <div>Organisé par <a :key="org.sys.id" v-for="org in action.fields.organizers" :href="org.fields.website">{{org.fields.name}}</a> </div>
               <div class="content is-size-5" v-html="actionBody"></div>
-              <a class="button is-primary is-size-4" v-if="action.fields.link" :href="action.fields.link">{{action.fields.callToAction}}</a>
-              <div class="container is-fluid pratical-info">
-                <div class="columns">
-                    <div class="column is-half" v-if="action.fields.start || action.fields.end">
-                      <div class="info-block">
-                        <p class="is-uppercase label">
-                          {{t("date-when")}}
-                        </p>
-                        <p class="is-uppercase" v-if="action.fields.start && !action.fields.end">{{t("date-start-only")}} {{formatDate(action.fields.start)}}</p>
-                        <p class="is-uppercase" v-else-if="action.fields.end && !action.fields.start">{{t("date-end-only")}} {{formatDate(action.fields.end)}}</p>
-                        <p class="is-uppercase" v-else-if="action.fields.start === action.fields.end">{{formatDate(action.fields.start)}}</p>
-                        <p class="is-uppercase" v-else>{{t("date-start")}} {{formatDate(action.fields.start)}} {{t("date-end")}} {{formatDate(action.fields.end)}}</p>
-                      </div>
-                    </div>
-                    <div class="column is-half" v-if="action.fields.localisationDescription || action.fields.link">
-                        <div class="info-block" v-if="action.fields.localisationDescription">
-                          <p class="is-uppercase label">
-                              {{t("address")}}
-                          </p>
-                          <p>
-                              <a v-if="action.fields.localisationGeo"
-                                :href="'https://www.openstreetmap.org/directions?from=&to='+action.fields.localisationGeo.lat+'%2C'+action.fields.localisationGeo.lon+'#map=17/'+action.fields.localisationGeo.lat+'/'+action.fields.localisationGeo.lon"
-                                target="_blank">{{action.fields.localisationDescription}}</a>
-                              <span v-else>{{action.fields.localisationDescription}}</span>
-
-                              <template v-if="action.fields.locationsList">
-                                <div v-for="location in action.fields.locationsList" :key="location.sys.id">
-                                  <a v-if="location.fields.locationGeo"
-                                  :href="'https://www.openstreetmap.org/directions?from=&to='+location.fields.locationGeo.lat+'%2C'+location.fields.locationGeo.lon+'#map=17/'+location.fields.locationGeo.lat+'/'+location.fields.locationGeo.lon"
-                                  target="_blank">{{location.fields.locationDescription}}</a>
-                                  <span v-else>{{location.fields.locationDescription}}</span>
-                                </div>
-                              </template>
-                          </p>
-                        </div>
-                        <div class="info-block"  v-if="action.fields.link">
-                          <p class="is-uppercase label">
-                              {{t("infos")}}
-                          </p>
-                          <p>
-                              <a :href="action.fields.link" target="_blank">{{action.fields.link}}</a>
-                          </p>
-                        </div>
-                    </div>
-                </div>
-              </div>
+              <a class="button is-primary is-size-4" v-if="action.fields.link" :href="action.fields.link">Vers le site de l'organisateur</a>
             </div>
-            <nuxt-link class="see-all-actions has-text-black" :to="'/'+ $route.params.locale + $route.query.returnTo">
-              <img src="~/assets/images/white-arrow.png" /> <span>{{t("all-actions")}}</span>
-            </nuxt-link>
           </div>
-          <div class="column actions-related">
-            <RelatedActions :categoryId="categoryId" :excludeId="action.sys.id"/>
+          <div class="column">
+               <div class="info-block" v-if="action.fields.start || action.fields.end">
+                  <p class="is-uppercase label">
+                    {{t("date-when")}}
+                  </p>
+                  <p class="is-uppercase" v-if="action.fields.start && !action.fields.end">{{t("date-start-only")}} {{formatDate(action.fields.start)}}</p>
+                  <p class="is-uppercase" v-else-if="action.fields.end && !action.fields.start">{{t("date-end-only")}} {{formatDate(action.fields.end)}}</p>
+                  <p class="is-uppercase" v-else-if="action.fields.start === action.fields.end">{{formatDate(action.fields.start)}}</p>
+                  <p class="is-uppercase" v-else>{{t("date-start")}} {{formatDate(action.fields.start)}} {{t("date-end")}} {{formatDate(action.fields.end)}}</p>
+                </div>
+
+                <div class="info-block">
+                  <p class="is-uppercase label">
+                      {{t("address")}}
+                  </p>
+                  <p>
+                      <template v-if="action.fields.locationsList">
+                        <div v-for="location in action.fields.locationsList" :key="location.sys.id">
+                          <a v-if="location.fields.locationGeo"
+                          :href="'https://www.openstreetmap.org/directions?from=&to='+location.fields.locationGeo.lat+'%2C'+location.fields.locationGeo.lon+'#map=17/'+location.fields.locationGeo.lat+'/'+location.fields.locationGeo.lon"
+                          target="_blank">{{location.fields.locationLongDescription}}</a>
+                          <span v-else>{{location.fields.locationLongDescription}}</span>
+                          <div v-html="location.fields.locationLongDescription"></div>
+                        </div>
+                      </template>
+                  </p>
+                </div>
           </div>
         </div>
       </div>
     </div>
+    <RelatedActions :categoryId="categoryId" :excludeId="action.sys.id"/>
   </div>
 </template>
 

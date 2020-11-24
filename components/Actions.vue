@@ -11,7 +11,7 @@
           <ActionCategories :items="categories" @categoryChanged="categoryFilter = $event"/>
           <div v-if="!loading" class="columns is-multiline is-centered">
             <div
-              class="column is-one-third-desktop is-half-tablet"
+              class="column is-one-quarter-desktop is-one-quarter-tablet"
               v-for="action in normalActions"
               :key="action.id"
             >

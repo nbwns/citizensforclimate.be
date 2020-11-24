@@ -1,5 +1,5 @@
 <template>
-    <footer class="footer has-background-black has-text-white">
+    <footer class="footer">
         <div class="container is-fluid">
             <div class="columns">
                 <div class="column is-half links">
@@ -58,12 +58,10 @@ export default{
 
 <style scoped>
     a {
-        color: white;
         transition: all 0.1s;
     }
 
     a:hover {
-        color: #67de97 ;
         transition: all 0.2s;
     }
 

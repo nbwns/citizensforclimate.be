@@ -5,12 +5,12 @@
                 {{newLang.toUpperCase()}}
             </nuxt-link>
         </div>
-        <div class="hero-body" :class="{'bg-black': $route.params.slug}">
+        <div class="hero-body">
             <div class="container has-text-centered">
             <nuxt-link :to="($route.params.locale ? '/' + $route.params.locale : '')">
-                <div class="logo" :class="{'is-white': $route.params.slug}">
-                    <div class="logo-title">Citizens for Climate</div>
-                    <div class="logo-sub">Belgium</div>
+                <div class="logo">
+                    <div class="logo-title">Mon Agenda Climat</div>
+                    <div class="logo-sub">Actions et ressources pour te permettre de participer à la transition climatique. Ce qui se fait en Belgique pour agir contre le changement climatique</div>
                 </div>
             </nuxt-link>
             </div>
@@ -39,21 +39,15 @@ export default {
     }
     .hero{
         position: relative;
-        background-color: #64D7DE;
-        color: black;
+
         height: 250px;
-        .bg-black{
-            background-color: black;
-        }
+
         .lang-selector {
             position: absolute;
             top: 20px;
             right: 30px;
             padding: 10px;
-            background-color: white;
-            color: black;
-            font-size: 18px;
-            font-weight: bold;
+
         }
         .hero-body {
             display: flex;
@@ -61,17 +55,11 @@ export default {
         }
     }
     .logo {
-        font-family: 'Fjalla One', sans-serif;
-        font-size: 48px;
-        color: black;
-        text-transform: uppercase;
+        
         .logo-sub {
-            font-family: 'Niramit', sans-serif;
             font-size: 20px;
             letter-spacing: 4px;
         }
     }
-    .is-white {
-        color: white !important;
-    }
+
 </style>

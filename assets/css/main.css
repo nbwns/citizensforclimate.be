@@ -1,17 +1,10 @@
 html, body{
-  font-family: 'Niramit', sans-serif;
   margin:0;
   padding:0;
 }
 
-.light-blue-background{
-  background-color: #c8e3e3;
-}
-
 h2 {
-  font-family: "Fjalla One", sans-serif;
-  letter-spacing: 1px;
-  text-transform: uppercase;
+
 }
 
 .columns {
@@ -22,39 +15,19 @@ h2 {
 
 
 .button.is-primary {
-  text-transform: uppercase;
-  align-items: flex-end;
-  border-radius: 0;
-  background-color: white;
-  border: 2px #67de97 solid;
-  color: black;
-  font-weight: bold;
   transition: all 0.3s;
 }
 
 .button.is-primary:hover {
-  border: 2px #67de97 solid;
-  background-color: #67de97;
   transition: all 0.3s;
-  color: black;
 }
 
 .button {
-  text-transform: uppercase;
-  align-items: flex-end;
-  border-radius: 0;
-  background-color: white;
-  border: 2px black solid;
-  color: black;
-  font-weight: bold;
   transition: all 0.3s;
 }
 
 .button:hover {
-  border: 2px #67de97 solid;
-  background-color: white;
   transition: all 0.3s;
-  color: #67de97;
 }
 
 .title-head {
@@ -62,7 +35,6 @@ h2 {
 }
 
 .is-breaking{
-  font-family: 'Rock Salt', cursive;
   letter-spacing: 3px;
   padding: 3px;
 }
@@ -79,18 +51,10 @@ h2 {
 }
 
 .action.highlight{
-  -webkit-box-shadow: 0px 0px 0px 0px rgba(0,0,0,1);
-  -moz-box-shadow: 0px 0px 0px 0px rgba(0,0,0,1);
-  box-shadow: 0px 0px 0px 0px rgba(0,0,0,1);
-  border: 4px black solid;
-  font-size: 1rem;
   transition: all 0.2s;
 }
 
 .action.highlight:hover {
-  -webkit-box-shadow: -7px 7px 0px 0px rgba(0,0,0,1);
-  -moz-box-shadow: -7px 7px 0px 0px rgba(0,0,0,1);
-  box-shadow: -7px 7px 0px 0px rgba(0,0,0,1);
   transition: all 0.1s;
 }
 
@@ -105,7 +69,6 @@ h2 {
 }
 
 .action .title {
-  font-family: 'Fjalla One', sans-serif;
 }
 
 .action .buttons{
@@ -115,22 +78,16 @@ h2 {
 
 .action-meta{
   font-size: 0.85rem;
-  text-transform: uppercase;
   font-weight: bold;
 }
 
 .action-date{
-  color: #e86241;
 }
 
 .action .title{
-  text-transform: uppercase;
 }
 
 a.read-more {
-  color: black;
-  font-weight: bold;
-  text-decoration: underline;
 }
 
 .page-enter-active, .page-leave-active {
@@ -146,10 +103,5 @@ a.read-more {
 
 
 @media screen and (max-width: 768px) {
-  .action{
-    min-height: auto;
-  }
-  .action.highlight{
-    min-height: auto;
-  }
+  
 }
