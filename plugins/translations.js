@@ -13,12 +13,12 @@ const translations = {
         "i-fill-the-form": "Je remplis le formulaire en ligne",
         "related-actions": "Actions liées",
         "highlighted-actions": "Actions climat à la une",
-        "date-when": "Quand",
+        "date-when": "Date et heure",
         "date-start": "Du",
         "date-end": "au",
         "date-start-only": "À partir du",
         "date-end-only": "Jusqu'au",
-        "address": "Adresse",
+        "address": "Lieu",
         "infos": "Infos",
         "all-actions": "Toutes les actions",
         "footer-text": "Pour nous contacter:",
@@ -29,7 +29,9 @@ const translations = {
         "map-subtitle": "Ca se passe près de chez vous",
         "actions-tab": "Guide",
         "timeline-tab": "Ligne du temps",
-        "map-tab": "Carte"
+        "map-tab": "Carte",
+        "keyword": "Mots clés",
+        "share": "Partager"
     },
     "nl": {
         "read-more": "> Verder lezen",
@@ -61,7 +63,9 @@ const translations = {
         "map-subtitle": "Dit gebeurt bij u in de buurt",
         "actions-tab": "Gids",
         "timeline-tab": "Tijdlijn",
-        "map-tab": "Kaart"
+        "map-tab": "Kaart",
+        "keyword": "Mots clés",
+        "share": "Partager"
     }
 }
 

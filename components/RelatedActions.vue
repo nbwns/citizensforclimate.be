@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="title-box is-uppercase has-text-centered">
+        <div class="">
             <h2 class="subtitle has-text-black is-size-5">{{categoryId ? t("related-actions") : t("highlighted-actions") }}</h2>
         </div>
         <div class="related-action-container" v-for="action in actions" :key="action.sys.id">

@@ -1,33 +1,33 @@
 <template>
   <div>
-    <div class="light-blue-background">
+    <div class="has-background-light">
       <div class="container is-fluid">
         <div class="columns" >
           <div class="column is-two-thirds">
-            <div class="action-detail has-background-white">
-              <figure>
-                <img v-if="action.fields.image" :src="action.fields.image.fields.file.url" :title="action.fields.image.fields.title">
+            <div>
+              <figure class="image is-3by1">
+                <img v-if="action.fields.image" :src="action.fields.image.fields.file.url+'?w=720&h=240&fit=crop'" :title="action.fields.image.fields.title">
             </figure>
-              <span>{{action.fields.categories[0].fields.name}}</span>
+              <span class="tag is-large">{{action.fields.categories[0].fields.name}}</span>
               <h1 class="title has-text-weight-normal is-3 is-uppercase">{{action.fields.name}}</h1>
               <div>Organisé par <a :key="org.sys.id" v-for="org in action.fields.organizers" :href="org.fields.website">{{org.fields.name}}</a> </div>
-              <div class="content is-size-5" v-html="actionBody"></div>
+              <div class="has-background-white content is-size-5 p-5" v-html="actionBody"></div>
               <a class="button is-primary is-size-4" v-if="action.fields.link" :href="action.fields.link">Vers le site de l'organisateur</a>
             </div>
           </div>
-          <div class="column">
+          <div class="column mt-3 p-5 has-background-white">
                <div class="info-block" v-if="action.fields.start || action.fields.end">
-                  <p class="is-uppercase label">
+                  <p class="label">
                     {{t("date-when")}}
                   </p>
-                  <p class="is-uppercase" v-if="action.fields.start && !action.fields.end">{{t("date-start-only")}} {{formatDate(action.fields.start)}}</p>
-                  <p class="is-uppercase" v-else-if="action.fields.end && !action.fields.start">{{t("date-end-only")}} {{formatDate(action.fields.end)}}</p>
-                  <p class="is-uppercase" v-else-if="action.fields.start === action.fields.end">{{formatDate(action.fields.start)}}</p>
-                  <p class="is-uppercase" v-else>{{t("date-start")}} {{formatDate(action.fields.start)}} {{t("date-end")}} {{formatDate(action.fields.end)}}</p>
+                  <p v-if="action.fields.start && !action.fields.end">{{t("date-start-only")}} {{formatDate(action.fields.start)}}</p>
+                  <p v-else-if="action.fields.end && !action.fields.start">{{t("date-end-only")}} {{formatDate(action.fields.end)}}</p>
+                  <p v-else-if="action.fields.start === action.fields.end">{{formatDate(action.fields.start)}}</p>
+                  <p v-else>{{t("date-start")}} {{formatDate(action.fields.start)}} {{t("date-end")}} {{formatDate(action.fields.end)}}</p>
                 </div>
 
                 <div class="info-block">
-                  <p class="is-uppercase label">
+                  <p class="label">
                       {{t("address")}}
                   </p>
                   <p>
@@ -37,16 +37,36 @@
                           :href="'https://www.openstreetmap.org/directions?from=&to='+location.fields.locationGeo.lat+'%2C'+location.fields.locationGeo.lon+'#map=17/'+location.fields.locationGeo.lat+'/'+location.fields.locationGeo.lon"
                           target="_blank">{{location.fields.locationLongDescription}}</a>
                           <span v-else>{{location.fields.locationLongDescription}}</span>
-                          <div v-html="location.fields.locationLongDescription"></div>
                         </div>
                       </template>
                   </p>
+                </div>
+
+                <div class="info-block">
+                  <p class="label">
+                        {{t("share")}}
+                  </p>
+                  <p>social icons here</p>
+                </div>
+
+                <div class="info-block">
+                  <p class="label">
+                        {{t("keyword")}}
+                  </p>
+                  <div class="tags">
+                      <span class="tag is-link" :key="keyword" v-for="keyword in action.fields.keywords"><a class="has-text-white">{{keyword}}</a></span>
+                  </div>
                 </div>
           </div>
         </div>
       </div>
     </div>
-    <RelatedActions :categoryId="categoryId" :excludeId="action.sys.id"/>
+    <div class="has-background-white">
+        <RelatedActions :categoryId="categoryId" :excludeId="action.sys.id"/>
+    </div>
+    <div class="has-background-link-light">
+        <RelatedActions :categoryId="categoryId" :excludeId="action.sys.id"/>
+    </div>
   </div>
 </template>
 
