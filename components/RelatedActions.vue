@@ -1,12 +1,24 @@
 <template>
-    <div>
-        <div class="">
-            <h2 class="subtitle has-text-black is-size-5">{{categoryId ? t("related-actions") : t("highlighted-actions") }}</h2>
-        </div>
-        <div class="related-action-container" v-for="action in actions" :key="action.sys.id">
-            <Action :action="action"/>
+    <section class="section">
+    <div class="container is-fluid pb-6">
+        <div class="columns">
+            <div class="column is-full">
+                <div class="pt-6 pb-5">
+                    <h2 class="subtitle has-text-black is-size-3">{{categoryId ? t("related-actions") : t("highlighted-actions") }}</h2>
+                </div>
+                <div class="columns is-multiline">
+                    <div
+                        class="column is-one-quarter-desktop is-one-quarter-tablet mr-6"
+                        v-for="action in actions"
+                        :key="action.sys.id"
+                        >
+                        <Action :action="action"/>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+    </section>
 </template>
 
 <script>

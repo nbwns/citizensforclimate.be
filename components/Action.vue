@@ -8,7 +8,9 @@
         <div class="card-content">
             <div class="media-content">
                 <nuxt-link class="title is-3 has-text-weight-normal has-text-black" target="_blank" :to="{path:'/'+$route.params.locale+'/action/'+action.fields.slug}">{{action.fields.name}}</nuxt-link>
-                <a :key="keyword" v-for="keyword in action.fields.keywords">{{keyword}}</a>
+                <div class="tags">
+                    <span class="tag is-link" :key="keyword" v-for="keyword in action.fields.keywords"><a class="has-text-white">{{keyword}}</a></span>
+                </div>
             </div>
             <div class="content">
                 <small class="action-meta action-date is-size-6" v-if="action.fields.start && !action.fields.end">{{t("date-start-only")}} {{formatDate(action.fields.start)}}</small>

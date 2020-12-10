@@ -1,21 +1,46 @@
 <template>
-    <div class="hero">
-        <div class="lang-selector" v-if="$route.path !== '/'">
-            <nuxt-link v-if="$route.params.locale" :to="'/' + (newLang)" @click.native='changeLanguage(newLang)'>
-                {{newLang.toUpperCase()}}
-            </nuxt-link>
-        </div>
-        <div class="hero-body">
-            <div class="container has-text-centered">
-            <nuxt-link :to="($route.params.locale ? '/' + $route.params.locale : '')">
-                <div class="logo">
-                    <div class="logo-title">Mon Agenda Climat</div>
-                    <div class="logo-sub">Actions et ressources pour te permettre de participer à la transition climatique. Ce qui se fait en Belgique pour agir contre le changement climatique</div>
+    
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="container is-widescreen">
+            <div class="navbar-brand">
+                <nuxt-link :to="($route.params.locale ? '/' + $route.params.locale : '')" class="navbar-brand">
+                    Climagenda
+                </nuxt-link>
+                <span class="navbar-item">
+                    <div class="control">
+                        <input class="input is-hovered" type="text" placeholder="Recherche un truc">
+                        <span class="icon is-small is-right">
+                            <i class="fas fa-check"></i>
+                        </span>
+                    </div>
+                </span>
+
+                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                </a>
+            </div>
+
+            <div id="navbarBasicExample" class="navbar-menu">
+                <div class="navbar-end">
+                    <a class="navbar-item">
+                        Ressources
+                    </a>
+
+                    <a class="navbar-item">
+                        Ajoute ton action
+                    </a>
+
+                    <div class="navbar-item" v-if="$route.path !== '/'">
+                        <nuxt-link v-if="$route.params.locale" :to="'/' + (newLang)" @click.native='changeLanguage(newLang)'>
+                            {{newLang.toUpperCase()}}
+                        </nuxt-link>
+                    </div>
                 </div>
-            </nuxt-link>
             </div>
         </div>
-    </div>
+    </nav>
 </template>
 
 <script>

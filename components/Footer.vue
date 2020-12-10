@@ -1,43 +1,50 @@
 <template>
-    <footer class="footer">
+    <footer class="footer has-background-link">
         <div class="container is-fluid">
             <div class="columns">
-                <div class="column is-half links">
+                <div class="column is-one-third">
+                    <h3 class="is-uppercase has-text-white has-text-weight-bold">Catégories</h3>  
+                    
+                </div>
+
+                <div class="column is-one-third">
+                    <h3 class="is-uppercase has-text-white has-text-weight-bold">Infos</h3>  
                     <ul v-if="$route.params.locale === 'fr'">
-                        <li class="is-size-4 is-uppercase"><a href="/fr/a-propos">À propos</a></li>
-                        <li class="is-size-4 is-uppercase"><a href="/fr/mentions-legales">Mentions légales</a></li>
+                        <li><a class="has-text-white" href="/fr/a-propos">À propos</a></li>
+                        <li><a class="has-text-white" href="/fr/mentions-legales">Mentions légales</a></li>
                     </ul>
                     <ul v-if="$route.params.locale === 'nl'">
-                        <li class="is-size-4 is-uppercase"><a href="/nl/over-ons">Over ons</a></li>
-                        <li class="is-size-4 is-uppercase"><a href="/nl/disclaimer">Disclaimer</a></li>
+                        <li><a class="has-text-white" href="/nl/over-ons">Over ons</a></li>
+                        <li><a class="has-text-white" href="/nl/disclaimer">Disclaimer</a></li>
                     </ul>
-                    <ul class="social-links">
+                    
+                </div>
+
+                <div class="column is-one-third">
+                    <h3 class="is-uppercase has-text-white has-text-weight-bold">Nous suivre</h3>  
+                    <ul>
                       <li>
-                        <a href="https://www.facebook.com/citizensforclimate.be" target="_blank" class="social-link">
-                          <img src="~/assets/images/facebook.png" class="social-icon"/>
+                        <a href="mailto:hello@citizensforclimate.be" target="_blank" class="has-text-white">
+                          hello@citizensforclimate.be
                         </a>
                       </li>
                       <li>
-                        <a v-if="$route.params.locale === 'fr'" href="https://www.citizensforclimate.be/fr/feed.xml" class="social-link">
-                          <img src="~/assets/images/rss.svg" class="social-icon"/>
+                        <a href="https://www.facebook.com/citizensforclimate.be" target="_blank" class="has-text-white">
+                          Facebook
                         </a>
-                        <a v-if="$route.params.locale === 'nl'" href="https://www.citizensforclimate.be/nl/feed.xml" class="social-link">
-                          <img src="~/assets/images/rss.svg" class="social-icon"/>
+                      </li>
+                      <li>
+                        <a v-if="$route.params.locale === 'fr'" href="https://www.citizensforclimate.be/fr/feed.xml" class="has-text-white">
+                          RSS
+                        </a>
+                        <a v-if="$route.params.locale === 'nl'" href="https://www.citizensforclimate.be/nl/feed.xml" class="has-text-white">
+                          RSS
                         </a>
                       </li>
                     </ul>
                     <p class="credits">
                         <a href="https://www.contentful.com/" rel="nofollow" target="_blank"><img src="//images.ctfassets.net/fo9twyrwpveg/7F5pMEOhJ6Y2WukCa2cYws/398e290725ef2d3b3f0f5a73ae8401d6/PoweredByContentful_DarkBackground.svg" style="max-width:100px;width:100%;" alt="Powered by Contentful" /></a>
                     </p>
-                </div>
-
-                <div class="column">
-                    <div class="content is-size-4">
-                        <p>{{t("footer-text")}}</p>
-                        <p>
-                            <a class="has-text-weight-bold" href="mailto:hello@citizensforclimate.be">hello@citizensforclimate.be</a>
-                        </p>
-                    </div>
                 </div>
             </div>
         </div>
@@ -75,15 +82,4 @@ export default{
       margin-top: auto;
     }
 
-    .social-links {
-      display: flex;
-    }
-
-    .social-link {
-      margin-right: 10px;
-    }
-
-    .social-icon {
-      width: 40px;
-    }
 </style>
