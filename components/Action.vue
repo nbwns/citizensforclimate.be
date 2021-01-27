@@ -1,11 +1,14 @@
 <template>
-    <div :class="['card', className]" v-if="action.fields.name">
-        <div class="card-image">
-            <figure class="image is-4by3">
-                <img v-if="action.fields.image" :src="action.fields.image.fields.file.url" :title="action.fields.image.fields.title">
+    <div :class="['card', className, action.fields.image && 'with-image']" v-if="action.fields.name">
+        <div v-if="action.fields.image" class="card-image">
+            <figure class="image is-16by9">
+                <img :src="action.fields.image.fields.file.url" :title="action.fields.image.fields.title">
             </figure>
         </div>
-        <div class="card-content">
+        <div v-if="action.fields.organizers" class="organizers">
+            <a v-for="organizer in action.fields.organizers" :key="organizer.sys.id" :href="organizer.fields.website" class="organizer" :style="{backgroundImage: `url(${organizer.fields.logo.fields.file.url})`}"></a>
+        </div>
+        <div class="card-content" :class="action.fields.image && 'with-image'">
             <div class="media-content">
                 <nuxt-link class="title is-3 has-text-weight-normal has-text-black" target="_blank" :to="{path:'/'+$route.params.locale+'/action/'+action.fields.slug}">{{action.fields.name}}</nuxt-link>
                 <div class="tags">
@@ -99,6 +102,35 @@ export default {
     }
 }
 
+.card {
+    position: relative;
+    height: 100%;;
+}
 
+.card-image {
+    position: absolute;
+    width: 100%;
+}
 
+.card-content {
+    margin-top: 2rem;
+
+    &.with-image {
+        position: relative;
+        margin: 10rem 1.5rem 1.5rem;
+        padding: 1rem;
+        background-color: #fff;
+    } 
+}
+
+.organizer {
+    position: absolute;
+    background-size: contain;
+    width: 50px;
+    height: 50px;
+    top: 10px;
+    left: 10px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+}
 </style>

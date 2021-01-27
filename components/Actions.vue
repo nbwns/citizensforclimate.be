@@ -9,14 +9,8 @@
         <Loader v-if="loading"/>
         <template v-if="!loading">
           <ActionCategories :items="categories" @categoryChanged="categoryFilter = $event"/>
-          <div v-if="!loading" class="columns is-multiline is-centered">
-            <div
-              class="column is-one-quarter-desktop is-one-quarter-tablet"
-              v-for="action in normalActions"
-              :key="action.id"
-            >
-              <Action :action="action" :class="{highlight: action.fields.highlight}" @categoryChanged="categoryFilter = $event"/>
-            </div>
+          <div v-if="!loading" class="grid">
+            <Action v-for="action in normalActions" :key="action.id" :action="action" :class="{highlight: action.fields.highlight}" @categoryChanged="categoryFilter = $event"/>
           </div>
           <div
             class="see-more-actions"
@@ -156,4 +150,11 @@ export default {
 @media screen and (min-width: 768px) and (max-width: 1087px) {
 
 }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat( auto-fit, minmax(300px, 1fr) );
+  grid-gap: 2rem;
+}
+
 </style>
