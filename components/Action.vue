@@ -6,7 +6,10 @@
             </figure>
         </div>
         <div v-if="action.fields.organizers" class="organizers">
-            <a v-for="organizer in action.fields.organizers" :key="organizer.sys.id" :href="organizer.fields.website" class="organizer" :style="{backgroundImage: `url(${organizer.fields.logo.fields.file.url})`}"></a>
+            <div v-for="organizer in action.fields.organizers" :key="organizer.sys.id" class="organizer">
+                <a v-if="organizer.fields.logo" :href="organizer.fields.website" :style="{backgroundImage: `url(${organizer.fields.logo.fields.file.url})`}"></a>
+                <a v-else :href="organizer.fields.website">{organizer.name}</a>
+            </div>
         </div>
         <div class="card-content" :class="action.fields.image && 'with-image'">
             <div class="media-content">
@@ -123,14 +126,25 @@ export default {
     } 
 }
 
-.organizer {
+.organizers {
     position: absolute;
-    background-size: contain;
-    width: 50px;
-    height: 50px;
     top: 10px;
     left: 10px;
-    border: 2px solid #fff;
-    border-radius: 50%;
+    display: flex;
+
+    > * + * {
+        margin-left: 4px;
+    }
+}
+
+.organizer {
+    a {
+        display: block;
+        background-size: contain;
+        width: 50px;
+        height: 50px;
+        border: 2px solid #fff;
+        border-radius: 50%;
+    }
 }
 </style>
