@@ -2,16 +2,16 @@
   <div>
     <div class="has-background-light">
       <section class="section">
-        <div class="container is-fluid is-max-desktop">
-          <div class="columns" >
+        <div class="container is-fluid">
+          <div class="columns is-8 is-variable" >
             <div class="column is-two-thirds">
               <div>
                 <figure class="image is-3by1">
                   <img v-if="action.fields.image" :src="action.fields.image.fields.file.url+'?w=720&h=240&fit=crop'" :title="action.fields.image.fields.title">
                 </figure>
-                <span class="tag is-large">{{action.fields.categories[0].fields.name}}</span>
+                <span class="is-large">{{action.fields.categories[0].fields.name}}</span>
                 <h1 class="title has-text-weight-normal is-3 is-uppercase">{{action.fields.name}}</h1>
-                <div class="pb-6">Organisé par <a :key="org.sys.id" v-for="org in action.fields.organizers" :href="org.fields.website">{{org.fields.name}}</a> </div>
+                <div class="pb-6">Organisé par <span :key="org.sys.id" v-for="org in action.fields.organizers" class="pr-1"><a :href="org.fields.website">{{org.fields.name}}</a></span> </div>
                 <div class="has-background-white content is-size-5 p-5">
                   <div v-html="actionBody"></div>
                   <div class="pt-6">
@@ -20,22 +20,22 @@
                 </div>
               </div>
             </div>
-            <div class="column mt-3 p-5 has-background-white ">
-                <div class="">
-                  <div class="info-block" v-if="action.fields.start || action.fields.end">
-                      <p class="label">
+            <div class="column">
+                <div class="has-background-white p-5 mt-0">
+                  <div v-if="action.fields.start || action.fields.end">
+                      <strong>
                         {{t("date-when")}}
-                      </p>
+                      </strong>
                       <p v-if="action.fields.start && !action.fields.end">{{t("date-start-only")}} {{formatDate(action.fields.start)}}</p>
                       <p v-else-if="action.fields.end && !action.fields.start">{{t("date-end-only")}} {{formatDate(action.fields.end)}}</p>
                       <p v-else-if="action.fields.start === action.fields.end">{{formatDate(action.fields.start)}}</p>
                       <p v-else>{{t("date-start")}} {{formatDate(action.fields.start)}} {{t("date-end")}} {{formatDate(action.fields.end)}}</p>
                     </div>
 
-                    <div class="info-block">
-                      <p class="label">
+                    <div class="pt-5">
+                      <strong>
                           {{t("address")}}
-                      </p>
+                      </strong>
                       <p>
                           <template v-if="action.fields.locationsList">
                             <div v-for="location in action.fields.locationsList" :key="location.sys.id">
@@ -48,17 +48,17 @@
                       </p>
                     </div>
 
-                    <div class="info-block">
-                      <p class="label">
+                    <div class="pt-5">
+                      <strong>
                             {{t("share")}}
-                      </p>
+                      </strong>
                       <p>social icons here</p>
                     </div>
 
-                    <div class="info-block">
-                      <p class="label">
+                    <div class="pt-5">
+                      <strong>
                             {{t("keyword")}}
-                      </p>
+                      </strong>
                       <div class="tags">
                           <span class="tag is-link" :key="keyword" v-for="keyword in action.fields.keywords"><a class="has-text-white">{{keyword}}</a></span>
                       </div>
@@ -182,85 +182,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  h1 {
-      font-family: 'Fjalla One', sans-serif;
-      letter-spacing: 1px;
-  }
 
-  .columns{
-    padding: 100px 0 50px 0;
-  }
-
-  .action-detail{
-    position: relative;
-    padding: 20px;
-    padding-top: 50px;
-  }
-
-   .action-detail a:not(.button){
-    color: black;
-    text-decoration: underline;
-    transition: all 0.5s;
-  }
-
-   .action-detail a:not(.button):hover{
-    color: #67de97;
-    text-decoration: underline;
-    transition: all 0.5s;
-  }
-  .action-detail-picto {
-    position: absolute;
-    top: -50px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #fff;
-    height: 90px;
-    width: 90px;
-    padding: 5px;
-    border: 3px solid;
-    border-radius: 50%;
-  }
-
-  .info-block{
-    margin-top: 20px;
-    word-wrap: break-word;
-  }
-
-  .label{
-    font-family: 'Fjalla One', sans-serif;
-    letter-spacing: 1px;
-    color: #67de97;
-    font-weight: normal;
-  }
-
-  .gradient-text {
-    background: linear-gradient(to bottom, #67de97 0%, #000000 40%);
-    -webkit-background-clip: text;
-	  -webkit-text-fill-color: transparent;
-  }
-
-  .see-all-actions{
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: 1.2rem;
-    cursor: pointer;
-    display:flex;
-    align-items: center;
-    justify-content: flex-start;
-    margin: 15px 0 0 0;
-  }
-
-  .see-all-actions img{
-      align-self: left;
-  }
-  .see-all-actions span{
-      padding: 0 0 0 10px;
-  }
-  @media screen and (min-width: 1088px){
-    .container.is-fluid.pratical-info {
-      margin-left: 0px;
-      margin-right: 0px;
-    }
-  }
 </style>
 
