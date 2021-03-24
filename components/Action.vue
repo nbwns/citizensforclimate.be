@@ -99,10 +99,6 @@ export default {
     small {
         line-height: 1.2em;
     }
-
-    .highlight {
-        
-    }
 }
 
 .card {
@@ -123,7 +119,7 @@ export default {
         margin: 10rem 1.5rem 1.5rem;
         padding: 1rem;
         background-color: #fff;
-    } 
+    }
 }
 
 .organizers {
@@ -146,5 +142,12 @@ export default {
         border: 2px solid #fff;
         border-radius: 50%;
     }
+}
+
+.tag {
+    &:not(body).is-link {
+        background-color: var(--c-primary);
+    }
+
 }
 </style>
