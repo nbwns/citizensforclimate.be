@@ -16,10 +16,7 @@ module.exports = {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.1/css/bulma.min.css'},
       { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css'}
-    ],
-    bodyAttrs: {
-      class: 'has-navbar-fixed-top'
-    }
+    ]
   },
   mode: 'universal',
   css: [

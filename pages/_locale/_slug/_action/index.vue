@@ -182,6 +182,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.is-primary, .is-primary:hover {
+    background-color: var(--c-primary);
+}
 </style>
 

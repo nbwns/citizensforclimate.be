@@ -1,14 +1,14 @@
 <template>
-    <footer class="footer has-background-link">
+    <footer class="footer">
         <div class="container is-fluid">
             <div class="columns">
                 <div class="column is-one-third">
-                    <h3 class="is-uppercase has-text-white has-text-weight-bold">Catégories</h3>  
-                    
+                    <h3 class="is-uppercase has-text-white has-text-weight-bold">Catégories</h3>
+
                 </div>
 
                 <div class="column is-one-third">
-                    <h3 class="is-uppercase has-text-white has-text-weight-bold">Infos</h3>  
+                    <h3 class="is-uppercase has-text-white has-text-weight-bold">Infos</h3>
                     <ul v-if="$route.params.locale === 'fr'">
                         <li><a class="has-text-white" href="/fr/a-propos">À propos</a></li>
                         <li><a class="has-text-white" href="/fr/mentions-legales">Mentions légales</a></li>
@@ -17,11 +17,11 @@
                         <li><a class="has-text-white" href="/nl/over-ons">Over ons</a></li>
                         <li><a class="has-text-white" href="/nl/disclaimer">Disclaimer</a></li>
                     </ul>
-                    
+
                 </div>
 
                 <div class="column is-one-third">
-                    <h3 class="is-uppercase has-text-white has-text-weight-bold">Nous suivre</h3>  
+                    <h3 class="is-uppercase has-text-white has-text-weight-bold">Nous suivre</h3>
                     <ul>
                       <li>
                         <a href="mailto:hello@citizensforclimate.be" target="_blank" class="has-text-white">
@@ -64,6 +64,10 @@ export default{
 </script>
 
 <style scoped>
+    .footer {
+        background-color: var(--c-primary);
+    }
+
     a {
         transition: all 0.1s;
     }

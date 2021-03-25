@@ -1,19 +1,24 @@
+:root {
+  --c-primary: #005876;
+  --c-secondary: #00fbaf;
+  --c-grey-light: #e7e7e7;
+  --c-black: #212121;
+  --c-white: #fff;
+}
+
 html, body{
   margin:0;
   padding:0;
   font-size: 18px;
 }
 
-h2 {
-
+body {
+  background-color: var(--c-grey-light);
 }
-
 .columns {
   margin-left: 0;
   margin-right: 0;
 }
-
-
 
 .button.is-primary {
   transition: all 0.3s;
@@ -69,9 +74,6 @@ h2 {
   font-size: 1rem;
 }
 
-.action .title {
-}
-
 .action .buttons{
   align-self: center;
   margin-top: auto;
@@ -80,15 +82,6 @@ h2 {
 .action-meta{
   font-size: 0.85rem;
   font-weight: bold;
-}
-
-.action-date{
-}
-
-.action .title{
-}
-
-a.read-more {
 }
 
 .page-enter-active, .page-leave-active {
@@ -104,5 +97,5 @@ a.read-more {
 
 
 @media screen and (max-width: 768px) {
-  
+
 }
