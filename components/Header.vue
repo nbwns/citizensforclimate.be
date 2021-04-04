@@ -4,7 +4,7 @@
       <nav class="main-nav">
         <nuxt-link class="home" :to="($route.params.locale ? '/' + $route.params.locale : '')">
           <h2>Climagenda</h2>
-          <h3>Agir en Belgique contre le changement climatique</h3>
+          <h3>{{t("tagline")}}</h3>
         </nuxt-link>
         <div class="links-wrapper">
           <div class="search-wrapper">
@@ -28,11 +28,16 @@
 </template>
 
 <script>
+import translate from "~/plugins/translations"
+
 export default {
   methods: {
     changeLanguage(newLang) {
       localStorage.setItem("language", newLang);
-    }
+    },
+    t(key) {
+        return translate(this.$route.params.locale, key);
+    },
   },
   computed: {
     newLang: function() {

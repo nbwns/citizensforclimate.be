@@ -1,17 +1,16 @@
 <template>
-    <div :class="['card', className, action.fields.image && 'with-image']" v-if="action.fields.name">
-        <div v-if="action.fields.image" class="card-image">
+    <div :class="['card', className, this.withImage && 'with-image']" v-if="action.fields.name">
+        <div v-if="this.withImage" class="card-image">
             <figure class="image is-16by9">
                 <img :src="action.fields.image.fields.file.url" :title="action.fields.image.fields.title">
             </figure>
         </div>
         <div v-if="action.fields.organizers" class="organizers">
             <div v-for="organizer in action.fields.organizers" :key="organizer.sys.id" class="organizer">
-                <a v-if="organizer.fields.logo" :href="organizer.fields.website" :style="{backgroundImage: `url(${organizer.fields.logo.fields.file.url})`}"></a>
-                <a v-else :href="organizer.fields.website">{organizer.name}</a>
+                <a v-if="organizer.fields.logo && organizer.fields.logo.fields && organizer.fields.logo.fields.file" :href="organizer.fields.website" :style="{backgroundImage: `url(${organizer.fields.logo.fields.file.url})`}"></a>
             </div>
         </div>
-        <div class="card-content" :class="action.fields.image && 'with-image'">
+        <div class="card-content" :class="this.withImage && 'with-image'">
             <div class="media-content">
                 <nuxt-link class="title is-3 has-text-weight-normal has-text-black" target="_blank" :to="{path:'/'+$route.params.locale+'/action/'+action.fields.slug}">{{action.fields.name}}</nuxt-link>
                 <div class="tags">
@@ -36,7 +35,8 @@ import translate from '~/plugins/translations'
 export default {
     data() {
         return {
-            actionsOffset: Number
+            actionsOffset: Number,
+            withImage: this.action.fields.image && this.action.fields.image.fields.file && this.action.fields.image.fields.file.url
         }
     },
     props: ['action', 'className'],
