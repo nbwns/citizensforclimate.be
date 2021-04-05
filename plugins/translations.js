@@ -31,7 +31,8 @@ const translations = {
         "timeline-tab": "Ligne du temps",
         "map-tab": "Carte",
         "keyword": "Mots clés",
-        "share": "Partager"
+        "share": "Partager",
+        "tagline": "Agir en Belgique contre le changement climatique"
     },
     "nl": {
         "read-more": "> Verder lezen",
@@ -65,7 +66,8 @@ const translations = {
         "timeline-tab": "Tijdlijn",
         "map-tab": "Kaart",
         "keyword": "Mots clés",
-        "share": "Partager"
+        "share": "Partager",
+        "tagline": "Onderneem actie in België tegen klimaatverandering"
     }
 }
 
